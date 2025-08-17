@@ -45,6 +45,9 @@ jobs:
       - name: Npm install
         run: yarn install
 
+      - name: Frontend lint
+        run: yarn lint
+
       - name: Frontend build
         run: yarn run production
 

@@ -6,8 +6,11 @@ declare module '@mui/material/styles' {
   interface CustomPalette {
     yellow: PaletteColorOptions;
   }
-  
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   interface Palette extends CustomPalette {}
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   interface PaletteOptions extends CustomPalette {}
 }
 
@@ -21,16 +24,16 @@ declare module '@mui/material/Button' {
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#e6b800", // Slightly darker yellow with better contrast on white
-      light: "#fff59d",
-      dark: "#b38f00",  // Darker gold shade
-      contrastText: "#000"
+      main: '#e6b800', // Slightly darker yellow with better contrast on white
+      light: '#fff59d',
+      dark: '#b38f00', // Darker gold shade
+      contrastText: '#000',
     },
     secondary: {
-      main: "#2D3748", // Dark slate color that pairs well with yellow
-      light: "#4A5568",
-      dark: "#1A202C",
-      contrastText: "#fff"
+      main: '#2D3748', // Dark slate color that pairs well with yellow
+      light: '#4A5568',
+      dark: '#1A202C',
+      contrastText: '#fff',
     },
     yellow: {
       main: '#fff000', // Original brand yellow preserved as reference
@@ -56,7 +59,7 @@ const theme = createTheme({
       defaultProps: {
         color: 'secondary',
         underline: 'hover',
-      }
+      },
     },
   },
   typography: {
