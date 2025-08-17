@@ -27,6 +27,7 @@ type CourseProps = {
   user_course_induction?: CourseResource['user_course_induction'];
   urls?: {
     show: string;
+    training: string;
   };
 };
 
@@ -62,6 +63,10 @@ const CourseSummary = ({
   const isUserTrained =
     course.user_course_induction?.trained != null && course.user_course_induction.trained !== '';
 
+  const isUserTrainer = course.user_course_induction?.is_trainer || false;
+
+  const courseUrl = isUserTrainer ? course.urls?.training : course.urls?.show;
+
   return (
     <Box {...rest}>
       {isPreview && (
@@ -71,7 +76,7 @@ const CourseSummary = ({
       )}
       <Card
         component={clickable && course.urls ? Link : 'div'}
-        href={clickable && course.urls ? course.urls.show : undefined}
+        href={clickable ? courseUrl : undefined}
         sx={{
           height: '100%',
           display: 'flex',

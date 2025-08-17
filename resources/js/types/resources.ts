@@ -77,6 +77,7 @@ export type CourseResource = {
   trainers?: InductionResource[];
   urls: {
     show: string;
+    training: string;
   };
 };
 

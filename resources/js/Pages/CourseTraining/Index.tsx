@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Typography, Alert, Link } from '@mui/material';
+import { Container, Typography, Alert, Link, Box, Button } from '@mui/material';
 import MainLayout from '../../Layouts/MainLayout';
 import PageTitle from '../../Components/PageTitle';
 import PendingSignOffSection from '../../Components/CourseTraining/PendingSignOffSection';
@@ -27,9 +27,19 @@ const TrainingIndex = ({
   memberList,
   urls,
 }: Props) => {
+  const actionButtons = (
+    <Box sx={{ display: 'flex', gap: 2 }}>
+      <Link href={course.urls.show} underline="none">
+        <Button variant="contained" color="primary">
+          View Course
+        </Button>
+      </Link>
+    </Box>
+  );
+
   return (
     <>
-      <PageTitle title={`Training Management - ${course.name}`} />
+      <PageTitle title={`Training Management - ${course.name}`} actionButtons={actionButtons} />
       <Container sx={{ mt: 4 }}>
         <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
           <Link href="/courses" color="inherit" underline="hover">

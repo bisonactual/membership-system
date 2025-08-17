@@ -43,14 +43,14 @@ class CourseResource extends JsonResource
             'equipment' => $this->whenLoaded('equipment', function () {
                 return EquipmentResource::collection($this->equipment);
             }),
-            
+
             // Include user course induction status when user is authenticated
             'user_course_induction' => $this->when(auth()->check(), function () {
                 $inductionRepo = app(\BB\Repo\InductionRepository::class);
                 $userCourseInduction = $inductionRepo->getUserForCourse(auth()->user()->id, $this->id);
                 return $userCourseInduction ? new InductionResource($userCourseInduction) : null;
             }),
-            
+
             // Include trainers when user is authenticated
             'trainers' => $this->when(auth()->check(), function () {
                 $inductionRepo = app(\BB\Repo\InductionRepository::class);
@@ -58,9 +58,10 @@ class CourseResource extends JsonResource
                 $trainers->load(['user.profile']);
                 return InductionResource::collection($trainers);
             }),
-            
+
             'urls' => [
                 'show' => route('courses.show', $this->slug, false),
+                'training' => route('courses.training.index', $this->slug, false),
             ],
         ];
     }
