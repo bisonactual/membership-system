@@ -10,6 +10,7 @@ use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Support\Facades\Config;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class TelegramHelperTest extends TestCase
@@ -43,11 +44,12 @@ class TelegramHelperTest extends TestCase
 
   protected function tearDown(): void
   {
+    parent::tearDown();
     Config::set('telegram.bot_key', null);
     Config::set('telegram.bot_chat', null);
   }
 
-  public function notifyDataProvider()
+  public static function notifyDataProvider()
   {
     return [
       [1, 'I am level "job"', '⏰  [test-id] I am level "job"'],
@@ -59,9 +61,7 @@ class TelegramHelperTest extends TestCase
     ];
   }
 
-  /**
-   * @dataProvider notifyDataProvider
-   */
+  #[DataProvider('notifyDataProvider')]
   public function testNotify($level, $message, $encodedTextParam)
   {
     $this->mock->reset();
