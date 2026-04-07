@@ -1,0 +1,17 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "entry": [
+    "resources/js/react-app.tsx",
+    "resources/js/Pages/**/*.{ts,tsx}"
+  ],
+  "project": [
+    "resources/js/**/*.{ts,tsx}"
+  ],
+  "paths": {
+    "@/*": ["resources/js/*"]
+  },
+  "ignoreDependencies": [
+    "laravel-mix",
+    "vue-template-compiler"
+  ]
+}
