@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests;
+
 use BB\Entities\KeyFob;
 use BB\Entities\Role;
 use BB\Entities\User;

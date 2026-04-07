@@ -1,5 +1,8 @@
 <?php
 
+namespace Tests;
+
+use BB\Entities\Role;
 use BB\Exceptions\AuthenticationException;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -34,7 +37,7 @@ class FinanceTest extends BrowserKitTestCase
     {
         $user = factory('BB\Entities\User')->create();
         factory('BB\Entities\ProfileData')->create(['user_id' => $user->id]);
-        $role = BB\Entities\Role::findByName('finance');
+        $role = Role::findByName('finance');
         $role->users()->attach($user);
 
         $this->actingAs($user);

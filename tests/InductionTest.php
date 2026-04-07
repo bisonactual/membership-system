@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests;
+
 use BB\Entities\Equipment;
 use BB\Entities\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
