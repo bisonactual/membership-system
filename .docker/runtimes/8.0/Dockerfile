@@ -7,7 +7,7 @@ ARG NODE_VERSION=20
 ARG POSTGRES_VERSION=13
 
 # This won't be entirely reliable across versions as package names may vary
-ARG PHP_VERSION=8.2
+ARG PHP_VERSION=8.0
 
 WORKDIR /var/www/html
 
