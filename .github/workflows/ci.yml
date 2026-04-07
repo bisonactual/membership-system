@@ -49,7 +49,7 @@ jobs:
         run: yarn lint
 
       - name: Frontend build
-        run: yarn run production
+        run: yarn build
 
       - name: Run frontend tests
         run: yarn test --ci

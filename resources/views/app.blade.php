@@ -20,7 +20,7 @@
     @endif
     
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <script src="{{ mix('/js/react-app.js') }}" defer></script>
+    @vite('resources/js/react-app.tsx')
     @inertiaHead
 </head>
 <body>

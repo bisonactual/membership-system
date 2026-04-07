@@ -3,6 +3,8 @@
 namespace Tests;
 
 use Illuminate\Contracts\Console\Kernel;
+use Illuminate\Foundation\Vite;
+use Illuminate\Support\HtmlString;
 use Laravel\BrowserKitTesting\TestCase as BaseTestCase;
 
 abstract class BrowserKitTestCase extends BaseTestCase
@@ -33,5 +35,17 @@ abstract class BrowserKitTestCase extends BaseTestCase
         parent::setUp();
 
         $this->app['config']->set('app.debug', true);
+
+        $this->app->instance(Vite::class, new class extends Vite {
+            public function __invoke($entrypoints, $buildDirectory = null): HtmlString
+            {
+                return new HtmlString('');
+            }
+
+            public function __call($method, $parameters): string
+            {
+                return '';
+            }
+        });
     }
 }
