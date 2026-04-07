@@ -27,8 +27,8 @@ class FixUsersNullableColumns extends Migration
     public function down()
     {
         Schema::table("users", function (Blueprint $table) {
-            $table->string('gift', 20)->change();
-            $table->boolean('visited_forum')->change();
+            $table->string('gift', 20)->nullable()->change();
+            $table->boolean('visited_forum')->default(false)->change();
         });
     }
 }

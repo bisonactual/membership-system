@@ -2,6 +2,8 @@
 
 namespace Tests\Unit;
 
+use PHPUnit\Framework\Attributes\Test;
+
 use BB\Entities\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
@@ -13,7 +15,7 @@ Class SubscriptionChargeTest extends TestCase
 {
     use DatabaseMigrations;
 
-    /** @test */
+    #[Test]
     public function it_works()
     {
         \Illuminate\Support\Facades\Event::fake();

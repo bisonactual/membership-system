@@ -13,7 +13,7 @@ class ReconcileProfileData extends Migration
     public function up()
     {
         Schema::table('profile_data', function(Blueprint $table) {
-            $table->string('website', 250)->change();
+            $table->string('website', 250)->nullable()->change();
 
             // Timestamps still have different defaults but there seems to be no
             // nice way to solve that in Laravel 5.1. It shouldn't cause any
@@ -29,7 +29,7 @@ class ReconcileProfileData extends Migration
     public function down()
     {
         Schema::table('profile_data', function(Blueprint $table) {
-            $table->string('website', 10)->change();
+            $table->string('website', 10)->nullable()->change();
         });
     }
 }

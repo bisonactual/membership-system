@@ -1,806 +1,1267 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Access to an undefined property Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable\\:\\:\\$email_verified\\.$#"
+			message: '#^PHPDoc type array of property BB\\Entities\\Address\:\:\$fillable is not covariant with PHPDoc type list\<string\> of overridden property Illuminate\\Database\\Eloquent\\Model\:\:\$fillable\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Entities/Address.php
+
+		-
+			message: '#^PHPDoc type array of property BB\\Entities\\AuditLog\:\:\$fillable is not covariant with PHPDoc type list\<string\> of overridden property Illuminate\\Database\\Eloquent\\Model\:\:\$fillable\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Entities/AuditLog.php
+
+		-
+			message: '#^PHPDoc type array of property BB\\Entities\\Course\:\:\$casts is not covariant with PHPDoc type array\<string, string\> of overridden property Illuminate\\Database\\Eloquent\\Model\:\:\$casts\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Entities/Course.php
+
+		-
+			message: '#^PHPDoc type array of property BB\\Entities\\Equipment\:\:\$casts is not covariant with PHPDoc type array\<string, string\> of overridden property Illuminate\\Database\\Eloquent\\Model\:\:\$casts\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Entities/Equipment.php
+
+		-
+			message: '#^PHPDoc type array of property BB\\Entities\\Gift\:\:\$fillable is not covariant with PHPDoc type list\<string\> of overridden property Illuminate\\Database\\Eloquent\\Model\:\:\$fillable\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Entities/Gift.php
+
+		-
+			message: '#^PHPDoc type array of property BB\\Entities\\Induction\:\:\$fillable is not covariant with PHPDoc type list\<string\> of overridden property Illuminate\\Database\\Eloquent\\Model\:\:\$fillable\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Entities/Induction.php
+
+		-
+			message: '#^PHPDoc type array of property BB\\Entities\\Induction\:\:\$hidden is not covariant with PHPDoc type list\<string\> of overridden property Illuminate\\Database\\Eloquent\\Model\:\:\$hidden\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Entities/Induction.php
+
+		-
+			message: '#^PHPDoc type array of property BB\\Entities\\Payment\:\:\$fillable is not covariant with PHPDoc type list\<string\> of overridden property Illuminate\\Database\\Eloquent\\Model\:\:\$fillable\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Entities/Payment.php
+
+		-
+			message: '#^PHPDoc type array of property BB\\Entities\\Payment\:\:\$hidden is not covariant with PHPDoc type list\<string\> of overridden property Illuminate\\Database\\Eloquent\\Model\:\:\$hidden\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Entities/Payment.php
+
+		-
+			message: '#^PHPDoc type array of property BB\\Entities\\Role\:\:\$fillable is not covariant with PHPDoc type list\<string\> of overridden property Illuminate\\Database\\Eloquent\\Model\:\:\$fillable\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Entities/Role.php
+
+		-
+			message: '#^PHPDoc type array of property BB\\Entities\\StorageBox\:\:\$fillable is not covariant with PHPDoc type list\<string\> of overridden property Illuminate\\Database\\Eloquent\\Model\:\:\$fillable\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Entities/StorageBox.php
+
+		-
+			message: '#^PHPDoc type array of property BB\\Entities\\SubscriptionCharge\:\:\$fillable is not covariant with PHPDoc type list\<string\> of overridden property Illuminate\\Database\\Eloquent\\Model\:\:\$fillable\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Entities/SubscriptionCharge.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Entities/User.php
+
+		-
+			message: '#^PHPDoc tag @property for property BB\\Entities\\User\:\:\$last_seen contains unknown class BB\\Entities\\date\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Entities/User.php
+
+		-
+			message: '#^PHPDoc type array of property BB\\Entities\\User\:\:\$fillable is not covariant with PHPDoc type list\<string\> of overridden property Illuminate\\Database\\Eloquent\\Model\:\:\$fillable\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Entities/User.php
+
+		-
+			message: '#^PHPDoc type array of property BB\\Entities\\User\:\:\$hidden is not covariant with PHPDoc type list\<string\> of overridden property Illuminate\\Database\\Eloquent\\Model\:\:\$hidden\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Entities/User.php
+
+		-
+			message: '#^PHPDoc type array of property BB\\Exceptions\\Handler\:\:\$dontFlash is not covariant with PHPDoc type array\<int, string\> of overridden property Illuminate\\Foundation\\Exceptions\\Handler\:\:\$dontFlash\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Exceptions/Handler.php
+
+		-
+			message: '#^PHPDoc type array of property BB\\Exceptions\\Handler\:\:\$dontReport is not covariant with PHPDoc type array\<int, class\-string\<Throwable\>\> of overridden property Illuminate\\Foundation\\Exceptions\\Handler\:\:\$dontReport\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Exceptions/Handler.php
+
+		-
+			message: '#^Called ''env'' outside of the config directory which returns null when the config is cached, use ''config''\.$#'
+			identifier: larastan.noEnvCallsOutsideOfConfig
+			count: 2
+			path: app/Helpers/GoCardlessHelper.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Contracts\\Auth\\Authenticatable\:\:\$email_verified\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Http/Controllers/AccountController.php
 
 		-
-			message: "#^Access to an undefined property Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable\\:\\:\\$id\\.$#"
+			message: '#^Access to an undefined property Illuminate\\Contracts\\Auth\\Authenticatable\:\:\$id\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Http/Controllers/AccountController.php
 
 		-
-			message: "#^Expression \"\\$user\\-\\>address\" on a separate line does not do anything\\.$#"
+			message: '#^Expression "\$user\-\>address" on a separate line does not do anything\.$#'
+			identifier: expr.resultUnused
 			count: 1
 			path: app/Http/Controllers/AccountController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\AccountController\\:\\:create\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\AccountController\:\:create\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/AccountController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\AccountController\\:\\:create\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but returns Illuminate\\\\Contracts\\\\View\\\\View\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\AccountController\:\:create\(\) should return BB\\Http\\Controllers\\Response but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/AccountController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\AccountController\\:\\:createOnlineOnly\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\AccountController\:\:createOnlineOnly\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/AccountController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\AccountController\\:\\:createOnlineOnly\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but returns Illuminate\\\\Contracts\\\\View\\\\View\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\AccountController\:\:createOnlineOnly\(\) should return BB\\Http\\Controllers\\Response but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/AccountController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\AccountController\\:\\:edit\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\AccountController\:\:edit\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/AccountController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\AccountController\\:\\:edit\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but returns Illuminate\\\\Contracts\\\\View\\\\View\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\AccountController\:\:edit\(\) should return BB\\Http\\Controllers\\Response but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/AccountController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\AccountController\\:\\:index\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\AccountController\:\:index\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/AccountController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\AccountController\\:\\:index\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but returns Illuminate\\\\Contracts\\\\View\\\\View\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\AccountController\:\:index\(\) should return BB\\Http\\Controllers\\Response but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/AccountController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\AccountController\\:\\:show\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\AccountController\:\:show\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/AccountController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\AccountController\\:\\:show\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but returns Illuminate\\\\Contracts\\\\View\\\\View\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\AccountController\:\:show\(\) should return BB\\Http\\Controllers\\Response but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/AccountController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\AccountController\\:\\:store\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Illuminate\\\\Http\\\\RedirectResponse\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\AccountController\:\:store\(\) has invalid return type BB\\Http\\Controllers\\Illuminate\\Http\\RedirectResponse\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/AccountController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\AccountController\\:\\:store\\(\\) should return BB\\\\Http\\\\Controllers\\\\Illuminate\\\\Http\\\\RedirectResponse but returns Illuminate\\\\Http\\\\RedirectResponse\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\AccountController\:\:store\(\) should return BB\\Http\\Controllers\\Illuminate\\Http\\RedirectResponse but returns Illuminate\\Http\\RedirectResponse\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/AccountController.php
 
 		-
-			message: "#^Parameter \\#1 \\$user of class BB\\\\Mailer\\\\UserMailer constructor expects BB\\\\Entities\\\\User, Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable\\|null given\\.$#"
+			message: '#^Parameter \#1 \$user of class BB\\Mailer\\UserMailer constructor expects BB\\Entities\\User, Illuminate\\Contracts\\Auth\\Authenticatable\|null given\.$#'
+			identifier: argument.type
 			count: 1
 			path: app/Http/Controllers/AccountController.php
 
 		-
-			message: "#^Parameter \\#2 \\$id of method BB\\\\Validators\\\\FormValidator\\:\\:validate\\(\\) expects null, int given\\.$#"
+			message: '#^Parameter \#2 \$id of method BB\\Validators\\FormValidator\:\:validate\(\) expects null, int given\.$#'
+			identifier: argument.type
 			count: 1
 			path: app/Http/Controllers/AccountController.php
 
 		-
-			message: "#^Property BB\\\\Http\\\\Controllers\\\\AccountController\\:\\:\\$inductionRepository is never read, only written\\.$#"
+			message: '#^Property BB\\Http\\Controllers\\AccountController\:\:\$inductionRepository is never read, only written\.$#'
+			identifier: property.onlyWritten
 			count: 1
 			path: app/Http/Controllers/AccountController.php
 
 		-
-			message: "#^Property BB\\\\Http\\\\Controllers\\\\AccountController\\:\\:\\$userDetailsForm is never read, only written\\.$#"
+			message: '#^Property BB\\Http\\Controllers\\AccountController\:\:\$userDetailsForm is never read, only written\.$#'
+			identifier: property.onlyWritten
 			count: 1
 			path: app/Http/Controllers/AccountController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\EquipmentAreaController\\:\\:create\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\EquipmentAreaController\:\:create\(\) should return Illuminate\\Http\\Response but returns Illuminate\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/EquipmentAreaController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\EquipmentAreaController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\Http\\\\RedirectResponse\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\EquipmentAreaController\:\:destroy\(\) should return Illuminate\\Http\\Response but returns Illuminate\\Http\\RedirectResponse\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/EquipmentAreaController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\EquipmentAreaController\\:\\:edit\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\EquipmentAreaController\:\:edit\(\) should return Illuminate\\Http\\Response but returns Illuminate\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/EquipmentAreaController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\EquipmentAreaController\\:\\:index\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\EquipmentAreaController\:\:index\(\) should return Illuminate\\Http\\Response but returns Illuminate\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/EquipmentAreaController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\EquipmentAreaController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\EquipmentAreaController\:\:show\(\) should return Illuminate\\Http\\Response but returns Illuminate\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/EquipmentAreaController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\EquipmentAreaController\\:\\:store\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\Http\\\\RedirectResponse\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\EquipmentAreaController\:\:store\(\) should return Illuminate\\Http\\Response but returns Illuminate\\Http\\RedirectResponse\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/EquipmentAreaController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\EquipmentAreaController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\Http\\\\RedirectResponse\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\EquipmentAreaController\:\:update\(\) should return Illuminate\\Http\\Response but returns Illuminate\\Http\\RedirectResponse\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/EquipmentAreaController.php
 
 		-
-			message: "#^PHPDoc tag @param for parameter \\$equipmentArea with type BB\\\\EquipmentArea is not subtype of native type BB\\\\Entities\\\\EquipmentArea\\.$#"
+			message: '#^PHPDoc tag @param for parameter \$equipmentArea with type BB\\EquipmentArea is not subtype of native type BB\\Entities\\EquipmentArea\.$#'
+			identifier: parameter.phpDocType
 			count: 4
 			path: app/Http/Controllers/EquipmentAreaController.php
 
 		-
-			message: "#^PHPDoc tag @param for parameter \\$request with type Illuminate\\\\Http\\\\Request is not subtype of native type BB\\\\Http\\\\Requests\\\\StoreEquipmentAreaRequest\\.$#"
+			message: '#^PHPDoc tag @param for parameter \$request with type Illuminate\\Http\\Request is not subtype of native type BB\\Http\\Requests\\StoreEquipmentAreaRequest\.$#'
+			identifier: parameter.phpDocType
 			count: 1
 			path: app/Http/Controllers/EquipmentAreaController.php
 
 		-
-			message: "#^PHPDoc tag @param for parameter \\$request with type Illuminate\\\\Http\\\\Request is not subtype of native type BB\\\\Http\\\\Requests\\\\UpdateEquipmentAreaRequest\\.$#"
+			message: '#^PHPDoc tag @param for parameter \$request with type Illuminate\\Http\\Request is not subtype of native type BB\\Http\\Requests\\UpdateEquipmentAreaRequest\.$#'
+			identifier: parameter.phpDocType
 			count: 1
 			path: app/Http/Controllers/EquipmentAreaController.php
 
 		-
-			message: "#^Parameter \\$equipmentArea of method BB\\\\Http\\\\Controllers\\\\EquipmentAreaController\\:\\:destroy\\(\\) has invalid type BB\\\\EquipmentArea\\.$#"
+			message: '#^Parameter \$equipmentArea of method BB\\Http\\Controllers\\EquipmentAreaController\:\:destroy\(\) has invalid type BB\\EquipmentArea\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/EquipmentAreaController.php
 
 		-
-			message: "#^Parameter \\$equipmentArea of method BB\\\\Http\\\\Controllers\\\\EquipmentAreaController\\:\\:edit\\(\\) has invalid type BB\\\\EquipmentArea\\.$#"
+			message: '#^Parameter \$equipmentArea of method BB\\Http\\Controllers\\EquipmentAreaController\:\:edit\(\) has invalid type BB\\EquipmentArea\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/EquipmentAreaController.php
 
 		-
-			message: "#^Parameter \\$equipmentArea of method BB\\\\Http\\\\Controllers\\\\EquipmentAreaController\\:\\:show\\(\\) has invalid type BB\\\\EquipmentArea\\.$#"
+			message: '#^Parameter \$equipmentArea of method BB\\Http\\Controllers\\EquipmentAreaController\:\:show\(\) has invalid type BB\\EquipmentArea\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/EquipmentAreaController.php
 
 		-
-			message: "#^Parameter \\$equipmentArea of method BB\\\\Http\\\\Controllers\\\\EquipmentAreaController\\:\\:update\\(\\) has invalid type BB\\\\EquipmentArea\\.$#"
+			message: '#^Parameter \$equipmentArea of method BB\\Http\\Controllers\\EquipmentAreaController\:\:update\(\) has invalid type BB\\EquipmentArea\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/EquipmentAreaController.php
 
 		-
-			message: "#^Access to an undefined property Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable\\:\\:\\$id\\.$#"
+			message: '#^Access to an undefined property Illuminate\\Contracts\\Auth\\Authenticatable\:\:\$id\.$#'
+			identifier: property.notFound
 			count: 2
 			path: app/Http/Controllers/EquipmentController.php
 
 		-
-			message: "#^Access to an undefined property Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable\\:\\:\\$online_only\\.$#"
+			message: '#^Access to an undefined property Illuminate\\Contracts\\Auth\\Authenticatable\:\:\$online_only\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Http/Controllers/EquipmentController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\EquipmentController\\:\\:create\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\EquipmentController\:\:create\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/EquipmentController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\EquipmentController\\:\\:create\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but returns Illuminate\\\\Contracts\\\\View\\\\View\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\EquipmentController\:\:create\(\) should return BB\\Http\\Controllers\\Response but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/EquipmentController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\EquipmentController\\:\\:destroy\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\EquipmentController\:\:destroy\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/EquipmentController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\EquipmentController\\:\\:destroy\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but returns Illuminate\\\\Http\\\\RedirectResponse\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\EquipmentController\:\:destroy\(\) should return BB\\Http\\Controllers\\Response but returns Illuminate\\Http\\RedirectResponse\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/EquipmentController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\EquipmentController\\:\\:edit\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\EquipmentController\:\:edit\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/EquipmentController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\EquipmentController\\:\\:edit\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but returns Illuminate\\\\Contracts\\\\View\\\\View\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\EquipmentController\:\:edit\(\) should return BB\\Http\\Controllers\\Response but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/EquipmentController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\EquipmentController\\:\\:index\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\EquipmentController\:\:index\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/EquipmentController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\EquipmentController\\:\\:index\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but returns Illuminate\\\\Contracts\\\\View\\\\View\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\EquipmentController\:\:index\(\) should return BB\\Http\\Controllers\\Response but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/EquipmentController.php
 
 		-
-			message: "#^PHPDoc tag @param references unknown parameter\\: \\$id$#"
+			message: '#^PHPDoc tag @param references unknown parameter\: \$id$#'
+			identifier: parameter.notFound
 			count: 1
 			path: app/Http/Controllers/EquipmentController.php
 
 		-
-			message: "#^Right side of \\|\\| is always false\\.$#"
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Database\\Eloquent\\Collection\<\(int\|string\),Illuminate\\Database\\Eloquent\\Model\>\:\:map\(\) expects callable\(Illuminate\\Database\\Eloquent\\Model, int\|string\)\: array\{equipment\: BB\\Entities\\Equipment, trained\: bool\}, Closure\(BB\\Entities\\Equipment\)\: array\{equipment\: BB\\Entities\\Equipment, trained\: bool\} given\.$#'
+			identifier: argument.type
 			count: 1
 			path: app/Http/Controllers/EquipmentController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\GeneralInductionController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			message: '#^Right side of \|\| is always false\.$#'
+			identifier: booleanOr.rightAlwaysFalse
+			count: 1
+			path: app/Http/Controllers/EquipmentController.php
+
+		-
+			message: '#^Method BB\\Http\\Controllers\\GeneralInductionController\:\:show\(\) should return Illuminate\\Http\\Response but returns Illuminate\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/GeneralInductionController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\GeneralInductionController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\Http\\\\RedirectResponse\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\GeneralInductionController\:\:update\(\) should return Illuminate\\Http\\Response but returns Illuminate\\Http\\RedirectResponse\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/GeneralInductionController.php
 
 		-
-			message: "#^PHPDoc tag @param references unknown parameter\\: \\$id$#"
+			message: '#^PHPDoc tag @param references unknown parameter\: \$id$#'
+			identifier: parameter.notFound
 			count: 1
 			path: app/Http/Controllers/GeneralInductionController.php
 
 		-
-			message: "#^Access to protected property GoCardlessPro\\\\Resources\\\\Payment\\:\\:\\$amount\\.$#"
+			message: '#^Called ''env'' outside of the config directory which returns null when the config is cached, use ''config''\.$#'
+			identifier: larastan.noEnvCallsOutsideOfConfig
 			count: 1
-			path: app/Http/Controllers/GoCardlessPaymentController.php
+			path: app/Http/Controllers/GoCardlessWebhookController.php
 
 		-
-			message: "#^Access to protected property GoCardlessPro\\\\Resources\\\\Payment\\:\\:\\$id\\.$#"
-			count: 1
-			path: app/Http/Controllers/GoCardlessPaymentController.php
-
-		-
-			message: "#^Access to protected property GoCardlessPro\\\\Resources\\\\Payment\\:\\:\\$status\\.$#"
-			count: 1
-			path: app/Http/Controllers/GoCardlessPaymentController.php
-
-		-
-			message: "#^Access to an undefined property Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable\\:\\:\\$id\\.$#"
+			message: '#^Access to an undefined property Illuminate\\Contracts\\Auth\\Authenticatable\:\:\$id\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Http/Controllers/InductionController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\InductionController\\:\\:destroy\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$id\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Http/Controllers/InductionController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\InductionController\\:\\:destroy\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but returns Illuminate\\\\Http\\\\RedirectResponse\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\InductionController\:\:destroy\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/InductionController.php
 
 		-
-			message: "#^PHPDoc tag @param references unknown parameter\\: \\$id$#"
+			message: '#^Method BB\\Http\\Controllers\\InductionController\:\:destroy\(\) should return BB\\Http\\Controllers\\Response but returns Illuminate\\Http\\RedirectResponse\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/InductionController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\KeyFobController\\:\\:destroy\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^PHPDoc tag @param references unknown parameter\: \$id$#'
+			identifier: parameter.notFound
+			count: 1
+			path: app/Http/Controllers/InductionController.php
+
+		-
+			message: '#^Method BB\\Http\\Controllers\\KeyFobController\:\:destroy\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/KeyFobController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\KeyFobController\\:\\:destroy\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but returns Illuminate\\\\Http\\\\RedirectResponse\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\KeyFobController\:\:destroy\(\) should return BB\\Http\\Controllers\\Response but returns Illuminate\\Http\\RedirectResponse\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/KeyFobController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\KeyFobController\\:\\:index\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\KeyFobController\:\:index\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/KeyFobController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\KeyFobController\\:\\:index\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but returns Illuminate\\\\Contracts\\\\View\\\\View\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\KeyFobController\:\:index\(\) should return BB\\Http\\Controllers\\Response but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/KeyFobController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\KeyFobController\\:\\:store\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\KeyFobController\:\:store\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/KeyFobController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\KeyFobController\\:\\:store\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but returns Illuminate\\\\Http\\\\RedirectResponse\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\KeyFobController\:\:store\(\) should return BB\\Http\\Controllers\\Response but returns Illuminate\\Http\\RedirectResponse\.$#'
+			identifier: return.type
 			count: 3
 			path: app/Http/Controllers/KeyFobController.php
 
 		-
-			message: "#^PHPDoc tag @param references unknown parameter\\: \\$id$#"
+			message: '#^PHPDoc tag @param references unknown parameter\: \$id$#'
+			identifier: parameter.notFound
 			count: 1
 			path: app/Http/Controllers/KeyFobController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\KeyFobCsvController\\:\\:__invoke\\(\\) should return Illuminate\\\\Http\\\\Response but returns Symfony\\\\Component\\\\HttpFoundation\\\\StreamedResponse\\.$#"
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\:\:active\(\)\.$#'
+			identifier: method.notFound
 			count: 1
 			path: app/Http/Controllers/KeyFobCsvController.php
 
 		-
-			message: "#^Relation 'user' is not found in BB\\\\Entities\\\\KeyFob model\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\KeyFobCsvController\:\:__invoke\(\) should return Illuminate\\Http\\Response but returns Symfony\\Component\\HttpFoundation\\StreamedResponse\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/KeyFobCsvController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\LeaderboardController\\:\\:index\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			message: '#^Relation ''user'' is not found in BB\\Entities\\KeyFob model\.$#'
+			identifier: larastan.relationExistence
+			count: 2
+			path: app/Http/Controllers/KeyFobCsvController.php
+
+		-
+			message: '#^Method BB\\Http\\Controllers\\LeaderboardController\:\:index\(\) should return Illuminate\\Http\\Response but returns Illuminate\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/LeaderboardController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\MaintainerGroupController\\:\\:create\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\MaintainerGroupController\:\:create\(\) should return Illuminate\\Http\\Response but returns Illuminate\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/MaintainerGroupController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\MaintainerGroupController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\Http\\\\RedirectResponse\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\MaintainerGroupController\:\:destroy\(\) should return Illuminate\\Http\\Response but returns Illuminate\\Http\\RedirectResponse\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/MaintainerGroupController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\MaintainerGroupController\\:\\:edit\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\MaintainerGroupController\:\:edit\(\) should return Illuminate\\Http\\Response but returns Illuminate\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/MaintainerGroupController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\MaintainerGroupController\\:\\:index\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\MaintainerGroupController\:\:index\(\) should return Illuminate\\Http\\Response but returns Illuminate\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/MaintainerGroupController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\MaintainerGroupController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\MaintainerGroupController\:\:show\(\) should return Illuminate\\Http\\Response but returns Illuminate\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/MaintainerGroupController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\MaintainerGroupController\\:\\:store\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\Http\\\\RedirectResponse\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\MaintainerGroupController\:\:store\(\) should return Illuminate\\Http\\Response but returns Illuminate\\Http\\RedirectResponse\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/MaintainerGroupController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\MaintainerGroupController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\Http\\\\RedirectResponse\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\MaintainerGroupController\:\:update\(\) should return Illuminate\\Http\\Response but returns Illuminate\\Http\\RedirectResponse\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/MaintainerGroupController.php
 
 		-
-			message: "#^PHPDoc tag @var has invalid value \\(\\)\\: Unexpected token \"\\\\n     \", expected type at offset 15$#"
+			message: '#^PHPDoc tag @var has invalid value \(\)\: Unexpected token "\\n     ", expected type at offset 15 on line 2$#'
+			identifier: phpDoc.parseError
 			count: 1
 			path: app/Http/Controllers/MembersController.php
 
 		-
-			message: "#^Result of function abort \\(void\\) is used\\.$#"
-			count: 1
-			path: app/Http/Controllers/MembersController.php
-
-		-
-			message: "#^Instantiated class Illuminate\\\\Contracts\\\\Validation\\\\UnauthorizedException not found\\.$#"
+			message: '#^Instantiated class Illuminate\\Contracts\\Validation\\UnauthorizedException not found\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/NotificationController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\NotificationController\\:\\:create\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\NotificationController\:\:create\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/NotificationController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\NotificationController\\:\\:create\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but return statement is missing\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\NotificationController\:\:create\(\) should return BB\\Http\\Controllers\\Response but return statement is missing\.$#'
+			identifier: return.missing
 			count: 1
 			path: app/Http/Controllers/NotificationController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\NotificationController\\:\\:destroy\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\NotificationController\:\:destroy\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/NotificationController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\NotificationController\\:\\:destroy\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but return statement is missing\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\NotificationController\:\:destroy\(\) should return BB\\Http\\Controllers\\Response but return statement is missing\.$#'
+			identifier: return.missing
 			count: 1
 			path: app/Http/Controllers/NotificationController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\NotificationController\\:\\:edit\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\NotificationController\:\:edit\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/NotificationController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\NotificationController\\:\\:edit\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but return statement is missing\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\NotificationController\:\:edit\(\) should return BB\\Http\\Controllers\\Response but return statement is missing\.$#'
+			identifier: return.missing
 			count: 1
 			path: app/Http/Controllers/NotificationController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\NotificationController\\:\\:index\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\NotificationController\:\:index\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/NotificationController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\NotificationController\\:\\:index\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but returns Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<BB\\\\Entities\\\\Notification\\>\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\NotificationController\:\:index\(\) should return BB\\Http\\Controllers\\Response but returns Illuminate\\Database\\Eloquent\\Collection\<int, BB\\Entities\\Notification\>\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/NotificationController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\NotificationController\\:\\:index\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\NotificationController\:\:index\(\) should return BB\\Http\\Controllers\\Response but returns Illuminate\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/NotificationController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\NotificationController\\:\\:show\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\NotificationController\:\:show\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/NotificationController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\NotificationController\\:\\:show\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but return statement is missing\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\NotificationController\:\:show\(\) should return BB\\Http\\Controllers\\Response but return statement is missing\.$#'
+			identifier: return.missing
 			count: 1
 			path: app/Http/Controllers/NotificationController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\NotificationController\\:\\:store\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\NotificationController\:\:store\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/NotificationController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\NotificationController\\:\\:store\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but return statement is missing\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\NotificationController\:\:store\(\) should return BB\\Http\\Controllers\\Response but return statement is missing\.$#'
+			identifier: return.missing
 			count: 1
 			path: app/Http/Controllers/NotificationController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\NotificationController\\:\\:update\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\NotificationController\:\:update\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/NotificationController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\NotificationController\\:\\:update\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but returns BB\\\\Entities\\\\Notification\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\NotificationController\:\:update\(\) should return BB\\Http\\Controllers\\Response but returns BB\\Entities\\Notification\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/NotificationController.php
 
 		-
-			message: "#^Throwing object of an unknown class Illuminate\\\\Contracts\\\\Validation\\\\UnauthorizedException\\.$#"
+			message: '#^Throwing object of an unknown class Illuminate\\Contracts\\Validation\\UnauthorizedException\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/NotificationController.php
 
 		-
-			message: "#^Access to an undefined property Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable\\:\\:\\$id\\.$#"
+			message: '#^Access to an undefined property Illuminate\\Contracts\\Auth\\Authenticatable\:\:\$id\.$#'
+			identifier: property.notFound
 			count: 2
 			path: app/Http/Controllers/NotificationEmailController.php
 
 		-
-			message: "#^Called 'count' on Laravel collection, but could have been retrieved as a query\\.$#"
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$user\.$#'
+			identifier: property.notFound
+			count: 3
+			path: app/Http/Controllers/NotificationEmailController.php
+
+		-
+			message: '#^Called ''count'' on Laravel collection, but could have been retrieved as a query\.$#'
+			identifier: larastan.noUnnecessaryCollectionCall
 			count: 1
 			path: app/Http/Controllers/NotificationEmailController.php
 
 		-
-			message: "#^Parameter \\#1 \\$user of class BB\\\\Mailer\\\\UserMailer constructor expects BB\\\\Entities\\\\User, Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable\\|null given\\.$#"
+			message: '#^Parameter \#1 \$user of class BB\\Mailer\\UserMailer constructor expects BB\\Entities\\User, Illuminate\\Contracts\\Auth\\Authenticatable\|null given\.$#'
+			identifier: argument.type
 			count: 1
 			path: app/Http/Controllers/NotificationEmailController.php
 
 		-
-			message: "#^Variable \\$equipment might not be defined\\.$#"
-			count: 8
-			path: app/Http/Controllers/NotificationEmailController.php
-
-		-
-			message: "#^Variable \\$status might not be defined\\.$#"
-			count: 5
-			path: app/Http/Controllers/NotificationEmailController.php
-
-		-
-			message: "#^Variable \\$users might not be defined\\.$#"
+			message: '#^Variable \$users might not be defined\.$#'
+			identifier: variable.undefined
 			count: 1
 			path: app/Http/Controllers/NotificationEmailController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\ReminderController\\:\\:create\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Call to an undefined method Illuminate\\Routing\\Redirector\:\:home\(\)\.$#'
+			identifier: method.notFound
 			count: 1
 			path: app/Http/Controllers/ReminderController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\ReminderController\\:\\:create\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\ReminderController\:\:create\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/ReminderController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\ReminderController\\:\\:getReset\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\ReminderController\:\:create\(\) should return BB\\Http\\Controllers\\Response but returns Illuminate\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/ReminderController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\ReminderController\\:\\:getReset\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\ReminderController\:\:getReset\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/ReminderController.php
 
 		-
-			message: "#^Static method Illuminate\\\\Support\\\\Facades\\\\Password\\:\\:sendResetLink\\(\\) invoked with 2 parameters, 1 required\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\ReminderController\:\:getReset\(\) should return BB\\Http\\Controllers\\Response but returns Illuminate\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/ReminderController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\RoleUsersController\\:\\:destroy\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\RoleUsersController\:\:destroy\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/RoleUsersController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\RoleUsersController\\:\\:destroy\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but returns Illuminate\\\\Http\\\\RedirectResponse\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\RoleUsersController\:\:destroy\(\) should return BB\\Http\\Controllers\\Response but returns Illuminate\\Http\\RedirectResponse\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/RoleUsersController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\RoleUsersController\\:\\:store\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\RoleUsersController\:\:store\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/RoleUsersController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\RoleUsersController\\:\\:store\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but returns Illuminate\\\\Http\\\\RedirectResponse\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\RoleUsersController\:\:store\(\) should return BB\\Http\\Controllers\\Response but returns Illuminate\\Http\\RedirectResponse\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/RoleUsersController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\RolesController\\:\\:create\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\RolesController\:\:create\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/RolesController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\RolesController\\:\\:create\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but return statement is missing\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\RolesController\:\:create\(\) should return BB\\Http\\Controllers\\Response but return statement is missing\.$#'
+			identifier: return.missing
 			count: 1
 			path: app/Http/Controllers/RolesController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\RolesController\\:\\:destroy\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\RolesController\:\:destroy\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/RolesController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\RolesController\\:\\:destroy\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but return statement is missing\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\RolesController\:\:destroy\(\) should return BB\\Http\\Controllers\\Response but return statement is missing\.$#'
+			identifier: return.missing
 			count: 1
 			path: app/Http/Controllers/RolesController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\RolesController\\:\\:edit\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\RolesController\:\:edit\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/RolesController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\RolesController\\:\\:edit\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but return statement is missing\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\RolesController\:\:edit\(\) should return BB\\Http\\Controllers\\Response but return statement is missing\.$#'
+			identifier: return.missing
 			count: 1
 			path: app/Http/Controllers/RolesController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\RolesController\\:\\:index\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\RolesController\:\:index\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/RolesController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\RolesController\\:\\:index\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but returns Illuminate\\\\Contracts\\\\View\\\\View\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\RolesController\:\:index\(\) should return BB\\Http\\Controllers\\Response but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/RolesController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\RolesController\\:\\:show\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\RolesController\:\:show\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/RolesController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\RolesController\\:\\:show\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but return statement is missing\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\RolesController\:\:show\(\) should return BB\\Http\\Controllers\\Response but return statement is missing\.$#'
+			identifier: return.missing
 			count: 1
 			path: app/Http/Controllers/RolesController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\RolesController\\:\\:store\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\RolesController\:\:store\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/RolesController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\RolesController\\:\\:store\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but return statement is missing\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\RolesController\:\:store\(\) should return BB\\Http\\Controllers\\Response but return statement is missing\.$#'
+			identifier: return.missing
 			count: 1
 			path: app/Http/Controllers/RolesController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\RolesController\\:\\:update\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\RolesController\:\:update\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/RolesController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\RolesController\\:\\:update\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but returns Illuminate\\\\Http\\\\RedirectResponse\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\RolesController\:\:update\(\) should return BB\\Http\\Controllers\\Response but returns Illuminate\\Http\\RedirectResponse\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/RolesController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\SessionController\\:\\:create\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Relation ''Users'' is not found in BB\\Entities\\Role model\.$#'
+			identifier: larastan.relationExistence
+			count: 1
+			path: app/Http/Controllers/RolesController.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Routing\\Redirector\:\:home\(\)\.$#'
+			identifier: method.notFound
 			count: 1
 			path: app/Http/Controllers/SessionController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\SessionController\\:\\:create\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but returns Illuminate\\\\Contracts\\\\View\\\\View\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\SessionController\:\:create\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/SessionController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\SessionController\\:\\:create\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but returns Illuminate\\\\Http\\\\RedirectResponse\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\SessionController\:\:create\(\) should return BB\\Http\\Controllers\\Response but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/SessionController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\StatsController\\:\\:index\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Response\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\SessionController\:\:create\(\) should return BB\\Http\\Controllers\\Response but returns Illuminate\\Http\\RedirectResponse\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Http/Controllers/SessionController.php
+
+		-
+			message: '#^Method BB\\Http\\Controllers\\StatsController\:\:index\(\) has invalid return type BB\\Http\\Controllers\\Response\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/StatsController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\StatsController\\:\\:index\\(\\) should return BB\\\\Http\\\\Controllers\\\\Response but returns Illuminate\\\\Contracts\\\\View\\\\View\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\StatsController\:\:index\(\) should return BB\\Http\\Controllers\\Response but returns Illuminate\\Contracts\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/StatsController.php
 
 		-
-			message: "#^Parameter \\#2 \\$callback of function usort expects callable\\(mixed, mixed\\)\\: int, Closure\\(mixed, mixed\\)\\: bool given\\.$#"
+			message: '#^Parameter \#2 \$callback of function usort expects callable\(mixed, mixed\)\: int, Closure\(mixed, mixed\)\: bool given\.$#'
+			identifier: argument.type
 			count: 1
 			path: app/Http/Controllers/StatsController.php
 
 		-
-			message: "#^Access to an undefined property Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable\\:\\:\\$id\\.$#"
+			message: '#^Access to an undefined property Illuminate\\Contracts\\Auth\\Authenticatable\:\:\$id\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Http/Controllers/StorageBoxClaimController.php
 
 		-
-			message: "#^Access to an undefined property Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable\\:\\:\\$id\\.$#"
+			message: '#^Access to an undefined property Illuminate\\Contracts\\Auth\\Authenticatable\:\:\$id\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Http/Controllers/StorageBoxController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\StorageBoxController\\:\\:create\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\Http\\\\RedirectResponse\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\StorageBoxController\:\:create\(\) should return Illuminate\\Http\\Response but returns Illuminate\\Http\\RedirectResponse\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/StorageBoxController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\StorageBoxController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\Http\\\\RedirectResponse\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\StorageBoxController\:\:destroy\(\) should return Illuminate\\Http\\Response but returns Illuminate\\Http\\RedirectResponse\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/StorageBoxController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\StorageBoxController\\:\\:edit\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\Http\\\\RedirectResponse\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\StorageBoxController\:\:edit\(\) should return Illuminate\\Http\\Response but returns Illuminate\\Http\\RedirectResponse\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/StorageBoxController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\StorageBoxController\\:\\:index\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\StorageBoxController\:\:index\(\) should return Illuminate\\Http\\Response but returns Illuminate\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/StorageBoxController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\StorageBoxController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\StorageBoxController\:\:show\(\) should return Illuminate\\Http\\Response but returns Illuminate\\View\\View\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/StorageBoxController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\StorageBoxController\\:\\:store\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\Http\\\\RedirectResponse\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\StorageBoxController\:\:store\(\) should return Illuminate\\Http\\Response but returns Illuminate\\Http\\RedirectResponse\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/StorageBoxController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\StorageBoxController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\Http\\\\RedirectResponse\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\StorageBoxController\:\:update\(\) should return Illuminate\\Http\\Response but returns Illuminate\\Http\\RedirectResponse\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Http/Controllers/StorageBoxController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\SubscriptionController\\:\\:destroy\\(\\) has invalid return type BB\\\\Http\\\\Controllers\\\\Illuminate\\\\Http\\\\RedirectResponse\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\SubscriptionController\:\:destroy\(\) has invalid return type BB\\Http\\Controllers\\Illuminate\\Http\\RedirectResponse\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Http/Controllers/SubscriptionController.php
 
 		-
-			message: "#^Method BB\\\\Http\\\\Controllers\\\\SubscriptionController\\:\\:destroy\\(\\) should return BB\\\\Http\\\\Controllers\\\\Illuminate\\\\Http\\\\RedirectResponse but returns Illuminate\\\\Http\\\\RedirectResponse\\.$#"
+			message: '#^Method BB\\Http\\Controllers\\SubscriptionController\:\:destroy\(\) should return BB\\Http\\Controllers\\Illuminate\\Http\\RedirectResponse but returns Illuminate\\Http\\RedirectResponse\.$#'
+			identifier: return.type
 			count: 4
 			path: app/Http/Controllers/SubscriptionController.php
 
 		-
-			message: "#^Parameter \\#1 \\$user of job class BB\\\\Jobs\\\\DiscourseSync constructor expects BB\\\\Entities\\\\User in BB\\\\Jobs\\\\DiscourseSync\\:\\:dispatch\\(\\), Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable given\\.$#"
+			message: '#^PHPDoc type array of property BB\\Http\\Kernel\:\:\$middleware is not covariant with PHPDoc type array\<int, string\> of overridden property Illuminate\\Foundation\\Http\\Kernel\:\:\$middleware\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Http/Kernel.php
+
+		-
+			message: '#^PHPDoc type array of property BB\\Http\\Kernel\:\:\$middlewareAliases is not covariant with PHPDoc type array\<string, string\> of overridden property Illuminate\\Foundation\\Http\\Kernel\:\:\$middlewareAliases\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Http/Kernel.php
+
+		-
+			message: '#^PHPDoc type array of property BB\\Http\\Kernel\:\:\$middlewareGroups is not covariant with PHPDoc type array\<string, array\<int, string\>\> of overridden property Illuminate\\Foundation\\Http\\Kernel\:\:\$middlewareGroups\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Http/Kernel.php
+
+		-
+			message: '#^PHPDoc type array of property BB\\Http\\Kernel\:\:\$middlewarePriority is not covariant with PHPDoc type array\<string\> of overridden property Illuminate\\Foundation\\Http\\Kernel\:\:\$middlewarePriority\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Http/Kernel.php
+
+		-
+			message: '#^Method BB\\Http\\Middleware\\Authenticate\:\:redirectTo\(\) should return string\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: app/Http/Middleware/Authenticate.php
+
+		-
+			message: '#^PHPDoc type array of property BB\\Http\\Middleware\\CheckForMaintenanceMode\:\:\$except is not covariant with PHPDoc type array\<int, string\> of overridden property Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance\:\:\$except\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Http/Middleware/CheckForMaintenanceMode.php
+
+		-
+			message: '#^PHPDoc type array of property BB\\Http\\Middleware\\EncryptCookies\:\:\$except is not covariant with PHPDoc type array\<int, string\> of overridden property Illuminate\\Cookie\\Middleware\\EncryptCookies\:\:\$except\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Http/Middleware/EncryptCookies.php
+
+		-
+			message: '#^PHPDoc type array of property BB\\Http\\Middleware\\TrimStrings\:\:\$except is not covariant with PHPDoc type array\<int, string\> of overridden property Illuminate\\Foundation\\Http\\Middleware\\TrimStrings\:\:\$except\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Http/Middleware/TrimStrings.php
+
+		-
+			message: '#^PHPDoc type array\|string\|null of property BB\\Http\\Middleware\\TrustProxies\:\:\$proxies is not covariant with PHPDoc type array\<int, string\>\|string\|null of overridden property Illuminate\\Http\\Middleware\\TrustProxies\:\:\$proxies\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Http/Middleware/TrustProxies.php
+
+		-
+			message: '#^PHPDoc type int\|string\|null of property BB\\Http\\Middleware\\TrustProxies\:\:\$headers is not covariant with PHPDoc type int of overridden property Illuminate\\Http\\Middleware\\TrustProxies\:\:\$headers\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Http/Middleware/TrustProxies.php
+
+		-
+			message: '#^PHPDoc type array of property BB\\Http\\Middleware\\VerifyCsrfToken\:\:\$except is not covariant with PHPDoc type array\<int, string\> of overridden property Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken\:\:\$except\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Http/Middleware/VerifyCsrfToken.php
+
+		-
+			message: '#^Called ''env'' outside of the config directory which returns null when the config is cached, use ''config''\.$#'
+			identifier: larastan.noEnvCallsOutsideOfConfig
+			count: 1
+			path: app/Jobs/DiscourseSync.php
+
+		-
+			message: '#^Parameter \#1 \$user of job class BB\\Jobs\\DiscourseSync constructor expects BB\\Entities\\User in BB\\Jobs\\DiscourseSync\:\:dispatch\(\), Illuminate\\Contracts\\Auth\\Authenticatable given\.$#'
+			identifier: argument.type
 			count: 1
 			path: app/Listeners/DiscourseSyncSubscriber.php
 
 		-
-			message: "#^Access to an undefined property BB\\\\Listeners\\\\EmailMemberAboutDeclinedPhoto\\:\\:\\$mailer\\.$#"
+			message: '#^Access to an undefined property BB\\Listeners\\EmailMemberAboutDeclinedPhoto\:\:\$mailer\.$#'
+			identifier: property.notFound
 			count: 2
 			path: app/Listeners/EmailMemberAboutDeclinedPhoto.php
 
 		-
-			message: "#^Access to an undefined property Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable\\:\\:\\$id\\.$#"
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),Illuminate\\Database\\Eloquent\\Model\>\:\:each\(\) expects callable\(Illuminate\\Database\\Eloquent\\Model, int\|string\)\: mixed, Closure\(BB\\Entities\\Induction\)\: void given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Listeners/Notifications/Inductions/InductionRequestedListener.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Contracts\\Auth\\Authenticatable\:\:\$id\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Notifications/ErrorNotification.php
 
 		-
-			message: "#^Access to an undefined property Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable\\:\\:\\$name\\.$#"
+			message: '#^Access to an undefined property Illuminate\\Contracts\\Auth\\Authenticatable\:\:\$name\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Notifications/ErrorNotification.php
 
 		-
-			message: "#^Access to an undefined property Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable\\:\\:\\$id\\.$#"
+			message: '#^Deprecated in PHP 8\.0\: Required parameter \$e follows optional parameter \$suppress\.$#'
+			identifier: parameter.requiredAfterOptional
+			count: 1
+			path: app/Notifications/ErrorNotification.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:filter\(\) expects \(callable\(mixed, int\|string\)\: bool\)\|null, Closure\(BB\\Entities\\Equipment\)\: string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Notifications/Inductions/Inductees/InductionCompletedNotification.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:filter\(\) expects \(callable\(mixed, int\|string\)\: bool\)\|null, Closure\(BB\\Entities\\Equipment\)\: string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Notifications/Inductions/Inductees/InductionRequestedNotification.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:filter\(\) expects \(callable\(mixed, int\|string\)\: bool\)\|null, Closure\(BB\\Entities\\Equipment\)\: string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Notifications/Inductions/Trainers/InductionRequestedNotification.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Contracts\\Auth\\Authenticatable\:\:\$id\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Observer/UserAuditObserver.php
 
 		-
-			message: "#^Access to an undefined property BB\\\\Entities\\\\Equipment\\:\\:\\$role\\.$#"
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$maintainerGroup\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Policies/CoursePolicy.php
+
+		-
+			message: '#^Access to an undefined property BB\\Entities\\Equipment\:\:\$role\.$#'
+			identifier: property.notFound
 			count: 2
 			path: app/Policies/EquipmentPolicy.php
 
 		-
-			message: "#^Class BB\\\\Entities\\\\Induction referenced with incorrect case\\: BB\\\\Entities\\\\induction\\.$#"
-			count: 12
-			path: app/Policies/InductionPolicy.php
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$equipmentArea\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Policies/EquipmentPolicy.php
 
 		-
-			message: "#^PHPDoc tag @param references unknown parameter\\: \\$Equipment$#"
+			message: '#^Class BB\\Entities\\Induction referenced with incorrect case\: BB\\Entities\\induction\.$#'
+			identifier: class.nameCase
 			count: 1
 			path: app/Policies/InductionPolicy.php
 
 		-
-			message: "#^PHPDoc tag @param references unknown parameter\\: \\$keyFob$#"
+			message: '#^PHPDoc tag @param references unknown parameter\: \$Equipment$#'
+			identifier: parameter.notFound
+			count: 1
+			path: app/Policies/InductionPolicy.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$keyFob$#'
+			identifier: parameter.notFound
 			count: 2
 			path: app/Policies/KeyFobPolicy.php
 
 		-
-			message: "#^PHPDoc tag @param references unknown parameter\\: \\$user$#"
+			message: '#^PHPDoc tag @param references unknown parameter\: \$user$#'
+			identifier: parameter.notFound
 			count: 3
 			path: app/Policies/KeyFobPolicy.php
 
 		-
-			message: "#^If condition is always true\\.$#"
+			message: '#^If condition is always true\.$#'
+			identifier: if.alwaysTrue
 			count: 1
 			path: app/Process/CheckLeavingUsers.php
 
 		-
-			message: "#^PHPDoc tag @param references unknown parameter\\: \\$events$#"
+			message: '#^Strict comparison using \=\=\= between Carbon\\Carbon and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: app/Process/CheckPaymentWarnings.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between Carbon\\Carbon and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: app/Process/RecoverMemberships.php
+
+		-
+			message: '#^If condition is always true\.$#'
+			identifier: if.alwaysTrue
+			count: 1
+			path: app/Providers/AppServiceProvider.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$events$#'
+			identifier: parameter.notFound
 			count: 1
 			path: app/Providers/EventServiceProvider.php
 
 		-
-			message: "#^Relation 'courses' is not found in BB\\\\Entities\\\\Equipment model\\.$#"
-			count: 2
+			message: '#^PHPDoc type array of property BB\\Providers\\EventServiceProvider\:\:\$listen is not covariant with PHPDoc type array\<string, array\<int, string\>\> of overridden property Illuminate\\Foundation\\Support\\Providers\\EventServiceProvider\:\:\$listen\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Providers/EventServiceProvider.php
+
+		-
+			message: '#^Relation ''equipment'' is not found in BB\\Entities\\Course model\.$#'
+			identifier: larastan.relationExistence
+			count: 1
+			path: app/Repo/CourseRepository.php
+
+		-
+			message: '#^Method BB\\Repo\\DBRepository\:\:delete\(\) should return bool\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: app/Repo/DBRepository.php
+
+		-
+			message: '#^Relation ''courses'' is not found in BB\\Entities\\Equipment model\.$#'
+			identifier: larastan.relationExistence
+			count: 4
 			path: app/Repo/EquipmentRepository.php
 
 		-
-			message: "#^Access to protected property GoCardlessPro\\\\Resources\\\\Payment\\:\\:\\$status\\.$#"
-			count: 1
-			path: app/Repo/SubscriptionChargeRepository.php
+			message: '#^Left side of && is always true\.$#'
+			identifier: booleanAnd.leftAlwaysTrue
+			count: 7
+			path: app/Repo/InductionRepository.php
 
 		-
-			message: "#^Access to an undefined property Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable\\:\\:\\$id\\.$#"
-			count: 1
-			path: app/Repo/UserRepository.php
+			message: '#^Relation ''user'' is not found in BB\\Entities\\Induction model\.$#'
+			identifier: larastan.relationExistence
+			count: 11
+			path: app/Repo/InductionRepository.php
 
 		-
-			message: "#^Negated boolean expression is always false\\.$#"
+			message: '#^Deprecated in PHP 8\.0\: Required parameter \$amount follows optional parameter \$sourceId\.$#'
+			identifier: parameter.requiredAfterOptional
 			count: 1
-			path: app/Repo/UserRepository.php
+			path: app/Repo/PaymentRepository.php
 
 		-
-			message: "#^Property BB\\\\Entities\\\\User\\:\\:\\$cash_balance \\(int\\) does not accept float\\.$#"
-			count: 1
-			path: app/Repo/UserRepository.php
-
-		-
-			message: "#^Property BB\\\\Entities\\\\User\\:\\:\\$subscription_expires \\(Carbon\\\\Carbon\\) does not accept string\\.$#"
-			count: 1
-			path: app/Repo/UserRepository.php
-
-		-
-			message: "#^Relation 'keyfobs' is not found in BB\\\\Entities\\\\User model\\.$#"
+			message: '#^Access to an undefined property Illuminate\\Contracts\\Auth\\Authenticatable\:\:\$id\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Repo/UserRepository.php
 
 		-
-			message: "#^Property Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:\\$orders \\(array\\) does not accept null\\.$#"
+			message: '#^Negated boolean expression is always false\.$#'
+			identifier: booleanNot.alwaysFalse
+			count: 1
+			path: app/Repo/UserRepository.php
+
+		-
+			message: '#^Property BB\\Entities\\User\:\:\$cash_balance \(int\) does not accept float\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: app/Repo/UserRepository.php
+
+		-
+			message: '#^Property BB\\Entities\\User\:\:\$subscription_expires \(Carbon\\Carbon\) does not accept string\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: app/Repo/UserRepository.php
+
+		-
+			message: '#^Relation ''keyfobs'' is not found in BB\\Entities\\User model\.$#'
+			identifier: larastan.relationExistence
+			count: 1
+			path: app/Repo/UserRepository.php
+
+		-
+			message: '#^Relation ''profile'' is not found in BB\\Entities\\User model\.$#'
+			identifier: larastan.relationExistence
+			count: 1
+			path: app/Repo/UserRepository.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Builder\<TModel of Illuminate\\Database\\Eloquent\\Model\>\:\:remove\(\)\.$#'
+			identifier: method.notFound
 			count: 1
 			path: app/Scopes/OrderScope.php
 
 		-
-			message: "#^Access to an undefined property BB\\\\Entities\\\\User\\:\\:\\$charge_date\\.$#"
+			message: '#^Access to an undefined property BB\\Entities\\User\:\:\$charge_date\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Services/MemberSubscriptionCharges.php
 
 		-
-			message: "#^Access to protected property GoCardlessPro\\\\Resources\\\\Payment\\:\\:\\$status\\.$#"
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$amount\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Services/MemberSubscriptionCharges.php
 
 		-
-			message: "#^Access to an undefined property BB\\\\Validators\\\\FormValidator\\:\\:\\$rules\\.$#"
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Services/MemberSubscriptionCharges.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$user\.$#'
+			identifier: property.notFound
+			count: 7
+			path: app/Services/MemberSubscriptionCharges.php
+
+		-
+			message: '#^Access to an undefined property BB\\Validators\\FormValidator\:\:\$rules\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Validators/FormValidator.php
 
 		-
-			message: "#^PHPDoc tag @var has invalid value \\(\\)\\: Unexpected token \"\\\\n     \", expected type at offset 15$#"
+			message: '#^PHPDoc tag @var has invalid value \(\)\: Unexpected token "\\n     ", expected type at offset 15 on line 2$#'
+			identifier: phpDoc.parseError
 			count: 1
 			path: app/Validators/FormValidator.php

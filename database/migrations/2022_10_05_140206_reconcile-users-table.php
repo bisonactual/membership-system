@@ -18,7 +18,7 @@ class ReconcileUsersTable extends Migration
             $table->boolean('trusted')->default(1)->change();
 
             // Add new columns
-            $table->text('announce_name')->nullable()->charset('utf32')->collation('utf32_unicode_520_ci')->after('display_name');
+            $table->text('announce_name')->nullable()->after('display_name');
             $table->timestamp('seen_at')->nullable();
             $table->string('find_us')->nullable();
             $table->timestamp('deleted_at')->nullable();

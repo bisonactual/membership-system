@@ -2,6 +2,8 @@
 
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\Test;
+
 use BB\Entities\Role;
 use BB\Exceptions\AuthenticationException;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
@@ -13,14 +15,14 @@ class FinanceTest extends BrowserKitTestCase
 {
     use DatabaseMigrations;
 
-    /** @test */
+    #[Test]
     public function guest_cant_view_payments_page()
     {
         $this->get('/payments')
             ->assertRedirectedToRoute('login');
     }
 
-    /** @test */
+    #[Test]
     public function member_cant_view_payments_page()
     {
         $user = factory('BB\Entities\User')->create();
@@ -32,7 +34,7 @@ class FinanceTest extends BrowserKitTestCase
             ->seeStatusCode(403);
     }
 
-    /** @test */
+    #[Test]
     public function finance_member_can_view_payments_page()
     {
         $user = factory('BB\Entities\User')->create();

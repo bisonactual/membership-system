@@ -29,7 +29,7 @@ class ReconcileUserAddress extends Migration
     public function down()
     {
         Schema::table('user_address', function (Blueprint $table) {
-            $table->boolean('approved')->nullable(false)->change();
+            $table->boolean('approved')->nullable()->change();
         });
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\Test;
+
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -11,7 +13,7 @@ class AccountTest extends BrowserKitTestCase
 {
     use DatabaseMigrations;
 
-    /** @test */
+    #[Test]
     public function i_can_view_account_page()
     {
         $user = factory('BB\Entities\User')->create();
@@ -25,7 +27,7 @@ class AccountTest extends BrowserKitTestCase
             ->see($user->email);
     }
 
-    /** @test */
+    #[Test]
     public function i_cant_view_an_inactive_member_page()
     {
         $user = factory('BB\Entities\User')->create();
@@ -45,7 +47,7 @@ class AccountTest extends BrowserKitTestCase
             ]);
     }
 
-    /** @test */
+    #[Test]
     public function i_cant_view_another_account()
     {
         $user = factory('BB\Entities\User')->create();
@@ -60,7 +62,7 @@ class AccountTest extends BrowserKitTestCase
             ->assertResponseStatus(403);
     }
 
-    /** @test */
+    #[Test]
     public function i_can_see_accounts_on_member_page()
     {
         $user = factory('BB\Entities\User')->create();
@@ -77,7 +79,7 @@ class AccountTest extends BrowserKitTestCase
             ->see($user2->name);
     }
 
-    /** @test */
+    #[Test]
     public function guests_cant_see_members_list()
     {
         $user = factory('BB\Entities\User')->create();
@@ -90,7 +92,7 @@ class AccountTest extends BrowserKitTestCase
             ->seeStatusCode(302);
     }
 
-    /** @test */
+    #[Test]
     public function member_cant_see_private_accounts_on_member_page()
     {
         $user = factory('BB\Entities\User')->create();
@@ -107,7 +109,7 @@ class AccountTest extends BrowserKitTestCase
             ->see($user2->name, true);
     }
 
-    /** @test */
+    #[Test]
     public function i_can_edit_my_profile()
     {
         $user = factory('BB\Entities\User')->create();

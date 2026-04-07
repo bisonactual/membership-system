@@ -2,6 +2,8 @@
 
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\Test;
+
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Str;
 use Tests\BrowserKitTestCase;
@@ -9,7 +11,7 @@ class LoginTest extends BrowserKitTestCase
 {
     use DatabaseMigrations;
 
-    /** @test */
+    #[Test]
     public function i_can_login()
     {
         $password = Str::random(10);
@@ -25,7 +27,7 @@ class LoginTest extends BrowserKitTestCase
             ->see($user->display_name);
     }
 
-    /** @test */
+    #[Test]
     public function unknown_user_cant_login()
     {
         $this->visit('/login')

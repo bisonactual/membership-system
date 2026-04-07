@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use PHPUnit\Framework\Attributes\Test;
+
 use BB\Entities\Equipment;
 use BB\Entities\EquipmentArea;
 use BB\Entities\Induction;
@@ -97,7 +99,7 @@ class EquipmentTest extends TestCase
         $trainerInduction->save();
     }
 
-    /** @test */
+    #[Test]
     public function anyone_can_view_equipment_index()
     {
         $response = $this->actingAs($this->regularUser)->get(route('equipment.index'));
@@ -105,7 +107,7 @@ class EquipmentTest extends TestCase
         $response->assertViewHas('equipmentByRoom');
     }
 
-    /** @test */
+    #[Test]
     public function anyone_can_view_equipment_show()
     {
         $response = $this->actingAs($this->regularUser)->get(route('equipment.show', $this->equipment));
@@ -113,77 +115,77 @@ class EquipmentTest extends TestCase
         $response->assertViewHas('equipment', $this->equipment);
     }
 
-    /** @test */
+    #[Test]
     public function admin_can_create_equipment()
     {
         $response = $this->actingAs($this->admin)->get(route('equipment.create'));
         $response->assertStatus(200);
     }
 
-    /** @test */
+    #[Test]
     public function equipment_role_user_can_create_equipment()
     {
         $response = $this->actingAs($this->equipmentRoleUser)->get(route('equipment.create'));
         $response->assertStatus(200);
     }
 
-    /** @test */
+    #[Test]
     public function maintainer_can_create_equipment()
     {
         $response = $this->actingAs($this->maintainerUser)->get(route('equipment.create'));
         $response->assertStatus(200);
     }
 
-    /** @test */
+    #[Test]
     public function area_coordinator_can_create_equipment()
     {
         $response = $this->actingAs($this->areaCoordinatorUser)->get(route('equipment.create'));
         $response->assertStatus(200);
     }
 
-    /** @test */
+    #[Test]
     public function regular_user_cannot_create_equipment()
     {
         $response = $this->actingAs($this->regularUser)->get(route('equipment.create'));
         $response->assertStatus(403);
     }
 
-    /** @test */
+    #[Test]
     public function admin_can_edit_equipment()
     {
         $response = $this->actingAs($this->admin)->get(route('equipment.edit', $this->equipment));
         $response->assertStatus(200);
     }
 
-    /** @test */
+    #[Test]
     public function equipment_role_user_can_edit_equipment()
     {
         $response = $this->actingAs($this->equipmentRoleUser)->get(route('equipment.edit', $this->equipment));
         $response->assertStatus(200);
     }
 
-    /** @test */
+    #[Test]
     public function maintainer_can_edit_their_equipment()
     {
         $response = $this->actingAs($this->maintainerUser)->get(route('equipment.edit', $this->equipment));
         $response->assertStatus(200);
     }
 
-    /** @test */
+    #[Test]
     public function area_coordinator_can_edit_equipment_in_their_area()
     {
         $response = $this->actingAs($this->areaCoordinatorUser)->get(route('equipment.edit', $this->equipment));
         $response->assertStatus(200);
     }
 
-    /** @test */
+    #[Test]
     public function regular_user_cannot_edit_equipment()
     {
         $response = $this->actingAs($this->regularUser)->get(route('equipment.edit', $this->equipment));
         $response->assertStatus(403);
     }
 
-    /** @test */
+    #[Test]
     public function admin_can_delete_equipment()
     {
         $response = $this->actingAs($this->admin)->delete(route('equipment.destroy', $this->equipment));
@@ -191,14 +193,14 @@ class EquipmentTest extends TestCase
         $this->assertSoftDeleted('equipment', ['id' => $this->equipment->id]);
     }
 
-    /** @test */
+    #[Test]
     public function regular_user_cannot_delete_equipment()
     {
         $response = $this->actingAs($this->regularUser)->delete(route('equipment.destroy', $this->equipment));
         $response->assertStatus(403);
     }
 
-    /** @test */
+    #[Test]
     public function access_code_not_visible_to_untrained_users()
     {
         $response = $this->actingAs($this->regularUser)->get(route('equipment.show', $this->equipmentWithAccessCode));
@@ -207,7 +209,7 @@ class EquipmentTest extends TestCase
         $response->assertDontSee('Access code');
     }
 
-    /** @test */
+    #[Test]
     public function access_code_visible_to_trained_users()
     {
         // Create a trained user
@@ -228,7 +230,7 @@ class EquipmentTest extends TestCase
         $response->assertSee('Access code');
     }
 
-    /** @test */
+    #[Test]
     public function access_code_visible_to_trainers()
     {
         // Create trainer for secure equipment
@@ -249,7 +251,7 @@ class EquipmentTest extends TestCase
         $response->assertSee('Access code');
     }
 
-    /** @test */
+    #[Test]
     public function access_code_visible_in_equipment_index_for_trained_users()
     {
         // Create a trained user
@@ -270,7 +272,7 @@ class EquipmentTest extends TestCase
         $response->assertSee('Access Code');
     }
 
-    /** @test */
+    #[Test]
     public function access_code_not_visible_in_equipment_index_for_untrained_users()
     {
         $response = $this->actingAs($this->regularUser)->get(route('equipment.index'));
@@ -278,7 +280,7 @@ class EquipmentTest extends TestCase
         $response->assertDontSee('SECRET123');
     }
 
-    /** @test */
+    #[Test]
     public function trainer_can_request_induction_for_others()
     {
         $response = $this->actingAs($this->trainerUser)
@@ -293,7 +295,7 @@ class EquipmentTest extends TestCase
         ]);
     }
 
-    /** @test */
+    #[Test]
     public function regular_user_can_request_own_induction()
     {
         $response = $this->actingAs($this->regularUser)
@@ -306,7 +308,7 @@ class EquipmentTest extends TestCase
         ]);
     }
 
-    /** @test */
+    #[Test]
     public function trainer_can_mark_user_as_trained()
     {
         // Create pending induction
@@ -335,7 +337,7 @@ class EquipmentTest extends TestCase
         $this->assertNotNull($pendingInduction->trained);
     }
 
-    /** @test */
+    #[Test]
     public function regular_user_cannot_mark_user_as_trained()
     {
         // Create pending induction
@@ -358,7 +360,7 @@ class EquipmentTest extends TestCase
         $response->assertStatus(403);
     }
 
-    /** @test */
+    #[Test]
     public function admin_can_access_all_equipment_features()
     {
         $response = $this->actingAs($this->admin)->get(route('equipment.show', $this->equipmentWithAccessCode));
@@ -367,7 +369,7 @@ class EquipmentTest extends TestCase
         $response->assertSee('Delete');
     }
 
-    /** @test */
+    #[Test]
     public function equipment_without_access_code_works_normally()
     {
         $equipmentWithoutCode = factory(Equipment::class)->create([
@@ -382,7 +384,7 @@ class EquipmentTest extends TestCase
         $response->assertDontSee('Access code');
     }
 
-    /** @test */
+    #[Test]
     public function pending_induction_shows_appropriate_status()
     {
         // Create pending induction
@@ -401,7 +403,7 @@ class EquipmentTest extends TestCase
         $response->assertSee('Training to be completed');
     }
 
-    /** @test */
+    #[Test]
     public function completed_induction_shows_appropriate_status()
     {
         // Create completed induction

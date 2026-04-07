@@ -26,7 +26,7 @@ class MakeTrainerUserIdColumnNullableForInductions extends Migration
     public function down()
     {
         Schema::table('inductions', function (Blueprint $table) {
-            $table->integer('trainer_user_id')->change();
+            $table->integer('trainer_user_id')->nullable()->change();
         });
     }
 }

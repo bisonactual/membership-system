@@ -25,7 +25,7 @@ class EquipmentRemovedAtNullable extends Migration
     public function down()
     {
 		Schema::table('equipment', function(Blueprint $table) {
-            $table->date('removed_at')->change();
+            $table->date('removed_at')->nullable()->change();
         });
     }
 }

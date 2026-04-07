@@ -26,7 +26,7 @@ class MakePaidAtNullableInPaymentsTable extends Migration
     public function down()
     {
         Schema::table('payments', function (Blueprint $table) {
-            $table->dateTime('paid_at')->nullable(false)->change();
+            $table->dateTime('paid_at')->nullable()->change();
         });
     }
 }

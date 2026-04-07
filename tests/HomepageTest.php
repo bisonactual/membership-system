@@ -2,6 +2,8 @@
 
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\Test;
+
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -11,7 +13,7 @@ Class HomepageTest extends BrowserKitTestCase
 {
     use DatabaseMigrations;
 
-    /** @test */
+    #[Test]
     public function i_can_visit_home_page()
     {
         $this->visit('/')
