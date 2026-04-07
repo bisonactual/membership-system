@@ -22,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
 		}
 
 		JsonResource::withoutWrapping();
+		Paginator::useBootstrap();
 	}
 
 	/**

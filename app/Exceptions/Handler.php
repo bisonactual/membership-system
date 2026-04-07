@@ -80,12 +80,12 @@ class Handler extends ExceptionHandler
                 $title = 'Not Implemented';
             }
 
-            $this->notifyTelegram($level, $title, $suppress, $e);
+            $this->notifyTelegram($e, $level, $title, $suppress);
         } catch (Throwable $e) {
         }
     }
 
-    protected function notifyTelegram($level = 'error', $title = 'Exception', $suppress = false, Throwable $e)
+    protected function notifyTelegram(Throwable $e, $level = 'error', $title = 'Exception', $suppress = false)
     {
         Log::error($e);
         try {

@@ -38,6 +38,7 @@ class PaymentEventHandlerTest extends TestCase
         // Previous payment for the initial balance
         factory(Payment::class)->create([
             'user_id' => $user->id,
+            'source' => 'cash',
             'reason' => 'balance',
             'amount' => 10,
             'status' => 'paid',

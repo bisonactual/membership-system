@@ -347,7 +347,7 @@ class MemberSubscriptionChargesTest extends TestCase
 
         $this->mockGoCardless->expects($this->once())
             ->method('newBill')
-            ->willThrowException(new \GoCardlessPro\Core\Exception\ValidationFailedException('Invalid mandate'));
+            ->willThrowException(self::makeGoCardlessException(\GoCardlessPro\Core\Exception\ValidationFailedException::class, 'Invalid mandate'));
 
         $this->mockGoCardless->expects($this->once())
             ->method('getNameFromReason')
@@ -413,7 +413,7 @@ class MemberSubscriptionChargesTest extends TestCase
 
         $this->mockGoCardless->expects($this->once())
             ->method('newBill')
-            ->willThrowException(new \GoCardlessPro\Core\Exception\InvalidStateException('Payment cannot be created'));
+            ->willThrowException(self::makeGoCardlessException(\GoCardlessPro\Core\Exception\InvalidStateException::class, 'Payment cannot be created'));
 
         $this->mockGoCardless->expects($this->once())
             ->method('getNameFromReason')

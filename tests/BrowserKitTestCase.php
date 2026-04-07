@@ -27,4 +27,11 @@ abstract class BrowserKitTestCase extends BaseTestCase
 
         return $app;
     }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->app['config']->set('app.debug', true);
+    }
 }
