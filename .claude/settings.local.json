@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /home/owl/hacmembers/membership-system diff)",
+      "Bash(git -C /home/owl/hacmembers/membership-system status)",
+      "Bash(git -C /home/owl/hacmembers/membership-system add .github/workflows/ci.yml composer.json docker-compose.yml .docker/runtimes/8.2/)",
+      "Bash(git -C /home/owl/hacmembers/membership-system commit -m ':*)",
+      "Bash(docker compose build:*)",
+      "Bash(sudo service:*)",
+      "Bash(sudo docker:*)",
+      "Bash(docker compose run:*)",
+      "Bash(git -C /home/owl/hacmembers/membership-system add -A)",
+      "Bash(cp:*)",
+      "Bash(php:*)",
+      "Bash(python3:*)",
+      "Bash(grep -n 'function show\\\\|function index\\\\|str_random\\\\|$dates\\\\b' /home/owl/hacmembers/membership-system/app/Http/Controllers/AccountController.php)",
+      "Bash(grep -n '$dates\\\\|getCasts\\\\|getDateFormat\\\\|Carbon\\\\b' /home/owl/hacmembers/membership-system/app/Entities/User.php)",
+      "Bash(git:*)",
+      "Bash(sudo docker-compose:*)",
+      "Bash(docker-compose run:*)",
+      "Read(//usr/local/bin/**)",
+      "Read(//usr/bin/**)",
+      "Bash(docker compose version:*)",
+      "Bash(WWWGROUP=$\\(id -g\\) WWWUSER=$\\(id -u\\) docker compose run --rm laravel composer update --no-interaction)",
+      "Bash(sg docker:*)",
+      "Bash(grep -v \"^$\" - remember we are moving to vite too, you can do that when ready)",
+      "Bash(grep -v \"^\\\\s*$\")",
+      "Bash(grep -v \"^$\")",
+      "Bash(grep -v \"^D$\")",
+      "Bash(ls /home/owl/hacmembers/membership-system/*.json /home/owl/hacmembers/membership-system/*.config.* /home/owl/hacmembers/membership-system/*.config.js)"
+      "includeCoAuthoredBy": false
+    ]
+  }
+}
