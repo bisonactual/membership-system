@@ -18,7 +18,7 @@ class Kernel extends HttpKernel
     protected $middleware = [
         // \BB\Http\Middleware\TrustHosts::class,
         \BB\Http\Middleware\TrustProxies::class,
-        \Fruitcake\Cors\HandleCors::class,
+        \Illuminate\Http\Middleware\HandleCors::class,
         \BB\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \BB\Http\Middleware\HttpsProtocol::class,
@@ -60,7 +60,7 @@ class Kernel extends HttpKernel
      *
      * @var array
      */
-    protected $routeMiddleware = [
+    protected $middlewareAliases = [
         'auth'          => \BB\Http\Middleware\Authenticate::class,
         'auth.basic'    => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings'      => \Illuminate\Routing\Middleware\SubstituteBindings::class,

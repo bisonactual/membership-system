@@ -128,24 +128,29 @@ class BillMembersTest extends TestCase
             $charges[] = $charge;
         }
 
+        $returnValues = [
+            (object)['id' => 'PM1', 'status' => 'pending_submission'],
+            (object)['id' => 'PM2', 'status' => 'pending_submission'],
+            (object)['id' => 'PM3', 'status' => 'pending_submission'],
+        ];
+        $actualArgs = [];
+        $callIndex = 0;
         $this->mockGoCardless->expects($this->exactly(3))
             ->method('newBill')
-            ->withConsecutive(
-                ['MD0', 1700, 'Monthly subscription'],
-                ['MD1', 2200, 'Monthly subscription'],
-                ['MD2', 2700, 'Monthly subscription'] 
-            )
-            ->willReturnOnConsecutiveCalls(
-                (object)['id' => 'PM1', 'status' => 'pending_submission'],
-                (object)['id' => 'PM2', 'status' => 'pending_submission'],
-                (object)['id' => 'PM3', 'status' => 'pending_submission']
-            );
+            ->willReturnCallback(function() use (&$callIndex, &$actualArgs, $returnValues) {
+                $actualArgs[] = func_get_args();
+                return $returnValues[$callIndex++];
+            });
 
         $this->mockGoCardless->expects($this->exactly(3))
             ->method('getNameFromReason')
             ->willReturn('Monthly subscription');
 
         $this->artisan('bb:bill-members')->assertExitCode(0);
+
+        $this->assertEquals(['MD0', 1700, 'Monthly subscription', null], $actualArgs[0]);
+        $this->assertEquals(['MD1', 2200, 'Monthly subscription', null], $actualArgs[1]);
+        $this->assertEquals(['MD2', 2700, 'Monthly subscription', null], $actualArgs[2]);
 
         foreach ($expectedAmounts as $index => $expectedAmount) {
             $payment = Payment::where('user_id', $users[$index]->id)->first();

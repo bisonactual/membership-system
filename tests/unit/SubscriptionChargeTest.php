@@ -14,6 +14,8 @@ Class SubscriptionChargeTest extends TestCase
     /** @test */
     public function it_works()
     {
+        \Illuminate\Support\Facades\Event::fake();
+
         /** @var \BB\Repo\SubscriptionChargeRepository $repo */
         $repo = $this->app->make(\BB\Repo\SubscriptionChargeRepository::class);
 
@@ -22,10 +24,10 @@ Class SubscriptionChargeTest extends TestCase
         $amount = 10;
         $charge = $repo->createCharge($user->id, $date, $amount);
 
-        $this->expectsEvents('BB\Events\SubscriptionChargePaid');
-
         //Mark a charge as being paid, this should fire an event
         $repo->markChargeAsPaid($charge->id);
+
+        \Illuminate\Support\Facades\Event::assertDispatched(\BB\Events\SubscriptionChargePaid::class);
     }
 
 

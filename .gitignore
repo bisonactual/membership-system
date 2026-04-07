@@ -22,4 +22,5 @@ _ide_helper*
 
 .yarn
 .pnp.cjs
-.pnp.loader.mjs
+.pnp.loader.mjs.phpunit.cache
+phpunit.xml.bak
