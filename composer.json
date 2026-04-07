@@ -10,7 +10,7 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "fruitcake/laravel-cors": "^2.2",
         "gocardless/gocardless-pro": "^5.0",
         "guzzlehttp/guzzle": "^7.0.1",
