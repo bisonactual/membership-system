@@ -1,7 +1,7 @@
 <?php namespace BB\Validators;
 
 use Auth;
-use BB\Helpers\MembershipPayments;
+use BB\Services\MembershipPayments;
 
 class UserValidator extends FormValidator
 {
@@ -21,7 +21,7 @@ class UserValidator extends FormValidator
         'pronouns'              => '',
         'suppress_real_name'    => 'required|boolean',
         'online_only'           => 'required|boolean',
-        'password'              => 'required|min:8',
+        'password'              => 'required|min:12',
         'phone'                 => 'required_if:online_only,0|min:10',
         'address.line_1'        => 'required_if:online_only,0',
         'address.line_2'        => '',
@@ -39,7 +39,7 @@ class UserValidator extends FormValidator
     protected $updateRules = [
         'email'                => 'required|email|unique:users,email,{id}',
         'secondary_email'      => 'email|unique:users,secondary_email,{id}',
-        'password'             => 'min:8',
+        'password'             => 'min:12',
         'display_name'          => 'unique:users,display_name,{id}',
         'monthly_subscription' => '',
         'rules_agreed'         => '',
@@ -47,7 +47,7 @@ class UserValidator extends FormValidator
 
 
     protected $adminOverride = [
-        'password'          => 'min:8',
+        'password'          => 'min:12',
         'emergency_contact' => '',
         'phone'             => '',
     ];

@@ -2,10 +2,10 @@
 
 namespace Tests\Feature;
 
-use BB\Entities\Course;
-use BB\Entities\Equipment;
-use BB\Entities\Settings;
-use BB\Entities\User;
+use BB\Models\Course;
+use BB\Models\Equipment;
+use BB\Models\Settings;
+use BB\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;

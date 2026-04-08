@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use BB\Entities\Role;
+use BB\Models\Role;
 
 class Create3dprintingRole extends Migration
 {

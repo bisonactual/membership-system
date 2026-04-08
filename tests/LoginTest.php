@@ -3,38 +3,39 @@
 namespace Tests;
 
 use PHPUnit\Framework\Attributes\Test;
-
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Str;
-use Tests\BrowserKitTestCase;
-class LoginTest extends BrowserKitTestCase
+use Tests\TestCase;
+
+class LoginTest extends TestCase
 {
     use DatabaseMigrations;
 
     #[Test]
     public function i_can_login()
     {
-        $password = Str::random(10);
-        $user = factory('BB\Entities\User')->create(['password' => $password]);
-        factory('BB\Entities\ProfileData')->create(['user_id' => $user->id]);
+        $password = Str::random(12);
+        $user = factory('BB\Models\User')->create(['password' => $password]);
+        factory('BB\Models\ProfileData')->create(['user_id' => $user->id]);
 
-        $this->visit('/login')
-            ->see('Login')
-            ->type($user->email, 'email')
-            ->type($password, 'password')
-            ->press('Go')
-            ->seePageIs('account/'.$user->id)
-            ->see($user->display_name);
+        $response = $this->post('/session', [
+            'email' => $user->email,
+            'password' => $password,
+        ]);
+
+        $response->assertRedirect('account/' . $user->id);
+        $this->assertAuthenticatedAs($user);
     }
 
     #[Test]
     public function unknown_user_cant_login()
     {
-        $this->visit('/login')
-            ->type('unknown@example.com', 'email')
-            ->type('123456789', 'password')
-            ->press('Go')
-            ->seePageIs('login')
-            ->see('Invalid login details');
+        $response = $this->post('/session', [
+            'email' => 'unknown@example.com',
+            'password' => '123456789012',
+        ]);
+
+        $response->assertRedirect();
+        $this->assertGuest();
     }
 }

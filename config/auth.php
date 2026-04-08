@@ -68,12 +68,12 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => BB\Entities\User::class,
+            'model' => BB\Models\User::class,
         ],
 
         'api_keys' => [
             'driver' => 'eloquent',
-            'model' => BB\Entities\ApiKey::class,
+            'model' => BB\Models\ApiKey::class,
         ],
     ],
 

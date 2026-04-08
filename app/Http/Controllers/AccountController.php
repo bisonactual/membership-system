@@ -2,16 +2,17 @@
 
 namespace BB\Http\Controllers;
 
-use BB\Entities\Gift;
-use BB\Entities\Notification;
-use BB\Entities\User;
-use BB\Entities\Settings;
+use BB\Models\Gift;
+use BB\Models\Notification;
+use BB\Models\User;
+use BB\Models\Settings;
 use BB\Events\MemberGivenTrustedStatus;
 use BB\Events\MemberPhotoWasDeclined;
 use BB\Exceptions\ValidationException;
-use BB\Helpers\MembershipPayments;
+use BB\Services\MembershipPayments;
 use BB\Mailer\UserMailer;
 use Illuminate\Support\Facades\Log;
+use Inertia\Inertia;
 
 class AccountController extends Controller
 {
@@ -21,7 +22,7 @@ class AccountController extends Controller
     protected $userForm;
 
     /**
-     * @var \BB\Helpers\UserImage
+     * @var \BB\Services\UserImage
      */
     private $userImage;
     /**
@@ -58,7 +59,7 @@ class AccountController extends Controller
     private $subscriptionChargeRepository;
 
     /**
-     * @var \BB\Helpers\GoCardlessHelper
+     * @var \BB\Services\GoCardlessHelper
      */
     private $goCardless;
 
@@ -71,8 +72,8 @@ class AccountController extends Controller
     function __construct(
         \BB\Validators\UserValidator $userForm,
         \BB\Validators\UpdateSubscription $updateSubscriptionAdminForm,
-        \BB\Helpers\GoCardlessHelper $goCardless,
-        \BB\Helpers\UserImage $userImage,
+        \BB\Services\GoCardlessHelper $goCardless,
+        \BB\Services\UserImage $userImage,
         \BB\Validators\UserDetails $userDetailsForm,
         \BB\Repo\ProfileDataRepository $profileRepo,
         \BB\Repo\InductionRepository $inductionRepository,
@@ -97,21 +98,10 @@ class AccountController extends Controller
         $this->subscriptionChargeRepository = $subscriptionChargeRepository;
         $this->bbCredit = $bbCredit;
 
-        //This tones down some validation rules for admins
         $this->userForm->setAdminOverride(! \Auth::guest() && \Auth::user()->hasRole('admin'));
 
         $this->middleware('role:member', array('except' => ['create', 'createOnlineOnly', 'store']));
         $this->middleware('role:admin', array('only' => ['index']));
-        //$this->middleware('guest', array('only' => ['create', 'store']));
-
-        $paymentMethods = [
-            'gocardless'    => 'GoCardless',
-            'cash'          => 'Cash',
-            'bank-transfer' => 'Manual Bank Transfer',
-            'other'         => 'Other'
-        ];
-        \View::share('paymentMethods', $paymentMethods);
-        \View::share('paymentDays', array_combine(range(1, 31), range(1, 31)));
     }
 
     /**
@@ -131,7 +121,7 @@ class AccountController extends Controller
 
         $users = $this->userRepository->getPaginated(compact('sortBy', 'direction', 'showLeft', 'filter', 'include_online_only', 'new_only', 'limit'));
 
-        return \View::make('account.index')->with('users', $users);
+        return Inertia::render('Account/Index', ['users' => $users]);
     }
 
 
@@ -168,16 +158,9 @@ class AccountController extends Controller
 
         $confetti = $gift ? $gift_valid : true;
 
-        \View::share('body_class', 'register_login');
-        return \View::make('account.create', compact(
-            'minAmount',
-            'recommendedAmount',
-            'priceOptions',
-            'gift',
-            'gift_code',
-            'gift_valid',
-            'gift_details',
-            'confetti'
+        return Inertia::render('Account/Create', compact(
+            'minAmount', 'recommendedAmount', 'priceOptions',
+            'gift', 'gift_code', 'gift_valid', 'gift_details', 'confetti'
         ));
     }
 
@@ -188,8 +171,7 @@ class AccountController extends Controller
      */
     public function createOnlineOnly()
     {
-        \View::share('body_class', 'register_login');
-        return \View::make('account.create-online-only');
+        return Inertia::render('Account/CreateOnlineOnly');
     }
 
     /**
@@ -288,14 +270,15 @@ class AccountController extends Controller
 
         $hasSubscriptionPaymentsInProgress = $this->hasSubscriptionPaymentsInProgress($user);
 
-        return \View::make('account.show')
-            ->with('user', $user)
-            ->with('doorCode', $doorCode)
-            ->with('inductions', $inductions)
-            ->with('newAddress', $newAddress)
-            ->with('subscriptionCharges', $subscriptionCharges)
-            ->with('memberBalance', $memberBalance)
-            ->with('hasSubscriptionPaymentsInProgress', $hasSubscriptionPaymentsInProgress);
+        return Inertia::render('Account/Show', [
+            'user' => $user,
+            'doorCode' => $doorCode,
+            'inductions' => $inductions,
+            'newAddress' => $newAddress,
+            'subscriptionCharges' => $subscriptionCharges,
+            'memberBalance' => $memberBalance,
+            'hasSubscriptionPaymentsInProgress' => $hasSubscriptionPaymentsInProgress,
+        ]);
     }
 
 
@@ -312,7 +295,11 @@ class AccountController extends Controller
         //We need to access the address here so its available in the view
         $user->address;
 
-        return \View::make('account.edit')->with('user', $user);
+        return Inertia::render('Account/Edit', [
+            'user' => array_merge($user->toArray(), [
+                'can_change_username' => \Auth::user()->can('changeUsername', $user),
+            ]),
+        ]);
     }
 
 

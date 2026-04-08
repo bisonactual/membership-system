@@ -1,0 +1,205 @@
+# Implementation Plan: Membership System Restructure
+
+## Overview
+
+Incremental restructure of the Hackspace Manchester membership system across six safe, independently-verifiable stages. Each stage ends with a verification step (PHPUnit suite and/or Vite build) before the next stage begins. No database changes are required.
+
+## Tasks
+
+- [x] 1. Stage 1 — Harden .gitignore
+  - [x] 1.1 Update `.gitignore` to add missing entries
+    - Ensure `/node_modules` is present (currently missing leading slash)
+    - Add `/.bun` entry
+    - Confirm `/vendor` and `/public/build` are already present
+    - Decision: commit `bun.lockb` as the canonical lockfile (do NOT add it to `.gitignore`)
+    - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5_
+  - [x] 1.2 Verify — run `git status` to confirm no unintended files are tracked
+    - _Requirements: 6.1–6.4_
+
+- [x] 2. Stage 2 — Yarn → Bun toolchain switch
+  - [x] 2.1 Remove yarn artefacts and update `package.json`
+    - Delete `.yarnrc.yml` and `yarn.lock` from the repository
+    - Update `packageManager` field in `package.json` to `bun@latest` (or pinned version)
+    - Remove `less` from `devDependencies` in `package.json`
+    - _Requirements: 1.1, 1.2, 1.5_
+  - [x] 2.2 Install dependencies with bun and verify build
+    - Run `bun install` — confirm `bun.lockb` is generated and all packages install cleanly
+    - Run `bun run build` — confirm Vite production build succeeds (legacy inputs still present at this stage, so build must still pass)
+    - _Requirements: 1.3, 1.4_
+  - [x] 2.3 Checkpoint — PHPUnit suite must pass
+    - Run `php artisan test` — all tests must pass before proceeding
+    - _Requirements: 5.6_
+
+- [x] 3. Stage 3 — Remove legacy frontend dependencies and update vite.config.mts
+  - [x] 3.1 Remove legacy JS dependencies from `package.json`
+    - Remove `bootstrap`, `jquery`, `select2`, `material-design-icons` from `dependencies`
+    - _Requirements: 2.1_
+  - [x] 3.2 Update `vite.config.mts` to single modern input
+    - Replace the `input` array with `['resources/js/react-app.tsx']` only
+    - Remove the `resources/assets/js/app.js` and `resources/assets/less/application.less` entries
+    - Final config must match the target shown in the design document
+    - _Requirements: 2.2_
+  - [x] 3.3 Run `bun install` and `bun run build` to verify clean build
+    - Confirm build completes with no references to legacy asset paths
+    - _Requirements: 2.3_
+  - [x] 3.4 Checkpoint — PHPUnit suite must pass
+    - Run `php artisan test` — all tests must pass before proceeding
+    - _Requirements: 5.6_
+
+- [x] 4. Stage 4 — Delete legacy source tree (`resources/assets/`)
+  - [x] 4.1 Delete `resources/assets/` directory and all its contents
+    - Remove the entire `resources/assets/` tree (JS, Less, fonts, images)
+    - _Requirements: 3.1_
+  - [x] 4.2 Delete legacy Blade layout and partials
+    - Delete `resources/views/layouts/main.blade.php`
+    - Delete all files under `resources/views/partials/` that serve the legacy layout (main-sidenav, js-data, flash-message)
+    - _Requirements: 3.2, 3.3_
+  - [x] 4.3 Verify no remaining `@extends('layouts.main')` directives
+    - Grep `resources/views/` for `@extends('layouts.main')` — result must be empty
+    - _Requirements: 3.4_
+  - [x] 4.4 Run `bun run build` to confirm Vite build still succeeds
+    - _Requirements: 2.3_
+  - [x] 4.5 Checkpoint — PHPUnit suite must pass
+    - Run `php artisan test` — all tests must pass before proceeding
+    - _Requirements: 5.6_
+
+- [ ] 5. Stage 5 — Backend `app/` directory reorganisation
+  - [x] 5.1 Move `app/Entities/` → `app/Models/` and update namespaces
+    - Move all files from `app/Entities/` to `app/Models/`
+    - Update namespace declaration in each file from `BB\Entities` to `BB\Models`
+    - _Requirements: 5.1_
+  - [x] 5.2 Update all `BB\Entities` references across the codebase
+    - Replace all `use BB\Entities\` and `BB\Entities\` strings in `app/`, `tests/`, `routes/`, `config/`
+    - Run `composer dump-autoload` to regenerate the autoload map
+    - _Requirements: 5.5, 5.7_
+  - [ ]* 5.3 Write property test for no legacy namespace references (Property 3)
+    - **Property 3: No legacy namespace references remain**
+    - Write a PHPUnit test that greps `app/`, `tests/`, `routes/`, `config/` and asserts zero matches for `BB\Entities`, `BB\Helpers`, `BB\Handlers`
+    - **Validates: Requirements 5.5**
+  - [x] 5.4 Checkpoint — PHPUnit suite must pass after Entities rename
+    - Run `php artisan test` — all tests must pass before proceeding
+    - _Requirements: 5.6_
+  - [x] 5.5 Move `app/Helpers/` → `app/Services/` and update namespaces
+    - Move all files from `app/Helpers/` to `app/Services/`
+    - Update namespace declaration in each file from `BB\Helpers` to `BB\Services`
+    - _Requirements: 5.2_
+  - [x] 5.6 Update all `BB\Helpers` references across the codebase
+    - Replace all `use BB\Helpers\` and `BB\Helpers\` strings in `app/`, `tests/`, `routes/`, `config/`
+    - Run `composer dump-autoload`
+    - _Requirements: 5.5, 5.7_
+  - [x] 5.7 Move `app/Handlers/` → `app/Listeners/` and update namespaces
+    - Move all files from `app/Handlers/` to `app/Listeners/`
+    - Update namespace declaration in each file from `BB\Handlers` to `BB\Listeners`
+    - _Requirements: 5.3_
+  - [x] 5.8 Update all `BB\Handlers` references across the codebase
+    - Replace all `use BB\Handlers\` and `BB\Handlers\` strings in `app/`, `tests/`, `routes/`, `config/`
+    - Run `composer dump-autoload`
+    - _Requirements: 5.5, 5.7_
+  - [x] 5.9 Move `app/FlashNotification/` → `app/Services/FlashNotification/` and update namespaces
+    - Move `FlashNotificationFacade.php` and `FlashNotificationManager.php` to `app/Services/FlashNotification/`
+    - Update namespace from `BB\FlashNotification` to `BB\Services\FlashNotification`
+    - Update all references across `app/`, `config/`
+    - Run `composer dump-autoload`
+    - _Requirements: 5.4_
+  - [x] 5.10 Checkpoint — PHPUnit suite must pass after all renames
+    - Run `php artisan test` — all tests must pass before proceeding
+    - _Requirements: 5.6_
+
+- [x] 6. Stage 6 — React/Inertia page migration
+  - [x] 6.1 Create shared `AppLayout` component
+    - Create `resources/js/Layouts/AppLayout.tsx` wrapping navigation, sidebar, and flash messages
+    - Migrate nav/sidebar logic from `resources/js/Components/TopNav.tsx` and `SideNav.tsx` into the layout
+    - _Requirements: 4.3_
+  - [x] 6.2 Migrate Auth domain (Login, Password Reset)
+    - Create `resources/js/Pages/Auth/Login.tsx` and `resources/js/Pages/Auth/PasswordReset.tsx`
+    - Update `SessionController` and password controllers to return `Inertia::render('Auth/Login', ...)` etc.
+    - Delete corresponding Blade views under `resources/views/session/` and `resources/views/password/`
+    - _Requirements: 4.1, 4.2, 4.4, 4.5_
+  - [ ]* 6.3 Write smoke test for Auth routes
+    - Add BrowserKit tests asserting `GET /login` returns 200 and renders via `app.blade.php`
+    - _Requirements: 4.4_
+  - [x] 6.4 Migrate Account domain
+    - Create `resources/js/Pages/Account/Show.tsx` and `resources/js/Pages/Account/Edit.tsx`
+    - Update `AccountController` to return `Inertia::render('Account/Show', ...)` and `Inertia::render('Account/Edit', ...)`
+    - Delete Blade views under `resources/views/account/`
+    - _Requirements: 4.1, 4.2_
+  - [x] 6.5 Migrate Members domain
+    - Create `resources/js/Pages/Members/Index.tsx` and `resources/js/Pages/Members/Show.tsx`
+    - Update member-related controllers to return `Inertia::render('Members/...', ...)`
+    - Delete Blade views under `resources/views/members/`
+    - _Requirements: 4.1, 4.2_
+  - [x] 6.6 Migrate Equipment and EquipmentAreas domains
+    - Create pages under `resources/js/Pages/Equipment/` and `resources/js/Pages/EquipmentAreas/`
+    - Update `EquipmentController` and `EquipmentAreaController` to use `Inertia::render()`
+    - Delete Blade views under `resources/views/equipment/` and `resources/views/equipment_areas/`
+    - _Requirements: 4.1, 4.2_
+  - [x] 6.7 Extend existing Courses domain pages
+    - Courses pages already exist under `resources/js/Pages/Courses/` — verify they use `AppLayout`
+    - Update any remaining `view()` calls in course-related controllers to `Inertia::render()`
+    - _Requirements: 4.1, 4.2_
+  - [x] 6.8 Migrate Payments domain (payments, payment_balances, payment_overview)
+    - Create pages under `resources/js/Pages/Payments/`
+    - Update `BalanceController`, `CashPaymentController`, `GoCardlessPaymentController` etc. to use `Inertia::render()`
+    - Delete Blade views under `resources/views/payments/`, `resources/views/payment_balances/`, `resources/views/payment_overview/`
+    - _Requirements: 4.1, 4.2_
+  - [x] 6.9 Migrate Storage domain
+    - Create pages under `resources/js/Pages/StorageBoxes/`
+    - Update `StorageBoxController` to use `Inertia::render()`
+    - Delete Blade views under `resources/views/storage_boxes/`
+    - _Requirements: 4.1, 4.2_
+  - [x] 6.10 Migrate Inductions domain
+    - Create pages under `resources/js/Pages/Inductions/`
+    - Update `GeneralInductionController` and related controllers to use `Inertia::render()`
+    - Delete Blade views under `resources/views/general-induction/`
+    - _Requirements: 4.1, 4.2_
+  - [x] 6.11 Migrate Admin page
+    - Create `resources/js/Pages/Admin/Index.tsx`
+    - Update `AdminController` to return `Inertia::render('Admin/Index', ...)`
+    - Delete `resources/views/admin.blade.php`
+    - _Requirements: 4.1, 4.2_
+  - [x] 6.12 Migrate Stats domain
+    - Create pages under `resources/js/Pages/Stats/`
+    - Update stats-related controllers to use `Inertia::render()`
+    - Delete Blade views under `resources/views/stats/`
+    - _Requirements: 4.1, 4.2_
+  - [x] 6.13 Migrate Notifications domain
+    - Create pages under `resources/js/Pages/Notifications/`
+    - Update notification controllers to use `Inertia::render()`
+    - Delete Blade views under `resources/views/notifications/`
+    - _Requirements: 4.1, 4.2_
+  - [x] 6.14 Migrate KeyFobs domain
+    - Create pages under `resources/js/Pages/KeyFobs/`
+    - Update `KeyFobController` to use `Inertia::render()`
+    - Delete Blade views under `resources/views/keyfobs/`
+    - _Requirements: 4.1, 4.2_
+  - [x] 6.15 Migrate Roles domain
+    - Create pages under `resources/js/Pages/Roles/`
+    - Update `RoleController` to use `Inertia::render()`
+    - Delete Blade views under `resources/views/roles/`
+    - _Requirements: 4.1, 4.2_
+  - [x] 6.16 Migrate Home page
+    - Create `resources/js/Pages/Home/Index.tsx`
+    - Update the home controller/route to return `Inertia::render('Home/Index', ...)`
+    - Delete `resources/views/home.blade.php`
+    - _Requirements: 4.1, 4.2_
+  - [ ]* 6.17 Write property test for Inertia render completeness (Property 2)
+    - **Property 2: Every Inertia render call has a matching page component**
+    - Write a PHPUnit test that scans all PHP files for `Inertia::render('...')` calls and asserts a corresponding `.tsx` file exists under `resources/js/Pages/`
+    - **Validates: Requirements 4.2**
+  - [ ]* 6.18 Write property test for no legacy layout extension (Property 1)
+    - **Property 1: No legacy layout extension remains**
+    - Write a PHPUnit test that scans all `.blade.php` files under `resources/views/` and asserts none contain `@extends('layouts.main')`
+    - **Validates: Requirements 3.4**
+  - [x] 6.19 Checkpoint — full verification
+    - Run `php artisan test` — all tests must pass
+    - Run `bun run build` — Vite build must succeed
+    - Smoke-test key routes: `GET /`, `GET /login`, `GET /account/{id}`, `POST /gocardless/webhook`, `GET /courses`
+    - _Requirements: 4.4, 4.5, 5.6_
+
+## Notes
+
+- Tasks marked with `*` are optional and can be skipped for a faster MVP
+- Each stage ends with a PHPUnit checkpoint — never proceed to the next stage with a failing test suite
+- The GoCardless webhook endpoint (`POST /gocardless/webhook`) must remain CSRF-exempt throughout — verify `VerifyCsrfToken` exclusion is intact after any middleware changes
+- `composer.json` autoload (`"BB\\": "app/"`) requires no changes — all namespace renames are covered by the PSR-4 prefix
+- Property tests (6.17, 6.18, 5.3) act as regression guards and can be run at any point after their stage completes

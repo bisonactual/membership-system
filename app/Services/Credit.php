@@ -1,6 +1,6 @@
 <?php namespace BB\Services;
 
-use BB\Entities\User;
+use BB\Models\User;
 use BB\Exceptions\InvalidDataException;
 use BB\Exceptions\NotImplementedException;
 use BB\Repo\PaymentRepository;

@@ -2,8 +2,8 @@
 
 namespace BB\Repo;
 
-use BB\Entities\Gift;
-use BB\Entities\User;
+use BB\Models\Gift;
+use BB\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;

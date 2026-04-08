@@ -2,8 +2,8 @@
 
 namespace BB\Policies;
 
-use BB\Entities\User;
-use BB\Entities\MaintainerGroup;
+use BB\Models\User;
+use BB\Models\MaintainerGroup;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class MaintainerGroupPolicy
@@ -23,7 +23,7 @@ class MaintainerGroupPolicy
     /**
      * Determine whether the user can view any maintainer groups.
      *
-     * @param  \BB\Entities\User  $user
+     * @param  \BB\Models\User  $user
      * @return mixed
      */
     public function viewAny(User $user)
@@ -34,8 +34,8 @@ class MaintainerGroupPolicy
     /**
      * Determine whether the user can view the maintainer group.
      *
-     * @param  \BB\Entities\User  $user
-     * @param  \BB\Entities\MaintainerGroup  $maintainerGroup
+     * @param  \BB\Models\User  $user
+     * @param  \BB\Models\MaintainerGroup  $maintainerGroup
      * @return mixed
      */
     public function view(User $user, MaintainerGroup $maintainerGroup)
@@ -46,7 +46,7 @@ class MaintainerGroupPolicy
     /**
      * Determine whether the user can create maintainer groups.
      *
-     * @param  \BB\Entities\User  $user
+     * @param  \BB\Models\User  $user
      * @return mixed
      */
     public function create(User $user)
@@ -58,8 +58,8 @@ class MaintainerGroupPolicy
     /**
      * Determine whether the user can update the maintainer group.
      *
-     * @param  \BB\Entities\User  $user
-     * @param  \BB\Entities\MaintainerGroup  $maintainerGroup
+     * @param  \BB\Models\User  $user
+     * @param  \BB\Models\MaintainerGroup  $maintainerGroup
      * @return mixed
      */
     public function update(User $user, MaintainerGroup $maintainerGroup)
@@ -73,8 +73,8 @@ class MaintainerGroupPolicy
     /**
      * Determine whether the user can delete the maintainer group.
      *
-     * @param  \BB\Entities\User  $user
-     * @param  \BB\Entities\MaintainerGroup  $maintainerGroup
+     * @param  \BB\Models\User  $user
+     * @param  \BB\Models\MaintainerGroup  $maintainerGroup
      * @return mixed
      */
     public function delete(User $user, MaintainerGroup $maintainerGroup)
@@ -88,8 +88,8 @@ class MaintainerGroupPolicy
     /**
      * Determine whether the user can restore the maintainer group.
      *
-     * @param  \BB\Entities\User  $user
-     * @param  \BB\Entities\MaintainerGroup  $maintainerGroup
+     * @param  \BB\Models\User  $user
+     * @param  \BB\Models\MaintainerGroup  $maintainerGroup
      * @return mixed
      */
     public function restore(User $user, MaintainerGroup $maintainerGroup)
@@ -100,8 +100,8 @@ class MaintainerGroupPolicy
     /**
      * Determine whether the user can permanently delete the maintainer group.
      *
-     * @param  \BB\Entities\User  $user
-     * @param  \BB\Entities\MaintainerGroup  $maintainerGroup
+     * @param  \BB\Models\User  $user
+     * @param  \BB\Models\MaintainerGroup  $maintainerGroup
      * @return mixed
      */
     public function forceDelete(User $user, MaintainerGroup $maintainerGroup)

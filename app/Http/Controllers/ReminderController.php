@@ -3,20 +3,15 @@
 use Illuminate\Support\Facades\Password;
 use Illuminate\Mail\Message;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ReminderController extends Controller
 {
 
-	/**
-	 * Display the password reminder view.
-	 *
-	 * @return Response
-	 */
 	public function create()
 	{
-
-        return view('password.create');
+        return Inertia::render('Auth/PasswordForgotten');
 	}
 
     /**
@@ -53,7 +48,7 @@ class ReminderController extends Controller
      
         $email = $request->input('email');
         
-        return view('password.reset')->with(compact('token', 'email'));
+        return Inertia::render('Auth/PasswordReset', compact('token', 'email'));
 	}
 
     /**
@@ -67,7 +62,7 @@ class ReminderController extends Controller
         $this->validate($request, [
             'token' => 'required',
             'email' => 'required|email',
-            'password' => 'required|min:8',
+            'password' => 'required|min:12',
         ]);
 
         $credentials = $request->only(

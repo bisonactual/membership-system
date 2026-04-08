@@ -2,8 +2,8 @@
 
 namespace BB\Http\Controllers;
 
-use BB\Entities\Course;
-use BB\Entities\Induction;
+use BB\Models\Course;
+use BB\Models\Induction;
 use BB\Events\Inductions\InductionRequestedEvent;
 use Illuminate\Support\Facades\DB;
 

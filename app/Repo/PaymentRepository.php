@@ -2,7 +2,7 @@
 
 namespace BB\Repo;
 
-use BB\Entities\Payment;
+use BB\Models\Payment;
 use BB\Events\PaymentCancelled;
 use BB\Exceptions\NotImplementedException;
 use BB\Exceptions\PaymentException;

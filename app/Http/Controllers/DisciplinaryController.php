@@ -2,7 +2,7 @@
 
 namespace BB\Http\Controllers;
 
-use BB\Entities\User;
+use BB\Models\User;
 use Illuminate\Http\Request;
 
 class DisciplinaryController extends Controller

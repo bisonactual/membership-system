@@ -2,7 +2,7 @@
 
 namespace BB\Events;
 
-use BB\Entities\Notification;
+use BB\Models\Notification;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 

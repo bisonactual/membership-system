@@ -2,7 +2,7 @@
 
 namespace BB\Providers;
 
-use BB\Entities\KeyFob;
+use BB\Models\KeyFob;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 

@@ -2,8 +2,8 @@
 
 namespace BB\Http\Controllers;
 
-use BB\Entities\EquipmentArea;
-use BB\Entities\MaintainerGroup;
+use BB\Models\EquipmentArea;
+use BB\Models\MaintainerGroup;
 use BB\Http\Requests\StoreMaintainerGroupRequest;
 use BB\Http\Requests\UpdateMaintainerGroupRequest;
 use BB\Repo\UserRepository;
@@ -28,7 +28,7 @@ class MaintainerGroupController extends Controller
     public function index()
     {
         $maintainerGroups = MaintainerGroup::with('maintainers')->orderBy('name', 'ASC')->get();
-        return view('maintainer_groups.index', compact('maintainerGroups'));
+        return \Inertia\Inertia::render('MaintainerGroups/Index', compact('maintainerGroups'));
     }
 
     /**
@@ -41,7 +41,7 @@ class MaintainerGroupController extends Controller
         $memberList = $this->userRepository->getAllAsDropdown();
         $equipmentAreaOptions = EquipmentArea::orderBy('name', 'ASC')->pluck('name', 'id');
 
-        return view('maintainer_groups.create', compact('memberList', 'equipmentAreaOptions'));
+        return \Inertia\Inertia::render('MaintainerGroups/Create', compact('memberList', 'equipmentAreaOptions'));
     }
 
     /**
@@ -61,18 +61,18 @@ class MaintainerGroupController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \BB\Entities\MaintainerGroup  $maintainerGroup
+     * @param  \BB\Models\MaintainerGroup  $maintainerGroup
      * @return \Illuminate\Http\Response
      */
     public function show(MaintainerGroup $maintainerGroup)
     {
-        return view('maintainer_groups.show', compact('maintainerGroup'));
+        return \Inertia\Inertia::render('MaintainerGroups/Show', compact('maintainerGroup'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \BB\Entities\MaintainerGroup  $maintainerGroup
+     * @param  \BB\Models\MaintainerGroup  $maintainerGroup
      * @return \Illuminate\Http\Response
      */
     public function edit(MaintainerGroup $maintainerGroup)
@@ -80,14 +80,14 @@ class MaintainerGroupController extends Controller
         $memberList = $this->userRepository->getAllAsDropdown();
         $equipmentAreaOptions = EquipmentArea::orderBy('name', 'ASC')->pluck('name', 'id');
 
-        return view('maintainer_groups.edit', compact('maintainerGroup', 'memberList', 'equipmentAreaOptions'));
+        return \Inertia\Inertia::render('MaintainerGroups/Edit', compact('maintainerGroup', 'memberList', 'equipmentAreaOptions'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  UpdateMaintainerGroupRequest  $request
-     * @param  \BB\Entities\MaintainerGroup  $maintainerGroup
+     * @param  \BB\Models\MaintainerGroup  $maintainerGroup
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateMaintainerGroupRequest $request, MaintainerGroup $maintainerGroup)
@@ -101,7 +101,7 @@ class MaintainerGroupController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \BB\Entities\MaintainerGroup  $maintainerGroup
+     * @param  \BB\Models\MaintainerGroup  $maintainerGroup
      * @return \Illuminate\Http\Response
      */
     public function destroy(MaintainerGroup $maintainerGroup)

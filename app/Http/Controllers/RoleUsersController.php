@@ -1,7 +1,7 @@
 <?php namespace BB\Http\Controllers;
 
-use BB\Entities\Role;
-use BB\Entities\User;
+use BB\Models\Role;
+use BB\Models\User;
 use BB\Validators\RoleUserValidator;
 
 class RoleUsersController extends Controller

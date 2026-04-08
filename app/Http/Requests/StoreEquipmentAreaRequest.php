@@ -2,7 +2,7 @@
 
 namespace BB\Http\Requests;
 
-use BB\Entities\EquipmentArea;
+use BB\Models\EquipmentArea;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreEquipmentAreaRequest extends FormRequest

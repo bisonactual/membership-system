@@ -1,6 +1,6 @@
 import React from 'react';
 import { usePage } from '@inertiajs/react';
-import { Box, Stack } from '@mui/material';
+import { Box, Stack, Alert, Snackbar } from '@mui/material';
 import SideNav from '../Components/SideNav';
 import TopNav from '../Components/TopNav';
 
@@ -10,6 +10,11 @@ type MainLayoutProps = {
   children: React.ReactNode;
 };
 
+type FlashMessages = {
+  message?: string;
+  level?: string;
+};
+
 type PageProps = {
   auth: {
     user: {
@@ -17,13 +22,21 @@ type PageProps = {
       account_path: string;
     };
   } | null;
+  flash?: FlashMessages;
 };
 
 export default function MainLayout({ children }: MainLayoutProps) {
-  const { auth } = usePage<PageProps>().props;
+  const { auth, flash } = usePage<PageProps>().props;
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
+  const [showFlash, setShowFlash] = React.useState(!!flash?.message);
+
+  React.useEffect(() => {
+    if (flash?.message) {
+      setShowFlash(true);
+    }
+  }, [flash]);
 
   const handleDrawerClose = () => {
     setIsClosing(true);
@@ -39,6 +52,8 @@ export default function MainLayout({ children }: MainLayoutProps) {
       setMobileOpen(!mobileOpen);
     }
   };
+
+  const flashSeverity = flash?.level === 'danger' ? 'error' : (flash?.level as 'success' | 'info' | 'warning' | 'error') || 'info';
 
   // Mui's Responsive Drawer pattern
   return (
@@ -67,6 +82,19 @@ export default function MainLayout({ children }: MainLayoutProps) {
           {children}
         </Box>
       </Stack>
+
+      {flash?.message && (
+        <Snackbar
+          open={showFlash}
+          autoHideDuration={6000}
+          onClose={() => setShowFlash(false)}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        >
+          <Alert onClose={() => setShowFlash(false)} severity={flashSeverity} variant="filled">
+            {flash.message}
+          </Alert>
+        </Snackbar>
+      )}
     </Stack>
   );
 }

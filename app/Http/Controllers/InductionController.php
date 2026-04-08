@@ -2,9 +2,9 @@
 
 namespace BB\Http\Controllers;
 
-use BB\Entities\Equipment;
-use BB\Entities\Induction;
-use BB\Entities\User;
+use BB\Models\Equipment;
+use BB\Models\Induction;
+use BB\Models\User;
 use BB\Events\Inductions\InductionCompletedEvent;
 use BB\Events\Inductions\InductionMarkedAsTrainerEvent;
 use BB\Events\Inductions\InductionRequestedEvent;

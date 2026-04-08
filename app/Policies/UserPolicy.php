@@ -2,7 +2,7 @@
 
 namespace BB\Policies;
 
-use BB\Entities\User;
+use BB\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class UserPolicy

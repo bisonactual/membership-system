@@ -1,6 +1,6 @@
 <?php namespace BB\Repo;
 
-use BB\Entities\Address;
+use BB\Models\Address;
 
 class AddressRepository extends DBRepository
 {

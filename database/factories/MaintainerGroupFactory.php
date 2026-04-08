@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use BB\Entities\MaintainerGroup;
+use BB\Models\MaintainerGroup;
 use Faker\Generator as Faker;
 
 $factory->define(MaintainerGroup::class, function (Faker $faker) {

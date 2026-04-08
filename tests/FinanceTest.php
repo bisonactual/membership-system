@@ -4,7 +4,7 @@ namespace Tests;
 
 use PHPUnit\Framework\Attributes\Test;
 
-use BB\Entities\Role;
+use BB\Models\Role;
 use BB\Exceptions\AuthenticationException;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -25,8 +25,8 @@ class FinanceTest extends BrowserKitTestCase
     #[Test]
     public function member_cant_view_payments_page()
     {
-        $user = factory('BB\Entities\User')->create();
-        factory('BB\Entities\ProfileData')->create(['user_id' => $user->id]);
+        $user = factory('BB\Models\User')->create();
+        factory('BB\Models\ProfileData')->create(['user_id' => $user->id]);
 
         $this->actingAs($user);
 
@@ -37,8 +37,8 @@ class FinanceTest extends BrowserKitTestCase
     #[Test]
     public function finance_member_can_view_payments_page()
     {
-        $user = factory('BB\Entities\User')->create();
-        factory('BB\Entities\ProfileData')->create(['user_id' => $user->id]);
+        $user = factory('BB\Models\User')->create();
+        factory('BB\Models\ProfileData')->create(['user_id' => $user->id]);
         $role = Role::findByName('finance');
         $role->users()->attach($user);
 

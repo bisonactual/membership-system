@@ -2,7 +2,7 @@
 
 namespace BB\Console\Commands;
 
-use BB\Entities\EquipmentArea;
+use BB\Models\EquipmentArea;
 use Illuminate\Console\Command;
 
 class EquipmentAreasSeed extends Command

@@ -2,7 +2,7 @@
 
 namespace BB\Http\Requests\Equipment;
 
-use BB\Entities\MaintainerGroup;
+use BB\Models\MaintainerGroup;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -15,7 +15,7 @@ class StoreEquipmentRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->user()->can('create', \BB\Entities\Equipment::class);
+        return $this->user()->can('create', \BB\Models\Equipment::class);
     }
 
     /**

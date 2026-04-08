@@ -2,7 +2,7 @@
 
 namespace BB\Jobs;
 
-use BB\Entities\User;
+use BB\Models\User;
 use BB\Services\Credit;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;

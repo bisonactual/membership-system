@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Jobs;
 
-use BB\Entities\User;
+use BB\Models\User;
 use BB\Jobs\DiscourseSync;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;

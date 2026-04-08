@@ -2,7 +2,7 @@
 
 namespace BB\Http\Controllers;
 
-use BB\Entities\User;
+use BB\Models\User;
 use BB\Mail\PaymentWarning;
 use BB\Mail\SuspendedMessage;
 use BB\Mail\LeavingMessage;
@@ -40,7 +40,7 @@ class EmailPreviewController extends Controller
             'Course: Induction Requested (Trainer)' => route('notification-preview.course-trainer-induction-requested'),
         ];
 
-        return view('email-preview.index', compact('emails', 'notifications'));
+        return \Inertia\Inertia::render('EmailPreview/Index', compact('emails', 'notifications'));
     }
     public function paymentWarning()
     {

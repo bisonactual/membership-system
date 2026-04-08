@@ -1,6 +1,6 @@
 <?php namespace BB\Repo;
 
-use BB\Entities\ProfileData;
+use BB\Models\ProfileData;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class ProfileDataRepository extends DBRepository

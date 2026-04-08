@@ -2,8 +2,8 @@
 
 namespace BB\Exceptions;
 
-use BB\Entities\User;
-use BB\Helpers\TelegramErrorHelper;
+use BB\Models\User;
+use BB\Services\TelegramErrorHelper;
 use BB\Notifications\ErrorNotification;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;

@@ -1,7 +1,7 @@
 <?php namespace BB\Process;
 
-use BB\Entities\User;
-use BB\Helpers\TelegramHelper;
+use BB\Models\User;
+use BB\Services\TelegramHelper;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 
@@ -27,7 +27,7 @@ class CheckPaymentWarnings
         // Process users in payment-warning status
         $users = User::paymentWarning()->get();
         foreach ($users as $user) {
-            /** @var \BB\Entities\User $user */
+            /** @var \BB\Models\User $user */
             
             // Check if grace period has expired (subscription_expires is set to failure date + grace period)
             if ($user->subscription_expires === null || $user->subscription_expires->lt($today)) {

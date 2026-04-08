@@ -13,8 +13,8 @@ class DisciplinaryTest extends TestCase
         $now = Carbon::now()->startOfMinute();
         Carbon::setTestNow($now);
 
-        $admin = factory('BB\Entities\User')->states('admin')->create();
-        $user = factory('BB\Entities\User')->create();
+        $admin = factory('BB\Models\User')->states('admin')->create();
+        $user = factory('BB\Models\User')->create();
 
         Assert::assertArraySubset(
             [
@@ -51,8 +51,8 @@ class DisciplinaryTest extends TestCase
         $now = Carbon::now()->startOfMinute();
         Carbon::setTestNow($now);
 
-        $admin = factory('BB\Entities\User')->states('admin')->create();
-        $user = factory('BB\Entities\User')->create([
+        $admin = factory('BB\Models\User')->states('admin')->create();
+        $user = factory('BB\Models\User')->create([
             'active' => false,
             'status' => 'left',
             'banned' => true,

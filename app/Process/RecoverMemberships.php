@@ -1,8 +1,8 @@
 <?php namespace BB\Process;
 
-use BB\Entities\User;
-use BB\Helpers\MembershipPayments;
-use BB\Helpers\TelegramHelper;
+use BB\Models\User;
+use BB\Services\MembershipPayments;
+use BB\Services\TelegramHelper;
 use Illuminate\Support\Facades\Log;
 
 class RecoverMemberships
@@ -28,7 +28,7 @@ class RecoverMemberships
             ->get();
             
         foreach ($users as $user) {
-            /** @var \BB\Entities\User $user */
+            /** @var \BB\Models\User $user */
             
             // Check if they have valid payments that should extend their membership
             $paidUntil = MembershipPayments::lastUserPaymentExpires($user->id);

@@ -2,9 +2,9 @@
 
 namespace Tests\Integration;
 
-use BB\Entities\User;
-use BB\Entities\Payment;
-use BB\Handlers\SubChargeEventHandler;
+use BB\Models\User;
+use BB\Models\Payment;
+use BB\Listeners\SubChargeEventHandler;
 use BB\Process\CheckPaymentWarnings;
 use BB\Process\CheckSuspendedUsers;
 use BB\Process\RecoverMemberships;

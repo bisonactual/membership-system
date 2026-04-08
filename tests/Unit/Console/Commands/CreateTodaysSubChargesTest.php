@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Console\Commands;
 
-use BB\Entities\User;
-use BB\Entities\SubscriptionCharge;
+use BB\Models\User;
+use BB\Models\SubscriptionCharge;
 use Carbon\Carbon;
 use Tests\TestCase;
 

@@ -2,7 +2,7 @@
 
 namespace BB\Jobs;
 
-use BB\Entities\User;
+use BB\Models\User;
 use GuzzleHttp\Client;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;

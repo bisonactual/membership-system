@@ -1,8 +1,8 @@
 <?php namespace BB\Services;
 
-use BB\Entities\User;
-use BB\Helpers\GoCardlessHelper;
-use BB\Helpers\TelegramHelper;
+use BB\Models\User;
+use BB\Services\GoCardlessHelper;
+use BB\Services\TelegramHelper;
 use BB\Repo\PaymentRepository;
 use BB\Repo\SubscriptionChargeRepository;
 use BB\Repo\UserRepository;

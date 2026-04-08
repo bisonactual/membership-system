@@ -1,6 +1,6 @@
 <?php namespace BB\Repo;
 
-use BB\Entities\Stat;
+use BB\Models\Stat;
 
 class StatRepository extends DBRepository
 {

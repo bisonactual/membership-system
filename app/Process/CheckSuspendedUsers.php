@@ -1,7 +1,7 @@
 <?php namespace BB\Process;
 
-use BB\Entities\User;
-use BB\Helpers\TelegramHelper;
+use BB\Models\User;
+use BB\Services\TelegramHelper;
 use BB\Repo\UserRepository;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;

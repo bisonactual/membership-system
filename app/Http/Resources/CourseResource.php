@@ -5,7 +5,7 @@ namespace BB\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
- * @mixin \BB\Entities\Course
+ * @mixin \BB\Models\Course
  */
 class CourseResource extends JsonResource
 {

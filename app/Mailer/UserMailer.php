@@ -2,7 +2,7 @@
 
 namespace BB\Mailer;
 
-use BB\Entities\User;
+use BB\Models\User;
 use BB\Mail\ConfirmationEmail;
 use BB\Mail\EquipmentNotificationEmail;
 use BB\Mail\LeavingMessage;

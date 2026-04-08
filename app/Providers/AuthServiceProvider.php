@@ -4,14 +4,14 @@ namespace BB\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 
-use BB\Entities\Course;
-use BB\Entities\Equipment;
-use BB\Entities\EquipmentArea;
-use BB\Entities\Induction;
-use BB\Entities\KeyFob;
-use BB\Entities\StorageBox;
-use BB\Entities\User;
-use BB\Entities\MaintainerGroup;
+use BB\Models\Course;
+use BB\Models\Equipment;
+use BB\Models\EquipmentArea;
+use BB\Models\Induction;
+use BB\Models\KeyFob;
+use BB\Models\StorageBox;
+use BB\Models\User;
+use BB\Models\MaintainerGroup;
 use BB\Policies\EquipmentAreaPolicy;
 use BB\Policies\EquipmentPolicy;
 use BB\Policies\InductionPolicy;

@@ -4,7 +4,7 @@ namespace BB\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use BB\Helpers\TelegramHelper;
+use BB\Services\TelegramHelper;
 use Illuminate\Support\Facades\Log;
 
 class Kernel extends ConsoleKernel

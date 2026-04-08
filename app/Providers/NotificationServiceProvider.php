@@ -2,7 +2,7 @@
 
 namespace BB\Providers;
 
-use BB\FlashNotification\FlashNotificationManager;
+use BB\Services\FlashNotification\FlashNotificationManager;
 use Illuminate\Support\ServiceProvider;
 
 /**

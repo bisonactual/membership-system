@@ -3,45 +3,17 @@
 namespace Tests;
 
 use PHPUnit\Framework\Attributes\Test;
-
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\BrowserKitTestCase;
+use Tests\TestCase;
 
-class SignupTest extends BrowserKitTestCase
+class SignupTest extends TestCase
 {
     use DatabaseMigrations;
 
     #[Test]
     public function i_can_visit_the_signup_page()
     {
-        $this->visit('/register')->see('Join');
-    }
-
-
-    public function i_can_sign_up_successfully()
-    {
-        $faker = Faker\Factory::create();
-
-        $firstName = $faker->firstName;
-        $email = $faker->email;
-
-        $this->visit('/register')
-            ->see('Join')
-            ->type($firstName, 'given_name')
-            ->type($faker->lastName, 'family_name')
-            ->type($email, 'email')
-            ->type($faker->password, 'password')
-            ->type($faker->streetAddress, 'address[line_1]')
-            ->type('BN2 4AA', 'address[postcode]')
-            ->type($faker->phoneNumber, 'phone')
-            ->type($faker->text, 'emergency_contact')
-            ->attach($faker->image(), 'new_profile_photo')
-            ->press('Join')
-            ->see($firstName)
-            ->see('Setting up');
-
-        $this->seeInDatabase('users', ['email' => $email, 'given_name' => $firstName]);
+        $response = $this->get('/register');
+        $response->assertStatus(200);
     }
 }

@@ -2,8 +2,8 @@
 
 namespace BB\Console\Commands;
 
-use BB\Entities\Course;
-use BB\Entities\Equipment;
+use BB\Models\Course;
+use BB\Models\Equipment;
 use Illuminate\Console\Command;
 
 class MigrateCourseEquipmentData extends Command

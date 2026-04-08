@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use BB\Entities\Course;
+use BB\Models\Course;
 use Faker\Generator as Faker;
 
 $factory->define(Course::class, function (Faker $faker) {

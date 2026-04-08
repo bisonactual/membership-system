@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use BB\Entities\User;
+use BB\Models\User;
 use Carbon\Carbon;
 use Tests\TestCase;
 

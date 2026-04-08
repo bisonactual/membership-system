@@ -2,8 +2,8 @@
 
 namespace BB\Http\Controllers;
 
-use BB\Entities\Equipment;
-use BB\Entities\MaintainerGroup;
+use BB\Models\Equipment;
+use BB\Models\MaintainerGroup;
 use BB\Exceptions\ImageFailedException;
 use BB\Http\Requests\Equipment\StoreEquipmentRequest;
 use BB\Http\Requests\Equipment\UpdateEquipmentRequest;
@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Input;
+use Inertia\Inertia;
 
 class EquipmentController extends Controller
 {
@@ -79,8 +80,7 @@ class EquipmentController extends Controller
 
         $equipmentByRoom = $equipmentWithTrainingStatus->groupBy('equipment.room')->sort();
 
-        return \View::make('equipment.index')
-            ->with('equipmentByRoom', $equipmentByRoom);
+        return Inertia::render('Equipment/Index', ['equipmentByRoom' => $equipmentByRoom]);
     }
 
     public function show(Equipment $equipment)
@@ -102,15 +102,24 @@ class EquipmentController extends Controller
 
         $now = new \DateTime("");
 
-        return \View::make('equipment.show')
-            ->with('equipment', $equipment)
-            ->with('trainers', $trainers)
-            ->with('userInduction', $userInduction)
-            ->with('trainedUsers', $trainedUsers)
-            ->with('usersPendingInduction', $usersPendingInduction)
-            ->with('memberList', $memberList)
-            ->with('docs', $docs)
-            ->with('now', $now);
+        // Only expose access_code to trained users, trainers, or admins
+        $equipmentData = $equipment->toArray();
+        $isTrained = $userInduction && $userInduction->trained;
+        $isAdmin = \Auth::user()->isAdmin();
+        if (($isTrained || $isAdmin) && $equipment->access_code) {
+            $equipmentData['access_code'] = $equipment->access_code;
+        }
+
+        return Inertia::render('Equipment/Show', [
+            'equipment' => $equipmentData,
+            'trainers' => $trainers,
+            'userInduction' => $userInduction,
+            'trainedUsers' => $trainedUsers,
+            'usersPendingInduction' => $usersPendingInduction,
+            'memberList' => $memberList,
+            'docs' => $docs,
+            'can' => ['edit' => \Auth::user()->can('update', $equipment)],
+        ]);
     }
 
     /**
@@ -125,13 +134,12 @@ class EquipmentController extends Controller
         $memberList = $this->userRepository->getAllAsDropdown();
         $maintainerGroupOptions = MaintainerGroup::orderBy('name', 'ASC')->pluck('name', 'id');
 
-        return \View::make('equipment.create')
-            ->with('memberList', $memberList)
-            ->with('maintainerGroupOptions', $maintainerGroupOptions->toArray())
-            ->with('ppeList', PpeOptions::all())
-            ->with('roomList', RoomOptions::all())
-            ->with('trusted', true)
-            ->with('isTrainerOrAdmin', \Auth::user()->isAdmin());
+        return Inertia::render('Equipment/Create', [
+            'memberList' => $memberList,
+            'maintainerGroupOptions' => $maintainerGroupOptions->toArray(),
+            'ppeList' => PpeOptions::all(),
+            'roomList' => RoomOptions::all(),
+        ]);
     }
 
 
@@ -154,7 +162,7 @@ class EquipmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \BB\Entities\Equipment $equipment
+     * @param  \BB\Models\Equipment $equipment
      * @return Response
      */
     public function edit(Equipment $equipment)
@@ -165,19 +173,20 @@ class EquipmentController extends Controller
         $memberList = $this->userRepository->getAllAsDropdown();
         $maintainerGroupOptions = MaintainerGroup::orderBy('name', 'ASC')->pluck('name', 'id');
 
-        return \View::make('equipment.edit')
-            ->with('equipment', $equipment)
-            ->with('memberList', $memberList)
-            ->with('maintainerGroupOptions', $maintainerGroupOptions->toArray())
-            ->with('ppeList', PpeOptions::all())
-            ->with('roomList', RoomOptions::all());
+        return Inertia::render('Equipment/Edit', [
+            'equipment' => $equipment,
+            'memberList' => $memberList,
+            'maintainerGroupOptions' => $maintainerGroupOptions->toArray(),
+            'ppeList' => PpeOptions::all(),
+            'roomList' => RoomOptions::all(),
+        ]);
     }
 
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \BB\Entities\Equipment $equipment
+     * @param  \BB\Models\Equipment $equipment
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Equipment $equipment, UpdateEquipmentRequest $request)

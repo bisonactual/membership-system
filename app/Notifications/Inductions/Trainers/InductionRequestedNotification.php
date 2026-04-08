@@ -2,8 +2,8 @@
 
 namespace BB\Notifications\Inductions\Trainers;
 
-use BB\Entities\Equipment;
-use BB\Entities\User;
+use BB\Models\Equipment;
+use BB\Models\User;
 use BB\Notifications\Inductions\AbstractInductionNotification;
 use BB\Notifications\Messages\MailMessage;
 use Illuminate\Bus\Queueable;

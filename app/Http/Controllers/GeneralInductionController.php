@@ -2,10 +2,10 @@
 
 namespace BB\Http\Controllers;
 
-use BB\Entities\KeyFob;
+use BB\Models\KeyFob;
 use BB\Repo\UserRepository;
 use Illuminate\Http\Request;
-use BB\Entities\Settings;
+use BB\Models\Settings;
 use BB\Rules\GeneralInductionCodeRule;
 use BB\Rules\KeyFobRule;
 use Illuminate\Validation\Rules\Unique;
@@ -34,10 +34,11 @@ class GeneralInductionController extends Controller
         $induction_code = Settings::get("general_induction_code");
         $prefill_code = $request->has('code') ? $request->input('code') : '';
 
-        return view('general-induction.show')
-            ->with('user', $user)
-            ->with('general_induction_code', $induction_code)
-            ->with('prefill_induction_code', $prefill_code);
+        return \Inertia\Inertia::render('Inductions/Show', [
+            'user' => $user,
+            'general_induction_code' => $induction_code,
+            'prefill_induction_code' => $prefill_code,
+        ]);
     }
 
     /**

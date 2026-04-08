@@ -2,11 +2,11 @@
 
 namespace Tests\Unit\Handlers;
 
-use BB\Entities\User;
-use BB\Entities\Payment;
-use BB\Entities\SubscriptionCharge;
+use BB\Models\User;
+use BB\Models\Payment;
+use BB\Models\SubscriptionCharge;
 use BB\Exceptions\PaymentException;
-use BB\Handlers\PaymentEventHandler;
+use BB\Listeners\PaymentEventHandler;
 use BB\Repo\PaymentRepository;
 use BB\Repo\SubscriptionChargeRepository;
 use Carbon\Carbon;

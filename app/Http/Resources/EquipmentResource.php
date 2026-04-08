@@ -6,7 +6,7 @@ use BB\Support\RoomOptions;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
- * @mixin \BB\Entities\Equipment
+ * @mixin \BB\Models\Equipment
  */
 class EquipmentResource extends JsonResource
 {

@@ -2,8 +2,8 @@
 
 namespace BB\Services;
 
-use BB\Entities\User;
-use BB\Entities\Course;
+use BB\Models\User;
+use BB\Models\Course;
 use Illuminate\Support\Facades\Auth;
 
 class SidebarItems

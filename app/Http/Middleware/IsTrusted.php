@@ -1,6 +1,6 @@
 <?php namespace BB\Http\Middleware;
 
-use BB\Entities\User;
+use BB\Models\User;
 use BB\Exceptions\AuthenticationException;
 use Closure;
 

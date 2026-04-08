@@ -16,7 +16,7 @@ class AddUserMandateId extends Migration
             $table->string('mandate_id')->nullable()->after('subscription_id');
         });
 
-        \BB\Entities\User::where('payment_method', 'gocardless-variable')->get()->each(function (\BB\Entities\User $user) {
+        \BB\Models\User::where('payment_method', 'gocardless-variable')->get()->each(function (\BB\Models\User $user) {
             $user->mandate_id = $user->subscription_id;
             $user->save();
         });

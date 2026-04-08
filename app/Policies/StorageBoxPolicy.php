@@ -3,8 +3,8 @@
 namespace BB\Policies;
 
 use Auth;
-use BB\Entities\User;
-use BB\Entities\StorageBox;
+use BB\Models\User;
+use BB\Models\StorageBox;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class StorageBoxPolicy
@@ -24,8 +24,8 @@ class StorageBoxPolicy
     /**
      * Determine whether the user can view the StorageBox.
      *
-     * @param  \BB\Entities\User  $user
-     * @param  \BB\Entities\StorageBox  $StorageBox
+     * @param  \BB\Models\User  $user
+     * @param  \BB\Models\StorageBox  $StorageBox
      * @return mixed
      */
     public function view(User $user, StorageBox $StorageBox)
@@ -36,7 +36,7 @@ class StorageBoxPolicy
     /**
      * Determine whether the user can create StorageBox.
      *
-     * @param  \BB\Entities\User  $user
+     * @param  \BB\Models\User  $user
      * @return mixed
      */
     public function create(User $user)
@@ -47,8 +47,8 @@ class StorageBoxPolicy
     /**
      * Determine whether the user can update the StorageBox.
      *
-     * @param  \BB\Entities\User  $user
-     * @param  \BB\Entities\StorageBox  $StorageBox
+     * @param  \BB\Models\User  $user
+     * @param  \BB\Models\StorageBox  $StorageBox
      * @return mixed
      */
     public function update(User $user, StorageBox $StorageBox)
@@ -59,8 +59,8 @@ class StorageBoxPolicy
     /**
      * Determine whether the user can delete the StorageBox.
      *
-     * @param  \BB\Entities\User  $user
-     * @param  \BB\Entities\StorageBox  $StorageBox
+     * @param  \BB\Models\User  $user
+     * @param  \BB\Models\StorageBox  $StorageBox
      * @return mixed
      */
     public function delete(User $user, StorageBox $StorageBox)

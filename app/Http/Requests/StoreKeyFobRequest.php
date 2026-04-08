@@ -2,7 +2,7 @@
 
 namespace BB\Http\Requests;
 
-use BB\Entities\KeyFob;
+use BB\Models\KeyFob;
 use BB\Rules\KeyFobRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Unique;

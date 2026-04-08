@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use PHPUnit\Framework\Attributes\Test;
 
-use BB\Entities\User;
+use BB\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -23,7 +23,7 @@ Class SubscriptionChargeTest extends TestCase
         /** @var \BB\Repo\SubscriptionChargeRepository $repo */
         $repo = $this->app->make(\BB\Repo\SubscriptionChargeRepository::class);
 
-        $user = factory('BB\Entities\User')->create();
+        $user = factory('BB\Models\User')->create();
         $date = Carbon::now();
         $amount = 10;
         $charge = $repo->createCharge($user->id, $date, $amount);

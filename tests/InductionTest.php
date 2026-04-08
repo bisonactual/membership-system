@@ -2,31 +2,28 @@
 
 namespace Tests;
 
-use BB\Entities\Equipment;
-use BB\Entities\User;
+use BB\Models\Equipment;
+use BB\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Tests\BrowserKitTestCase;
+use Tests\TestCase;
 
-class InductionTest extends BrowserKitTestCase
+class InductionTest extends TestCase
 {
     use DatabaseMigrations;
 
     public function test_can_request_own_induction()
     {
         $user = factory(User::class)->create();
-
         $equipment = factory(Equipment::class)->state('requiresInduction')->create();
 
         $this->actingAs($user);
 
-        $this->visit(route('equipment.show', $equipment))
-            ->press('Request induction')
-            ->see("Training to be completed");
+        $response = $this->post(route('equipment_training.create', $equipment));
+        $response->assertRedirect(route('equipment.show', $equipment));
+
+        $this->assertDatabaseHas('inductions', [
+            'user_id' => $user->id,
+            'key' => $equipment->induction_category,
+        ]);
     }
-
-    public function x_test_trainers_can_request_inductions_for_others() {}
-
-    public function x_test_trainers_can_mark_as_trained() {}
-
-    public function x_test_trainers_can_promote_others_to_trainer() {}
 }

@@ -6,8 +6,7 @@ class GiftController extends Controller
 
     public function index()
     {
-        \View::share('body_class', 'home');
-        return \View::make('gift');
+        return \Inertia\Inertia::render('Gift/Index');
     }
 
 

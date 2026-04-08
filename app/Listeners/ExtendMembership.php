@@ -31,7 +31,7 @@ class ExtendMembership
      */
     public function handle(SubscriptionChargePaid $event)
     {
-        /** @var \BB\Entities\User */
+        /** @var \BB\Models\User */
         $user = $this->userRepository->getById($event->subscriptionCharge->user_id);
 
         $user->extendMembership(null, $event->subscriptionCharge->payment_date->addMonth());

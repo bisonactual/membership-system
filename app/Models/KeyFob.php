@@ -1,0 +1,51 @@
+<?php namespace BB\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
+/**
+ * Class KeyFob
+ *
+ * @property integer $id
+ * @property bool    $lost
+ * @property bool    $active
+ * @property User    $user
+ * @package BB\Models
+ */
+class KeyFob extends Model
+{
+
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'key_fobs';
+
+    protected $fillable = [
+        'user_id',
+        'key_id'
+    ];
+
+    protected $attributes = [
+        'active' => 1,
+        'lost'   => 0,
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo('\BB\Models\User');
+    }
+
+    public function markLost()
+    {
+        $this->lost   = true;
+        $this->active = false;
+        $this->save();
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->whereActive(true);
+    }
+} 

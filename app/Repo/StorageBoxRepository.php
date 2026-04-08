@@ -1,6 +1,6 @@
 <?php namespace BB\Repo;
 
-use BB\Entities\StorageBox;
+use BB\Models\StorageBox;
 
 class StorageBoxRepository
 {

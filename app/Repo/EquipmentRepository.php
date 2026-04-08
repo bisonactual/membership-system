@@ -1,6 +1,6 @@
 <?php namespace BB\Repo;
 
-use BB\Entities\Equipment;
+use BB\Models\Equipment;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Collection;
 

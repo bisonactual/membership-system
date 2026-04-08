@@ -2,7 +2,7 @@
 
 namespace BB\Http\Controllers;
 
-use BB\Entities\KeyFob;
+use BB\Models\KeyFob;
 use Illuminate\Http\Request;
 
 class KeyFobCsvController extends Controller

@@ -1,0 +1,72 @@
+<?php
+
+namespace BB\Services;
+
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
+
+class UserImage
+{
+    /** @var \Illuminate\Filesystem\FilesystemAdapter */
+    protected $disk;
+
+    public function __construct()
+    {
+        $this->disk = Storage::disk('public');
+    }
+
+    public function uploadPhoto($userId, $filePath, $newImage = false)
+    {
+        $userHash = md5($userId);
+
+        $this->disk->put(
+            sprintf('user-photo/%s%s.png', $userHash, $newImage ? '-new' : ''),
+            Image::make($filePath)->fit(500)->stream('png')
+        );
+
+        $this->disk->put(
+            sprintf('user-photo/%s-thumb%s.png', $userHash, $newImage ? '-new' : ''),
+            Image::make($filePath)->fit(200)->stream('png')
+        );
+    }
+
+    public function approveNewImage($userId)
+    {
+        $userHash = md5($userId);
+
+        foreach (['', '-thumb'] as $type) {
+            $sourceFilename = sprintf('user-photo/%s%s-new.png', $userHash, $type);
+            $targetFilename = sprintf('user-photo/%s%s.png', $userHash, $type);
+
+            if ($this->disk->exists($targetFilename)) {
+                $this->disk->delete($targetFilename);
+            }
+            $this->disk->move($sourceFilename, $targetFilename);
+        }
+    }
+
+    public static function imageUrl($userId)
+    {
+        return asset(sprintf('storage/user-photo/%s.png', md5($userId)));
+    }
+
+    public static function thumbnailUrl($userId)
+    {
+        return asset(sprintf('storage/user-photo/%s-thumb.png', md5($userId)));
+    }
+
+    public static function newThumbnailUrl($userId)
+    {
+        return asset(sprintf('storage/user-photo/%s-thumb-new.png', md5($userId)));
+    }
+
+    public static function gravatar($email)
+    {
+        return 'https://www.gravatar.com/avatar/' . md5($email) . '?s=200&d=mm';
+    }
+
+    public static function anonymous()
+    {
+        return asset(sprintf('storage/user-photo/%s-thumb.png', 'd169b05e6c7c9c7933537436d47b4f3d'));
+    }
+}

@@ -2,9 +2,9 @@
 
 namespace Tests\Unit\Process;
 
-use BB\Entities\User;
-use BB\Entities\SubscriptionCharge;
-use BB\Entities\Payment;
+use BB\Models\User;
+use BB\Models\SubscriptionCharge;
+use BB\Models\Payment;
 use BB\Process\CheckPaymentWarnings;
 use BB\Repo\UserRepository;
 use Carbon\Carbon;

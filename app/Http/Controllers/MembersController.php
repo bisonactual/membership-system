@@ -1,28 +1,15 @@
 <?php namespace BB\Http\Controllers;
 
-use BB\Entities\User;
+use BB\Models\User;
+use Inertia\Inertia;
 
 class MembersController extends Controller
 {
     
-    /**
-     * @var
-     */
     private $profileRepo;
-    /**
-     * @var \BB\Repo\ProfileSkillsRepository
-     */
     private $profileSkillsRepository;
-    /**
-     * @var \BB\Repo\UserRepository
-     */
     private $userRepository;
 
-    /**
-     * @param \BB\Repo\ProfileDataRepository   $profileRepo
-     * @param \BB\Repo\ProfileSkillsRepository $profileSkillsRepository
-     * @param \BB\Repo\UserRepository          $userRepository
-     */
     function __construct(\BB\Repo\ProfileDataRepository $profileRepo, \BB\Repo\ProfileSkillsRepository $profileSkillsRepository, \BB\Repo\UserRepository $userRepository)
     {
         $this->profileRepo = $profileRepo;
@@ -33,14 +20,13 @@ class MembersController extends Controller
     public function index()
     {
         $users = $this->userRepository->getActivePublicList();
-        return \View::make('members.index')->with('users', $users);
+        return Inertia::render('Members/Index', ['users' => $users]);
     }
 
     public function show($id)
     {
         $user = User::findOrFail($id);
 
-        // TODO: Is this privacy check necessary? This route is not accessible by guests
         if (\Auth::guest() && $user->profile_private) {
             return abort(404);
         }
@@ -52,7 +38,16 @@ class MembersController extends Controller
 
         $profileData = $this->profileRepo->getUserProfile($id);
         $userSkills = array_intersect_ukey($this->profileSkillsRepository->getAll(), array_flip($profileData->skills), [$this, 'key_compare_func']);
-        return \View::make('members.show')->with('user', $user)->with('profileData', $profileData)->with('userSkills', $userSkills);
+        
+        return Inertia::render('Members/Show', [
+            'user' => $user,
+            'profileData' => $profileData,
+            'userSkills' => $userSkills,
+            'can' => [
+                'edit' => !\Auth::guest() && $user->id == \Auth::user()->id,
+                'viewAccount' => !\Auth::guest() && ($user->id == \Auth::user()->id || \Auth::user()->hasRole('admin')),
+            ],
+        ]);
     }
 
     private function key_compare_func($key1, $key2)

@@ -2,7 +2,7 @@
 
 namespace BB\Repo;
 
-use BB\Entities\Induction;
+use BB\Models\Induction;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;

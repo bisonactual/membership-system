@@ -15,11 +15,11 @@ Route::get('login', ['as' => 'login', 'uses' => 'SessionController@create']);
 Route::get('logout', ['as' => 'logout', 'uses' => 'SessionController@destroy']);
 Route::get('gift', ['as' => 'gift', 'uses' => 'GiftController@index']);
 Route::get('admin', ['as' => 'admin', 'uses' => 'AdminController@index', 'middleware' => 'role:admin']);
-Route::resource('session', 'SessionController', ['only' => ['create', 'store', 'destroy']]);
+Route::resource('session', 'SessionController', ['only' => ['create', 'store', 'destroy']])->middleware('throttle:5,1');
 Route::get('password/forgotten', ['as' => 'password-reminder.create', 'uses' => 'ReminderController@create']);
-Route::post('password/forgotten', ['as' => 'password-reminder.store', 'uses' => 'ReminderController@store']);
+Route::post('password/forgotten', ['as' => 'password-reminder.store', 'uses' => 'ReminderController@store', 'middleware' => 'throttle:5,1']);
 Route::get('password/reset/{token}', ['as' => 'password.reset', 'uses' => 'ReminderController@getReset']);
-Route::post('password/reset', ['as' => 'password.reset.complete', 'uses' => 'ReminderController@postReset']);
+Route::post('password/reset', ['as' => 'password.reset.complete', 'uses' => 'ReminderController@postReset', 'middleware' => 'throttle:5,1']);
 
 Route::get('sso/login', ['uses' => 'SessionController@sso_login']);
 

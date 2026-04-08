@@ -2,7 +2,7 @@
 
 namespace BB\Console\Commands\Payments;
 
-use BB\Entities\Payment;
+use BB\Models\Payment;
 use BB\Repo\PaymentRepository;
 use Illuminate\Console\Command;
 

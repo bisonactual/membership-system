@@ -2,8 +2,8 @@
 
 namespace BB\Http\Controllers;
 
-use BB\Entities\KeyFob;
-use BB\Entities\User;
+use BB\Models\KeyFob;
+use BB\Models\User;
 use BB\Http\Requests\StoreKeyFobRequest;
 
 class KeyFobController extends Controller
@@ -17,7 +17,12 @@ class KeyFobController extends Controller
     {
         $this->authorize('view', [KeyFob::class, $user]);
 
-        return \View::make('keyfobs.index')->with('user', $user);
+        return \Inertia\Inertia::render('KeyFobs/Index', [
+            'user' => array_merge($user->toArray(), [
+                'key_fobs' => $user->keyFobs()->get(),
+                'is_admin' => $user->isAdmin(),
+            ]),
+        ]);
     }
 
 

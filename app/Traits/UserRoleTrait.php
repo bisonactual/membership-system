@@ -8,7 +8,7 @@ trait UserRoleTrait
      */
     public function roles()
     {
-        return $this->belongsToMany('\BB\Entities\Role')->withTimestamps();
+        return $this->belongsToMany('\BB\Models\Role')->withTimestamps();
     }
 
     /**

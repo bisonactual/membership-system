@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(BB\Entities\StorageBox::class, function (Faker $faker) {
+$factory->define(BB\Models\StorageBox::class, function (Faker $faker) {
     return [
         'user_id' => 0, // unclaimed
         'active' => true,

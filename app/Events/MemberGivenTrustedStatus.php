@@ -2,7 +2,7 @@
 
 namespace BB\Events;
 
-use BB\Entities\User;
+use BB\Models\User;
 use BB\Events\Event;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;

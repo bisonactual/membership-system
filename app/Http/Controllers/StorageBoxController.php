@@ -3,10 +3,11 @@
 namespace BB\Http\Controllers;
 
 use Auth;
-use BB\Entities\StorageBox;
+use BB\Models\StorageBox;
 use BB\Repo\StorageBoxRepository;
 use Illuminate\Http\Request;
 use BB\Repo\UserRepository;
+use Inertia\Inertia;
 
 class StorageBoxController extends Controller
 {
@@ -32,9 +33,13 @@ class StorageBoxController extends Controller
         $storageBoxes = $this->storageBoxRepository->getAll();
         $memberBoxes = $this->storageBoxRepository->getMemberBoxes(Auth::user()->id);
 
-        return view('storage_boxes.index', [
+        return Inertia::render('StorageBoxes/Index', [
             'storageBoxes' => $storageBoxes,
             'memberBoxes' => $memberBoxes,
+            'can' => [
+                'create' => Auth::user()->can('create', StorageBox::class),
+                'viewOld' => Auth::user()->can('canViewOld', StorageBox::class),
+            ],
         ]);
     }
 
@@ -81,7 +86,7 @@ class StorageBoxController extends Controller
         // todo: swap with some library rather than calling out to an external service
         $QRcodeURL = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data={$thisURL}&color=00a";
 
-        return view('storage_boxes.show', [
+        return Inertia::render('StorageBoxes/Show', [
             'box' => $storageBox,
             'memberList' => $memberList,
             'QRcodeURL' => $QRcodeURL,

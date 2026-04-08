@@ -2,7 +2,7 @@
 
 namespace BB\Listeners\Notifications\Inductions;
 
-use BB\Entities\Induction;
+use BB\Models\Induction;
 use BB\Events\Inductions\InductionRequestedEvent;
 use BB\Notifications\Inductions\Inductees\InductionRequestedNotification as InducteesInductionRequestedNotification;
 use BB\Notifications\Inductions\Trainers\InductionRequestedNotification as TrainersInductionRequestedNotification;

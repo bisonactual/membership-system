@@ -2,10 +2,10 @@
 
 namespace BB\Http\Controllers;
 
-use BB\Entities\User;
-use BB\Entities\Equipment;
-use BB\Entities\Induction;
-use BB\Entities\Course;
+use BB\Models\User;
+use BB\Models\Equipment;
+use BB\Models\Induction;
+use BB\Models\Course;
 use BB\Notifications\Inductions\Inductees\InductionCompletedNotification;
 use BB\Notifications\Inductions\Inductees\InductionMarkedAsTrainerNotification;
 use BB\Notifications\Inductions\Inductees\InductionRequestedNotification as InducteeInductionRequestedNotification;

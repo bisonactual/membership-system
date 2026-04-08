@@ -225,10 +225,10 @@ return [
         'URL'                   => Illuminate\Support\Facades\URL::class,
         'Validator'             => Illuminate\Support\Facades\Validator::class,
         'View'                  => Illuminate\Support\Facades\View::class,
-        'FlashNotification'     => BB\FlashNotification\FlashNotificationFacade::class,
+        'FlashNotification'     => BB\Services\FlashNotification\FlashNotificationFacade::class,
         'Notification'          => Illuminate\Support\Facades\Notification::class,
         'Image'                 => Intervention\Image\Facades\Image::class,
-        'MembershipPayments'    => BB\Helpers\MembershipPayments::class,
+        'MembershipPayments'    => BB\Services\MembershipPayments::class,
         'Sentry'                => Sentry\Laravel\Facade::class,
 
     ],

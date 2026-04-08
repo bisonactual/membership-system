@@ -48,8 +48,7 @@ class NotificationEmailController extends Controller
         }
 
         $recipients = ['all' => 'All Members', 'laser_induction_members' => 'Laser Induction Members'];
-        return \View::make('notification_email.create')
-            ->with('recipients', $recipients);
+        return \Inertia\Inertia::render('NotificationEmail/Create', ['recipients' => $recipients]);
     }
 
     public function tool($tool_id, $status)
@@ -90,10 +89,11 @@ class NotificationEmailController extends Controller
             return \Redirect::route('equipment.show', $equipment->slug);
         }
 
-        return \View::make('notification_email.tool')
-            ->with("equipment", $equipment)
-            ->with("statuses", $statuses)
-            ->with("status", $status);
+        return \Inertia\Inertia::render('NotificationEmail/Tool', [
+            'equipment' => $equipment,
+            'statuses' => $statuses,
+            'status' => $status,
+        ]);
     }
 
     public function store(StoreNotificationEmailRequest $request)

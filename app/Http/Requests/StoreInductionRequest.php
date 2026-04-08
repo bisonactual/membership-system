@@ -2,8 +2,8 @@
 
 namespace BB\Http\Requests;
 
-use BB\Entities\Induction;
-use BB\Entities\User;
+use BB\Models\Induction;
+use BB\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreInductionRequest extends FormRequest
@@ -35,7 +35,7 @@ class StoreInductionRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => ['exists:BB\Entities\User,id'],
+            'user_id' => ['exists:BB\Models\User,id'],
         ];
     }
 

@@ -2,7 +2,7 @@
 
 namespace BB\Events;
 
-use BB\Entities\Payment;
+use BB\Models\Payment;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 

@@ -3,7 +3,7 @@
 namespace BB\Http\Controllers;
 
 use Auth;
-use BB\Entities\StorageBox;
+use BB\Models\StorageBox;
 use Illuminate\Http\Request;
 
 class StorageBoxClaimController extends Controller

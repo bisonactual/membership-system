@@ -10,8 +10,14 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
+const pages = import.meta.glob('./Pages/**/*.tsx')
+
 createInertiaApp({
-  resolve: (name) => import(`./Pages/${name}`),
+  resolve: (name) => {
+    const page = pages[`./Pages/${name}.tsx`]
+    if (!page) throw new Error(`Page not found: ${name}`)
+    return page()
+  },
   setup({ el, App, props }) {
     createRoot(el).render(
       <StrictMode>

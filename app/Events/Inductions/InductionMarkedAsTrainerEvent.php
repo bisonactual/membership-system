@@ -2,7 +2,7 @@
 
 namespace BB\Events\Inductions;
 
-use BB\Entities\Induction;
+use BB\Models\Induction;
 use BB\Events\Event;
 use Illuminate\Queue\SerializesModels;
 

@@ -2,7 +2,7 @@
 
 namespace BB\Providers;
 
-use BB\Entities\User;
+use BB\Models\User;
 use BB\Observer\UserAuditObserver;
 use BB\Observer\UserObserver;
 use Illuminate\Support\ServiceProvider;

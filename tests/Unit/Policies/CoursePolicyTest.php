@@ -2,13 +2,13 @@
 
 namespace Tests\Unit\Policies;
 
-use BB\Entities\Course;
-use BB\Entities\Equipment;
-use BB\Entities\EquipmentArea;
-use BB\Entities\MaintainerGroup;
-use BB\Entities\Role;
-use BB\Entities\Settings;
-use BB\Entities\User;
+use BB\Models\Course;
+use BB\Models\Equipment;
+use BB\Models\EquipmentArea;
+use BB\Models\MaintainerGroup;
+use BB\Models\Role;
+use BB\Models\Settings;
+use BB\Models\User;
 use BB\Policies\CoursePolicy;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;

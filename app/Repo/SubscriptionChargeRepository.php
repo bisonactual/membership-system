@@ -1,8 +1,8 @@
 <?php namespace BB\Repo;
 
-use BB\Entities\SubscriptionCharge;
+use BB\Models\SubscriptionCharge;
 use BB\Events\SubscriptionChargePaid;
-use BB\Helpers\GoCardlessHelper;
+use BB\Services\GoCardlessHelper;
 use Carbon\Carbon;
 use Exception;
 use GoCardlessPro\Core\Exception\InvalidStateException;

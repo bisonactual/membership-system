@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Jobs;
 
-use BB\Entities\Payment;
-use BB\Entities\User;
+use BB\Models\Payment;
+use BB\Models\User;
 use BB\Jobs\RecalculateBalance;
 use Tests\TestCase;
 

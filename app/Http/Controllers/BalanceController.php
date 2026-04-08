@@ -1,6 +1,6 @@
 <?php namespace BB\Http\Controllers;
 
-use BB\Entities\User;
+use BB\Models\User;
 use BB\Exceptions\AuthenticationException;
 use BB\Exceptions\ValidationException;
 use Illuminate\Http\Request;
@@ -35,13 +35,12 @@ class BalanceController extends Controller
 
         $memberList = $this->userRepository->getAllAsDropdown();
 
-        return \View::make('account.bbcredit.index')
-            ->with('user', $user)
-            ->with('confetti', \Request::get('confetti'))
-            ->with('payments', $payments)
-            ->with('userBalance', $userBalance)
-            ->with('userBalanceSign', $userBalanceSign)
-            ->with('rawBalance', number_format($user->cash_balance / 100, 2))
-            ->with('memberList', $memberList);
+        return \Inertia\Inertia::render('Account/Balance', [
+            'user' => $user,
+            'confetti' => \Request::get('confetti'),
+            'payments' => $payments,
+            'userBalance' => $userBalance,
+            'userBalanceSign' => $userBalanceSign,
+        ]);
     }
 } 

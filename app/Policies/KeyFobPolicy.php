@@ -2,8 +2,8 @@
 
 namespace BB\Policies;
 
-use BB\Entities\User;
-use BB\Entities\KeyFob;
+use BB\Models\User;
+use BB\Models\KeyFob;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class KeyFobPolicy
@@ -13,8 +13,8 @@ class KeyFobPolicy
     /**
      * Determine whether the user can view the keyFob.
      *
-     * @param  \BB\Entities\User  $user
-     * @param  \BB\Entities\KeyFob  $keyFob
+     * @param  \BB\Models\User  $user
+     * @param  \BB\Models\KeyFob  $keyFob
      * @return mixed
      */
     public function view(User $currentUser, User $userBeingViewed)
@@ -25,7 +25,7 @@ class KeyFobPolicy
     /**
      * Determine whether the user can create keyFob.
      *
-     * @param  \BB\Entities\User  $user
+     * @param  \BB\Models\User  $user
      * @return mixed
      */
     public function create(User $currentUser, User $userBeingViewed)
@@ -36,8 +36,8 @@ class KeyFobPolicy
     /**
      * Determine whether the user can delete the keyFob.
      *
-     * @param  \BB\Entities\User  $user
-     * @param  \BB\Entities\KeyFob  $keyFob
+     * @param  \BB\Models\User  $user
+     * @param  \BB\Models\KeyFob  $keyFob
      * @return mixed
      */
     public function delete(User $currentUser, KeyFob $fob)

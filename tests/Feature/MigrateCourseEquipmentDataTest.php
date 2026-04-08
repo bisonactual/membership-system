@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use BB\Entities\Course;
-use BB\Entities\Equipment;
+use BB\Models\Course;
+use BB\Models\Equipment;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;

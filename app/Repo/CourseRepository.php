@@ -2,8 +2,8 @@
 
 namespace BB\Repo;
 
-use BB\Entities\Course;
-use BB\Entities\User;
+use BB\Models\Course;
+use BB\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 
 class CourseRepository extends DBRepository

@@ -2,7 +2,7 @@
 
 namespace BB\Http\Requests\Equipment;
 
-use BB\Entities\Equipment;
+use BB\Models\Equipment;
 use Illuminate\Validation\Rule;
 
 class UpdateEquipmentRequest extends StoreEquipmentRequest

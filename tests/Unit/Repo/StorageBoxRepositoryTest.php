@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Repo;
 
-use BB\Entities\StorageBox;
+use BB\Models\StorageBox;
 use BB\Repo\StorageBoxRepository;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;

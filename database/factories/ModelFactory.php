@@ -17,7 +17,7 @@ use Illuminate\Support\Str;
 
 /** @var Factory $factory */
 
-$factory->define('BB\Entities\User', function (Generator $faker) {
+$factory->define('BB\Models\User', function (Generator $faker) {
     return [
         'given_name'          => $faker->firstName,
         'display_name'        => $faker->firstName,
@@ -37,12 +37,12 @@ $factory->define('BB\Entities\User', function (Generator $faker) {
     ];
 });
 
-$factory->afterCreatingState(\BB\Entities\User::class, 'admin',  function (\BB\Entities\User $user, Generator $faker) {
-    $admin = \BB\Entities\Role::where('name', 'admin')->first();
+$factory->afterCreatingState(\BB\Models\User::class, 'admin',  function (\BB\Models\User $user, Generator $faker) {
+    $admin = \BB\Models\Role::where('name', 'admin')->first();
     $user->assignRole($admin);   
 });
 
-$factory->define('BB\Entities\ProfileData', function (Generator $faker) {
+$factory->define('BB\Models\ProfileData', function (Generator $faker) {
     return [
         'user_id'               => null,
         'profile_photo'         => false,
@@ -53,7 +53,7 @@ $factory->define('BB\Entities\ProfileData', function (Generator $faker) {
     ];
 });
 
-$factory->define('BB\Entities\Role', function (Generator $faker) {
+$factory->define('BB\Models\Role', function (Generator $faker) {
     return [
         'name'        => $faker->word,
         'title'       => $faker->word,
@@ -61,7 +61,7 @@ $factory->define('BB\Entities\Role', function (Generator $faker) {
     ];
 });
 
-$factory->define('BB\Entities\KeyFob', function (Generator $faker) {
+$factory->define('BB\Models\KeyFob', function (Generator $faker) {
     return [
         'user_id' => 0,
         'key_id'  => str_random(12),
@@ -70,10 +70,10 @@ $factory->define('BB\Entities\KeyFob', function (Generator $faker) {
     ];
 });
 
-$factory->define('BB\Entities\SubscriptionCharge', function (Generator $faker) {
+$factory->define('BB\Models\SubscriptionCharge', function (Generator $faker) {
     return [
         'user_id' => function () {
-            return factory(\BB\Entities\User::class)->create()->id;
+            return factory(\BB\Models\User::class)->create()->id;
         },
         'charge_date' => $faker->dateTimeBetween('-1 month', 'now'),
         'payment_date' => $faker->optional(0.7)->dateTimeBetween('-1 month', 'now'),

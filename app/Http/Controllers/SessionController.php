@@ -5,15 +5,10 @@ namespace BB\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Inertia\Inertia;
 
 class SessionController extends Controller
 {
-
-    function __construct()
-    {
-        \View::share('body_class', 'register_login');
-    }
-
 
     /**
      * Show the form for creating a new resource.
@@ -25,8 +20,9 @@ class SessionController extends Controller
         if (!Auth::guest()) {
             return redirect()->to('account/' . \Auth::id());
         }
-        return \View::make('session.create')
-            ->with('sso', false);
+        return Inertia::render('Auth/Login', [
+            'sso' => false,
+        ]);
     }
 
 
@@ -64,8 +60,7 @@ class SessionController extends Controller
         $input = \Request::only('sso', 'sig');
 
         if (empty($input['sso']) || empty($input['sig'])) {
-            return \View::make('session.error')
-                ->with('code', '0');
+            return Inertia::render('Auth/SsoError', ['code' => '0']);
         }
 
         // Decode SSO object from discourse and convert URL string to variables
@@ -73,8 +68,7 @@ class SessionController extends Controller
 
 
         if (empty($decoded['nonce']) || empty($decoded['return_sso_url'])) {
-            return \View::make('session.error')
-                ->with('code', '3');
+            return Inertia::render('Auth/SsoError', ['code' => '3']);
         }
 
         $nonce = $decoded['nonce'];
@@ -87,11 +81,10 @@ class SessionController extends Controller
          */
         $calculatedHash = hash_hmac('sha256', $input['sso'], config('discourse.secret'), false);
 
-        if ($calculatedHash != $input['sig']) {
+        if (!hash_equals($calculatedHash, $input['sig'])) {
             Log::error("HMAC: $calculatedHash  !!!!Provided: " . $input['sig']);
 
-            return \View::make('session.error')
-                ->with('code', '1');
+            return Inertia::render('Auth/SsoError', ['code' => '1']);
         }
 
 
@@ -100,8 +93,7 @@ class SessionController extends Controller
             $user = Auth::user();
 
             if (!$user->email_verified) {
-                return \View::make('session.error')
-                    ->with('code', '2');
+                return Inertia::render('Auth/SsoError', ['code' => '2']);
             }
 
             $name = $user->suppress_real_name ? $user->name : ($user->given_name . " " . $user->family_name);
@@ -114,16 +106,18 @@ class SessionController extends Controller
                 'username'      => $user->name
             ]));
 
-            return \View::make('session.confirm')
-                ->with('sso', $userData)
-                ->with('sig', hash_hmac('sha256', $userData, config('discourse.secret'), false))
-                ->with('user', $user)
-                ->with('return_sso_url', $return_sso_url);
+            return Inertia::render('Auth/SsoConfirm', [
+                'sso' => $userData,
+                'sig' => hash_hmac('sha256', $userData, config('discourse.secret'), false),
+                'user' => $user,
+                'return_sso_url' => $return_sso_url,
+            ]);
         }
 
-        return \View::make('session.create')
-            ->with('sso', $input['sso'])
-            ->with('sig', $input['sig']);
+        return Inertia::render('Auth/Login', [
+            'sso' => $input['sso'],
+            'sig' => $input['sig'],
+        ]);
     }
 
     /**

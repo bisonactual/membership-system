@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use BB\Entities\EquipmentArea;
+use BB\Models\EquipmentArea;
 use Faker\Generator as Faker;
 
 $factory->define(EquipmentArea::class, function (Faker $faker) {

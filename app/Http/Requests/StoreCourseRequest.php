@@ -2,7 +2,7 @@
 
 namespace BB\Http\Requests;
 
-use BB\Entities\Course;
+use BB\Models\Course;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 

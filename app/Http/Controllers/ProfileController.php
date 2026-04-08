@@ -1,6 +1,6 @@
 <?php namespace BB\Http\Controllers;
 
-use BB\Entities\User;
+use BB\Models\User;
 use Illuminate\Support\Facades\Log;
 
 class ProfileController extends Controller
@@ -19,20 +19,15 @@ class ProfileController extends Controller
      */
     private $profileSkillsRepository;
     /**
-     * @var \BB\Helpers\UserImage
+     * @var \BB\Services\UserImage
      */
     private $userImage;
 
-    /**
-     * @param \BB\Repo\ProfileDataRepository   $profileRepo
-     * @param \BB\Validators\ProfileValidator  $profileValidator
-     * @param \BB\Repo\ProfileSkillsRepository $profileSkillsRepository
-     */
     function __construct(
         \BB\Repo\ProfileDataRepository $profileRepo,
         \BB\Validators\ProfileValidator $profileValidator,
         \BB\Repo\ProfileSkillsRepository $profileSkillsRepository,
-        \BB\Helpers\UserImage $userImage)
+        \BB\Services\UserImage $userImage)
     {
         $this->profileRepo = $profileRepo;
         $this->profileValidator = $profileValidator;
@@ -47,11 +42,12 @@ class ProfileController extends Controller
 
         $profileData = $this->profileRepo->getUserProfile($userId);
         $skills = $this->profileSkillsRepository->getSelectArray();
-        return \View::make('account.profile.edit')
-            ->with('profileData', $profileData)
-            ->with('userId', $userId)
-            ->with('skills', $skills)
-            ->with('user', $user);
+        return \Inertia\Inertia::render('Account/ProfileEdit', [
+            'profileData' => $profileData,
+            'userId' => $userId,
+            'skills' => $skills,
+            'user' => $user,
+        ]);
     }
 
     public function update($userId)

@@ -2,8 +2,8 @@
 
 namespace BB\Policies;
 
-use BB\Entities\User;
-use BB\Entities\Course;
+use BB\Models\User;
+use BB\Models\Course;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class CoursePolicy
@@ -23,7 +23,7 @@ class CoursePolicy
     /**
      * Determine whether the user can view any induction courses.
      *
-     * @param  \BB\Entities\User  $user
+     * @param  \BB\Models\User  $user
      * @return mixed
      */
     public function viewAny(User $user)
@@ -35,8 +35,8 @@ class CoursePolicy
     /**
      * Determine whether the user can view the induction course.
      *
-     * @param  \BB\Entities\User  $user
-     * @param  \BB\Entities\Course  $course
+     * @param  \BB\Models\User  $user
+     * @param  \BB\Models\Course  $course
      * @return mixed
      */
     public function view(User $user, Course $course)
@@ -47,7 +47,7 @@ class CoursePolicy
     /**
      * Determine whether the user can create induction courses.
      *
-     * @param  \BB\Entities\User  $user
+     * @param  \BB\Models\User  $user
      * @return mixed
      */
     public function create(User $user)
@@ -59,8 +59,8 @@ class CoursePolicy
     /**
      * Determine whether the user can update the induction course.
      *
-     * @param  \BB\Entities\User  $user
-     * @param  \BB\Entities\Course  $course
+     * @param  \BB\Models\User  $user
+     * @param  \BB\Models\Course  $course
      * @return mixed
      */
     public function update(User $user, Course $course)
@@ -71,8 +71,8 @@ class CoursePolicy
     /**
      * Determine whether the user can delete the induction course.
      *
-     * @param  \BB\Entities\User  $user
-     * @param  \BB\Entities\Course  $course
+     * @param  \BB\Models\User  $user
+     * @param  \BB\Models\Course  $course
      * @return mixed
      */
     public function delete(User $user, Course $course)
@@ -83,8 +83,8 @@ class CoursePolicy
     /**
      * Determine whether the user can restore the induction course.
      *
-     * @param  \BB\Entities\User  $user
-     * @param  \BB\Entities\Course  $course
+     * @param  \BB\Models\User  $user
+     * @param  \BB\Models\Course  $course
      * @return mixed
      */
     public function restore(User $user, Course $course)
@@ -95,8 +95,8 @@ class CoursePolicy
     /**
      * Determine whether the user can permanently delete the induction course.
      *
-     * @param  \BB\Entities\User  $user
-     * @param  \BB\Entities\Course  $course
+     * @param  \BB\Models\User  $user
+     * @param  \BB\Models\Course  $course
      * @return mixed
      */
     public function forceDelete(User $user, Course $course)

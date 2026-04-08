@@ -2,7 +2,7 @@
 
 namespace BB\Http\Controllers;
 
-use BB\Entities\Notification;
+use BB\Models\Notification;
 use Illuminate\Contracts\Validation\UnauthorizedException;
 use Illuminate\Http\Request;
 use Auth;
@@ -22,7 +22,7 @@ class NotificationController extends Controller
         if ($request->wantsJson()) {
             return Notification::where('user_id', Auth::id())->get();
         }
-        return view('notifications.index');
+        return \Inertia\Inertia::render('Notifications/Index');
     }
 
     /**

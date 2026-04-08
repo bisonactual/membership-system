@@ -1,6 +1,6 @@
 <?php
 
-use BB\Entities\Settings;
+use BB\Models\Settings;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 

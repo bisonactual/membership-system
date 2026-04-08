@@ -2,7 +2,7 @@
 
 namespace Tests\Integration;
 
-use BB\Entities\User;
+use BB\Models\User;
 use BB\Process\CheckPaymentWarnings;
 use BB\Process\CheckSuspendedUsers;
 use BB\Process\CheckLeavingUsers;
@@ -10,7 +10,7 @@ use BB\Process\RecoverMemberships;
 use BB\Services\MemberSubscriptionCharges;
 use BB\Repo\UserRepository;
 use BB\Repo\SubscriptionChargeRepository;
-use BB\Handlers\SubChargeEventHandler;
+use BB\Listeners\SubChargeEventHandler;
 use Carbon\Carbon;
 use Tests\TestCase;
 

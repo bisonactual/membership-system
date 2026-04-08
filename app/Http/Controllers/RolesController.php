@@ -1,6 +1,6 @@
 <?php namespace BB\Http\Controllers;
 
-use BB\Entities\Role;
+use BB\Models\Role;
 use BB\Validators\RoleValidator;
 
 class RolesController extends Controller
@@ -30,7 +30,7 @@ class RolesController extends Controller
     {
         $roles = Role::with('Users')->get();
         $memberList = $this->userRepository->getAllAsDropdown();
-        return \View::make('roles.index')->with('roles', $roles)->with('memberList', $memberList);
+        return \Inertia\Inertia::render('Roles/Index', ['roles' => $roles, 'memberList' => $memberList]);
     }
 
 

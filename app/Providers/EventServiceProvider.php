@@ -23,25 +23,25 @@ class EventServiceProvider extends ServiceProvider
 	 */
 	protected $listen = [
 		'payment.create' => [
-			'BB\Handlers\PaymentEventHandler@onCreate',
+			'BB\Listeners\PaymentEventHandler@onCreate',
 		],
 		'payment.delete' => [
-			'BB\Handlers\PaymentEventHandler@onDelete',
+			'BB\Listeners\PaymentEventHandler@onDelete',
 		],
 		'payment.cancelled' => [
-			'BB\Handlers\PaymentEventHandler@onCancel',
+			'BB\Listeners\PaymentEventHandler@onCancel',
 		],
 		'payment.paid' => [
-			'BB\Handlers\PaymentEventHandler@onPaid',
+			'BB\Listeners\PaymentEventHandler@onPaid',
 		],
 		'BB\Events\SubscriptionChargePaid' => [
 			ExtendMembership::class
 		],
 		'sub-charge.processing' => [
-			'BB\Handlers\SubChargeEventHandler@onProcessing',
+			'BB\Listeners\SubChargeEventHandler@onProcessing',
 		],
 		'sub-charge.payment-failed' => [
-			'BB\Handlers\SubChargeEventHandler@onPaymentFailure',
+			'BB\Listeners\SubChargeEventHandler@onPaymentFailure',
 		],
 		'BB\Events\MemberPhotoWasDeclined' => [
 			EmailMemberAboutDeclinedPhoto::class,

@@ -2,10 +2,10 @@
 
 namespace Tests\Unit\Console\Commands;
 
-use BB\Entities\User;
-use BB\Entities\SubscriptionCharge;
-use BB\Entities\Payment;
-use BB\Helpers\GoCardlessHelper;
+use BB\Models\User;
+use BB\Models\SubscriptionCharge;
+use BB\Models\Payment;
+use BB\Services\GoCardlessHelper;
 use Carbon\Carbon;
 use Tests\TestCase;
 
@@ -17,8 +17,8 @@ class BillMembersTest extends TestCase
     {
         parent::setUp();
 
-        $telegramHelper = $this->createMock(\BB\Helpers\TelegramHelper::class);
-        $this->app->instance(\BB\Helpers\TelegramHelper::class, $telegramHelper);
+        $telegramHelper = $this->createMock(\BB\Services\TelegramHelper::class);
+        $this->app->instance(\BB\Services\TelegramHelper::class, $telegramHelper);
 
         $this->mockGoCardless = $this->createMock(GoCardlessHelper::class);
         $this->app->instance(GoCardlessHelper::class, $this->mockGoCardless);

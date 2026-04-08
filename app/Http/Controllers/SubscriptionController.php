@@ -1,8 +1,8 @@
 <?php namespace BB\Http\Controllers;
 
 use Carbon\Carbon;
-use BB\Entities\User;
-use BB\Helpers\GoCardlessHelper;
+use BB\Models\User;
+use BB\Services\GoCardlessHelper;
 use BB\Repo\SubscriptionChargeRepository;
 
 class SubscriptionController extends Controller
@@ -161,6 +161,6 @@ class SubscriptionController extends Controller
     public function listCharges()
     {
         $charges = $this->subscriptionChargeRepository->getChargesPaginated();
-        return \View::make('payments.sub-charges')->with('charges', $charges);
+        return \Inertia\Inertia::render('Payments/SubCharges', ['charges' => $charges]);
     }
 }

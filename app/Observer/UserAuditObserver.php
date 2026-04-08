@@ -1,6 +1,6 @@
 <?php namespace BB\Observer;
 
-use BB\Entities\AuditLog;
+use BB\Models\AuditLog;
 
 class UserAuditObserver
 {

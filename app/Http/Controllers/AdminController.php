@@ -5,7 +5,7 @@ class AdminController extends Controller
 
     public function index()
     {
-        return \View::make('admin');
+        return \Inertia\Inertia::render('Admin/Index');
     }
 
 

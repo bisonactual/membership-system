@@ -12,13 +12,13 @@ class CleanUpUsersSubscriptionId extends Migration
      */
     public function up()
     {
-        \BB\Entities\User::where('payment_method', 'gocardless-variable')->get()->each(function (\BB\Entities\User $user) {
+        \BB\Models\User::where('payment_method', 'gocardless-variable')->get()->each(function (\BB\Models\User $user) {
             if ($user->subscription_id == $user->mandate_id) {
                 $user->subscription_id = '';
                 $user->save();
             }
         });
-        \BB\Entities\User::where('secondary_payment_method', 'gocardless-variable')->get()->each(function (\BB\Entities\User $user) {
+        \BB\Models\User::where('secondary_payment_method', 'gocardless-variable')->get()->each(function (\BB\Models\User $user) {
             if ($user->subscription_id == $user->mandate_id) {
                 $user->subscription_id = '';
                 $user->save();

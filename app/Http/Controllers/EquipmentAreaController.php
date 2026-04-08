@@ -2,11 +2,12 @@
 
 namespace BB\Http\Controllers;
 
-use BB\Entities\EquipmentArea;
+use BB\Models\EquipmentArea;
 use BB\Http\Requests\StoreEquipmentAreaRequest;
 use BB\Http\Requests\UpdateEquipmentAreaRequest;
 use BB\Repo\UserRepository;
 use FlashNotification;
+use Inertia\Inertia;
 
 class EquipmentAreaController extends Controller
 {
@@ -27,7 +28,7 @@ class EquipmentAreaController extends Controller
     public function index()
     {
         $areas = EquipmentArea::with('areaCoordinators')->orderBy('name', 'ASC')->get();
-        return view('equipment_areas.index', compact('areas'));
+        return Inertia::render('EquipmentAreas/Index', compact('areas'));
     }
 
     /**
@@ -38,7 +39,7 @@ class EquipmentAreaController extends Controller
     public function create()
     {
         $memberList = $this->userRepository->getAllAsDropdown();
-        return view('equipment_areas.create', compact('memberList'));
+        return Inertia::render('EquipmentAreas/Create', compact('memberList'));
     }
 
     /**
@@ -63,7 +64,7 @@ class EquipmentAreaController extends Controller
      */
     public function show(EquipmentArea $equipmentArea)
     {
-        return view('equipment_areas.show', compact('equipmentArea'));
+        return Inertia::render('EquipmentAreas/Show', compact('equipmentArea'));
     }
 
     /**
@@ -75,7 +76,7 @@ class EquipmentAreaController extends Controller
     public function edit(EquipmentArea $equipmentArea)
     {
         $memberList = $this->userRepository->getAllAsDropdown();
-        return view('equipment_areas.edit', compact('equipmentArea', 'memberList'));
+        return Inertia::render('EquipmentAreas/Edit', compact('equipmentArea', 'memberList'));
     }
 
     /**

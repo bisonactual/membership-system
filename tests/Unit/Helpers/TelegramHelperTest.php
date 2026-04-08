@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Helpers;
 
-use BB\Helpers\TelegramHelper;
+use BB\Services\TelegramHelper;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;

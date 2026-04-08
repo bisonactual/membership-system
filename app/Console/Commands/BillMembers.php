@@ -2,7 +2,7 @@
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
-use BB\Helpers\TelegramHelper;
+use BB\Services\TelegramHelper;
 
 class BillMembers extends Command
 {

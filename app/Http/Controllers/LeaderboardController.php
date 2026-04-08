@@ -25,6 +25,6 @@ class LeaderboardController extends Controller
         $lastYear = $this->inductionRepository->getLeaderboard(InductionRepository::LEADERBOARD_LAST_YEAR);
         $allTime = $this->inductionRepository->getLeaderboard(InductionRepository::LEADERBOARD_ALL_TIME);
         
-        return view('leaderboard.index', compact('threeMonths', 'thisYear', 'lastYear', 'allTime'));
+        return \Inertia\Inertia::render('Leaderboard/Index', compact('threeMonths', 'thisYear', 'lastYear', 'allTime'));
     }
 }

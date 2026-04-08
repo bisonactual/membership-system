@@ -2,7 +2,7 @@
 
 namespace BB\Rules;
 
-use BB\Entities\Settings;
+use BB\Models\Settings;
 use Illuminate\Contracts\Validation\Rule;
 
 class GeneralInductionCodeRule implements Rule

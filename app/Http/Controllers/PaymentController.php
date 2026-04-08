@@ -2,12 +2,13 @@
 
 namespace BB\Http\Controllers;
 
-use BB\Entities\Payment;
-use BB\Entities\User;
+use BB\Models\Payment;
+use BB\Models\User;
 use BB\Exceptions\NotImplementedException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Inertia\Inertia;
 
 class PaymentController extends Controller
 {
@@ -16,7 +17,7 @@ class PaymentController extends Controller
      */
 
     /**
-     * @var \BB\Helpers\GoCardlessHelper
+     * @var \BB\Services\GoCardlessHelper
      */
     private $goCardless;
 
@@ -31,7 +32,7 @@ class PaymentController extends Controller
     private $userRepository;
 
     function __construct(
-        \BB\Helpers\GoCardlessHelper $goCardless,
+        \BB\Services\GoCardlessHelper $goCardless,
         \BB\Repo\PaymentRepository $paymentRepository,
         \BB\Repo\UserRepository $userRepository
     ) {
@@ -81,8 +82,13 @@ class PaymentController extends Controller
 
         $reasonList = Payment::getPaymentReasons();
 
-        return \View::make('payments.index')->with('payments', $payments)->with('dateRange', $dateRange)
-            ->with('memberList', $memberList)->with('reasonList', $reasonList)->with('paymentTotal', $paymentTotal);
+        return Inertia::render('Payments/Index', [
+            'payments' => $payments,
+            'dateRange' => $dateRange,
+            'memberList' => $memberList,
+            'reasonList' => $reasonList,
+            'paymentTotal' => $paymentTotal,
+        ]);
     }
 
 
@@ -279,7 +285,7 @@ class PaymentController extends Controller
     {
         $possibleDuplicates = $this->paymentRepository->getPossibleDuplicates();
 
-        return view('payments.possible-duplicates', [
+        return \Inertia\Inertia::render('Payments/PossibleDuplicates', [
             'possibleDuplicates' => $possibleDuplicates
         ]);
     }

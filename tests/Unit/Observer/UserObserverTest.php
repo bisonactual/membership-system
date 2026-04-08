@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Observer;
 
-use BB\Entities\User;
+use BB\Models\User;
 use BB\Events\MemberBecameActive;
 use BB\Events\MemberBecameInactive;
 use BB\Events\MemberDiscourseParamsChanged;

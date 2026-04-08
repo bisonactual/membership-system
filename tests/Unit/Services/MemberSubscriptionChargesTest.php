@@ -2,10 +2,10 @@
 
 namespace Tests\Unit\Services;
 
-use BB\Entities\User;
-use BB\Entities\SubscriptionCharge;
-use BB\Entities\Payment;
-use BB\Helpers\GoCardlessHelper;
+use BB\Models\User;
+use BB\Models\SubscriptionCharge;
+use BB\Models\Payment;
+use BB\Services\GoCardlessHelper;
 use BB\Services\MemberSubscriptionCharges;
 use BB\Repo\PaymentRepository;
 use BB\Repo\SubscriptionChargeRepository;
@@ -32,8 +32,8 @@ class MemberSubscriptionChargesTest extends TestCase
         
         // Mock GoCardless and Telegram to avoid external calls
         $this->mockGoCardless = $this->createMock(GoCardlessHelper::class);
-        $mockTelegramHelper = $this->createMock(\BB\Helpers\TelegramHelper::class);
-        $this->app->instance(\BB\Helpers\TelegramHelper::class, $mockTelegramHelper);
+        $mockTelegramHelper = $this->createMock(\BB\Services\TelegramHelper::class);
+        $this->app->instance(\BB\Services\TelegramHelper::class, $mockTelegramHelper);
         
         $this->service = new MemberSubscriptionCharges(
             $this->userRepository,

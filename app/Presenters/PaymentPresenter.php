@@ -1,6 +1,6 @@
 <?php namespace BB\Presenters;
 
-use BB\Entities\Payment;
+use BB\Models\Payment;
 use Laracasts\Presenter\Presenter;
 
 class PaymentPresenter extends Presenter

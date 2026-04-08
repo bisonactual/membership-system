@@ -2,7 +2,7 @@
 
 namespace BB\Http\Requests;
 
-use BB\Entities\MaintainerGroup;
+use BB\Models\MaintainerGroup;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreMaintainerGroupRequest extends FormRequest

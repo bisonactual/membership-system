@@ -2,14 +2,14 @@
 
 namespace BB\Http\Resources;
 
-use BB\Helpers\UserImage;
+use BB\Services\UserImage;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
- * @mixin \BB\Entities\Induction
- * @property \BB\Entities\User|null $user
- * @property \BB\Entities\User|null $trainerUser
- * @property \BB\Entities\Course|null $course
+ * @mixin \BB\Models\Induction
+ * @property \BB\Models\User|null $user
+ * @property \BB\Models\User|null $trainerUser
+ * @property \BB\Models\Course|null $course
  */
 class InductionResource extends JsonResource
 {

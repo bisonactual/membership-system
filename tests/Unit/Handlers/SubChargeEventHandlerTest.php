@@ -2,9 +2,9 @@
 
 namespace Tests\Unit\Handlers;
 
-use BB\Entities\User;
-use BB\Entities\Payment;
-use BB\Handlers\SubChargeEventHandler;
+use BB\Models\User;
+use BB\Models\Payment;
+use BB\Listeners\SubChargeEventHandler;
 use BB\Repo\UserRepository;
 use BB\Repo\SubscriptionChargeRepository;
 use Carbon\Carbon;

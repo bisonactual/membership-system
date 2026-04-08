@@ -2,7 +2,7 @@
 
 namespace BB\Console\Commands;
 
-use BB\Entities\User;
+use BB\Models\User;
 use BB\Jobs\DiscourseSync as DiscourseSyncJob;
 use Illuminate\Console\Command;
 

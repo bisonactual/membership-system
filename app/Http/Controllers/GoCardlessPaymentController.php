@@ -2,8 +2,8 @@
 
 namespace BB\Http\Controllers;
 
-use BB\Entities\Payment;
-use BB\Entities\User;
+use BB\Models\Payment;
+use BB\Models\User;
 use Exception;
 use GoCardlessPro\Core\Exception\InvalidStateException;
 use GoCardlessPro\Core\Exception\ValidationFailedException;
@@ -16,11 +16,11 @@ class GoCardlessPaymentController extends Controller
      */
     private $paymentRepository;
     /**
-     * @var \BB\Helpers\GoCardlessHelper
+     * @var \BB\Services\GoCardlessHelper
      */
     private $goCardless;
 
-    function __construct(\BB\Repo\PaymentRepository $paymentRepository, \BB\Helpers\GoCardlessHelper $goCardless)
+    function __construct(\BB\Repo\PaymentRepository $paymentRepository, \BB\Services\GoCardlessHelper $goCardless)
     {
         $this->paymentRepository = $paymentRepository;
 

@@ -39,6 +39,6 @@ class PaymentOverviewController extends Controller
         $laserCutterInvestment = $this->paymentRepository->getPaymentsByReference('laser-cutter')->sum('amount');
         $laserCutterMoneySpent = 0;
 
-        return \View::make('payment_overview.index')->with(compact('balancePaidIn', 'balancePaidOut', 'balanceLiability', 'storageBoxLiability', 'doorKeyLiability', 'laserCutterInvestment', 'laserCutterMoneySpent'));
+        return \Inertia\Inertia::render('Payments/Overview', compact('balancePaidIn', 'balancePaidOut', 'balanceLiability', 'storageBoxLiability', 'doorKeyLiability', 'laserCutterInvestment', 'laserCutterMoneySpent'));
     }
 }

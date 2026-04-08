@@ -5,18 +5,12 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
     plugins: [
         laravel({
-            input: [
-                'resources/assets/js/app.js',
-                'resources/js/react-app.tsx',
-                'resources/assets/less/application.less',
-            ],
+            input: ['resources/js/react-app.tsx'],
             refresh: true,
         }),
         react(),
     ],
     resolve: {
-        alias: {
-            '@': '/resources/js',
-        },
+        alias: { '@': '/resources/js' },
     },
 })

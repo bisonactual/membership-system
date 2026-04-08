@@ -2,7 +2,7 @@
 
 namespace BB\Mail;
 
-use BB\Entities\User;
+use BB\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;

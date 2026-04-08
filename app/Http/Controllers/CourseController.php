@@ -2,8 +2,8 @@
 
 namespace BB\Http\Controllers;
 
-use BB\Entities\Course;
-use BB\Entities\Equipment;
+use BB\Models\Course;
+use BB\Models\Equipment;
 use BB\Http\Requests\StoreCourseRequest;
 use BB\Http\Requests\UpdateCourseRequest;
 use BB\Http\Resources\CourseResource;
@@ -111,7 +111,7 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \BB\Entities\Course  $course
+     * @param  \BB\Models\Course  $course
      * @return \Inertia\Response
      */
     public function show(Course $course)
@@ -140,7 +140,7 @@ class CourseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \BB\Entities\Course  $course
+     * @param  \BB\Models\Course  $course
      * @return \Inertia\Response
      */
     public function edit(Course $course)
@@ -167,7 +167,7 @@ class CourseController extends Controller
      * Update the specified resource in storage.
      *
      * @param  UpdateCourseRequest  $request
-     * @param  \BB\Entities\Course  $course
+     * @param  \BB\Models\Course  $course
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateCourseRequest $request, Course $course)
@@ -199,7 +199,7 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \BB\Entities\Course  $course
+     * @param  \BB\Models\Course  $course
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Course $course)

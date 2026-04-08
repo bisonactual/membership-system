@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use BB\Entities\Course;
+use BB\Models\Course;
 
 class CourseSeeder extends Seeder
 {

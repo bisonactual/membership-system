@@ -2,7 +2,7 @@
 
 namespace BB\Http\Requests;
 
-use BB\Entities\Induction;
+use BB\Models\Induction;
 use Illuminate\Foundation\Http\FormRequest;
 
 class TrainInductionRequest extends FormRequest
@@ -25,7 +25,7 @@ class TrainInductionRequest extends FormRequest
     public function rules()
     {
         return [
-            'trainer_user_id' => ['required', 'exists:BB\Entities\User,id'],
+            'trainer_user_id' => ['required', 'exists:BB\Models\User,id'],
         ];
     }
 

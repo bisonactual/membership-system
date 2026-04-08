@@ -2,7 +2,7 @@
 
 namespace BB\Http\Controllers;
 
-use BB\Entities\User;
+use BB\Models\User;
 
 class PaymentBalancesController extends Controller
 {
@@ -22,7 +22,7 @@ class PaymentBalancesController extends Controller
         $activeUsers = User::where('active', true)->where('cash_balance', '!=', 0)->orderBy('cash_balance', 'desc')->get();
         $inactiveUsers = User::where('active', false)->where('cash_balance', '!=', 0)->orderBy('cash_balance', 'desc')->get();
 
-        return \View::make('payment_balances.index')->with([
+        return \Inertia\Inertia::render('Payments/Balances', [
             'activeUsersInCreditQty' => $activeUsersInCreditQty,
             'activeUsersInCreditSum' => $activeUsersInCreditSum,
             'activeUsersInDebtQty' => $activeUsersInDebtQty,

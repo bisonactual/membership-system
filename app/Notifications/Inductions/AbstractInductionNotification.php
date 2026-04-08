@@ -2,8 +2,8 @@
 
 namespace BB\Notifications\Inductions;
 
-use BB\Entities\Induction;
-use BB\Entities\Course;
+use BB\Models\Induction;
+use BB\Models\Course;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;

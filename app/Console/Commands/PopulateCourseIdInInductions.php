@@ -3,9 +3,9 @@
 namespace BB\Console\Commands;
 
 use Illuminate\Console\Command;
-use BB\Entities\Induction;
-use BB\Entities\Course;
-use BB\Entities\Equipment;
+use BB\Models\Induction;
+use BB\Models\Course;
+use BB\Models\Equipment;
 
 class PopulateCourseIdInInductions extends Command
 {

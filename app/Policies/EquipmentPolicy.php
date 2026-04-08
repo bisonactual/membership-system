@@ -2,8 +2,8 @@
 
 namespace BB\Policies;
 
-use BB\Entities\User;
-use BB\Entities\Equipment;
+use BB\Models\User;
+use BB\Models\Equipment;
 use BB\Repo\InductionRepository;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -31,8 +31,8 @@ class EquipmentPolicy
     /**
      * Determine whether the user can view the equipment.
      *
-     * @param  \BB\Entities\User  $user
-     * @param  \BB\Entities\Equipment  $equipment
+     * @param  \BB\Models\User  $user
+     * @param  \BB\Models\Equipment  $equipment
      * @return mixed
      */
     public function view(User $user, Equipment $equipment)
@@ -43,7 +43,7 @@ class EquipmentPolicy
     /**
      * Determine whether the user can create equipment.
      *
-     * @param  \BB\Entities\User  $user
+     * @param  \BB\Models\User  $user
      * @return mixed
      */
     public function create(User $user)
@@ -57,8 +57,8 @@ class EquipmentPolicy
     /**
      * Determine whether the user can update the equipment.
      *
-     * @param  \BB\Entities\User  $user
-     * @param  \BB\Entities\Equipment  $equipment
+     * @param  \BB\Models\User  $user
+     * @param  \BB\Models\Equipment  $equipment
      * @return mixed
      */
     public function update(User $user, Equipment $equipment)
@@ -73,8 +73,8 @@ class EquipmentPolicy
     /**
      * Determine whether the user can delete the equipment.
      *
-     * @param  \BB\Entities\User  $user
-     * @param  \BB\Entities\Equipment  $equipment
+     * @param  \BB\Models\User  $user
+     * @param  \BB\Models\Equipment  $equipment
      * @return mixed
      */
     public function delete(User $user, Equipment $equipment)

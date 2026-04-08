@@ -4,7 +4,7 @@ use BB\Events\MemberBecameActive;
 use BB\Events\MemberBecameInactive;
 use BB\Events\MemberDiscourseParamsChanged;
 use BB\Mailer\UserMailer;
-use BB\Helpers\TelegramHelper;
+use BB\Services\TelegramHelper;
 use Illuminate\Support\Facades\Log;
 
 class UserObserver

@@ -1,7 +1,8 @@
 <?php namespace BB\Http\Controllers;
 
-use BB\Helpers\StatsHelper;
+use BB\Services\StatsHelper;
 use BB\Repo\StatRepository;
+use Inertia\Inertia;
 
 class StatsController extends Controller
 {
@@ -54,8 +55,7 @@ class StatsController extends Controller
                 ]);
         }
 
-        return \View::make('stats.history')
-            ->with('historyData', $graph);
+        return Inertia::render('Stats/History', ['historyData' => $graph]);
     }
 
     /**
@@ -149,21 +149,22 @@ class StatsController extends Controller
         //Number of Users
         $numMembers = count($users);
 
-        return \View::make('stats.index')
-            ->with('user', $user)
-            ->with('expectedIncome', $expectedIncome)
-            ->with('otherIncome', $otherIncome)
-            ->with('rent', $rent)
-            ->with('electric', $electric)
-            ->with('otherOutgoings', $otherOutgoings)
-            ->with('totalIncome', $otherIncome + $expectedIncome)
-            ->with('totalOutgoings', $rent + $electric + $otherOutgoings)
-            ->with('averageMonthlyAmount', round($averageMonthlyAmount))
-            ->with('numMembers', $numMembers)
-            ->with('recommendedPayment', $recommendedPayment)
-            ->with('payingRecommendedOrAbove', $payingRecommendedOrAbove)
-            ->with('paymentMethods', $paymentMethods)
-            ->with('monthlyAmountsData', $monthlyAmountsData);
+        return Inertia::render('Stats/Index', [
+            'user' => $user,
+            'expectedIncome' => $expectedIncome,
+            'otherIncome' => $otherIncome,
+            'rent' => $rent,
+            'electric' => $electric,
+            'otherOutgoings' => $otherOutgoings,
+            'totalIncome' => $otherIncome + $expectedIncome,
+            'totalOutgoings' => $rent + $electric + $otherOutgoings,
+            'averageMonthlyAmount' => round($averageMonthlyAmount),
+            'numMembers' => $numMembers,
+            'recommendedPayment' => $recommendedPayment,
+            'payingRecommendedOrAbove' => $payingRecommendedOrAbove,
+            'paymentMethods' => $paymentMethods,
+            'monthlyAmountsData' => $monthlyAmountsData,
+        ]);
     }
 
     public function ddSwitch()
@@ -190,8 +191,7 @@ class StatsController extends Controller
             ]
         ];
 
-        return \View::make('stats.dd-switch')
-            ->with('paymentMethods', $paymentMethods);
+        return Inertia::render('Stats/DdSwitch', ['paymentMethods' => $paymentMethods]);
     }
 
 }

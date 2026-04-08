@@ -2,7 +2,7 @@
 
 namespace BB\Events;
 
-use BB\Entities\SubscriptionCharge;
+use BB\Models\SubscriptionCharge;
 use BB\Events\Event;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
