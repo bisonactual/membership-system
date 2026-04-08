@@ -1,3 +1,11 @@
+THIS FORK MAY NOT WORK FOR YOU. Be aware it's in very active development, and things are changing rapidly. 
+
+Now in the current decate - Running and tested on Laravel 12 and PHP8.3 - Current job is migration from yarn to bun because everybody should love bun as it's amazing. 
+
+for db connect issues: 
+docker compose down -v
+docker compose up -d
+
 # Hackspace Manchester Member System
 
 To manage many aspects of member's access & use of the space and its equipment, we maintain our own Hackspace Manchester Membership System. This began as a fork of [ArthurGuy/BBMembershipSystem](https://github.com/ArthurGuy/BBMembershipSystem), but has since diverged to suit the unique needs of our space & equipment.
