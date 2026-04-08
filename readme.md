@@ -1,6 +1,6 @@
 THIS FORK MAY NOT WORK FOR YOU. Be aware it's in very active development, and things are changing rapidly. 
 
-Now in the current decate - Running and tested on Laravel 12 and PHP8.3 - Current job is migration from yarn to bun because everybody should love bun as it's amazing. 
+Now in the current decade - Running and tested on Laravel 12 and PHP8.3 - Current job is migration from yarn to bun because everybody should love bun as it's amazing. 
 
 for db connect issues: 
 docker compose down -v
