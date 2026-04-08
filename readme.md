@@ -1,5 +1,9 @@
 # Hackspace Manchester Membership System
 
+in development. Feel free to run locally and feedback. Instructions below.
+
+Now in the current decade! Only the inductions system code remains.
+
 Member management system for [Hackspace Manchester](https://hacman.org.uk). Handles signups, subscriptions, equipment inductions, access control, and more.
 
 Built with Laravel 12, PHP 8.3, React 19, Inertia.js, MUI, and MySQL 8.
