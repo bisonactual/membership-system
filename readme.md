@@ -1,273 +1,137 @@
-THIS FORK MAY NOT WORK FOR YOU. Be aware it's in very active development, and things are changing rapidly. 
+# Hackspace Manchester Membership System
 
-Now in the current decade - Running and tested on Laravel 12 and PHP8.3 - Current job is migration from yarn to bun because everybody should love bun as it's amazing. 
+Member management system for [Hackspace Manchester](https://hacman.org.uk). Handles signups, subscriptions, equipment inductions, access control, and more.
 
-for db connect issues: 
-docker compose down -v
+Built with Laravel 12, PHP 8.3, React 19, Inertia.js, MUI, and MySQL 8.
+
+## Quick Start
+
+Prerequisites: [Docker](https://www.docker.com/) and [Bun](https://bun.sh/) installed.
+
+```bash
+# 1. Clone the repo
+git clone https://github.com/bisonactual/membership-system.git
+cd membership-system
+
+# 2. Copy environment file
+cp .env.example .env
+
+# 3. Start Docker containers
 docker compose up -d
 
-# Hackspace Manchester Member System
+# 4. Install PHP dependencies
+docker compose exec laravel composer install
 
-To manage many aspects of member's access & use of the space and its equipment, we maintain our own Hackspace Manchester Membership System. This began as a fork of [ArthurGuy/BBMembershipSystem](https://github.com/ArthurGuy/BBMembershipSystem), but has since diverged to suit the unique needs of our space & equipment.
+# 5. Generate app key
+docker compose exec laravel php artisan key:generate
 
-## Overview
+# 6. Wait ~30 seconds for MySQL to initialise, then run migrations
+docker compose exec laravel php artisan migrate
 
-### Features
+# 7. Install JS dependencies and build frontend
+bun install
+bun run build
 
-- Member signup form which collects full name and address, emergency contact and profile photo.
-- Direct Debit setup and payment collection through GoCardless
-- Regular monthly direct debit payment runs for each user
-- The ability for the user to edit all their details allowing for self management
-- Various user statuses to cater for active members, members who have left or been banned as well as tracking founders and honorary members
-- Handling of the induction/equipment training procedures and collection of payments.
-- Tracking of who trains who
-- Member grid to see who is a member
-- The ability for members to cancel their subscription and leave
-- Logs who has a physical key
-- Manage member storage box assignments
-- RFID door entry control and tracking
-- Member credit system for paying for various services
-- Member credit topup using direct debit payments and credit/debit card payments
-- Member role system for managing delegated duties
-- RFID access control for equipment and usage logging
-- Auto billing for equipment usage
-- Equipment/asset management
+# 8. Visit http://localhost:8080
+```
 
-### Account tiers
+## Creating a Test User
 
-There are two primary tiers of accounts:
+```bash
+docker compose exec laravel php artisan tinker --execute="
+\$user = BB\Models\User::create([
+    'given_name' => 'Test', 'family_name' => 'Admin',
+    'display_name' => 'testadmin', 'email' => 'admin@test.com',
+    'password' => 'testpassword1', 'status' => 'active',
+    'active' => true, 'trusted' => true, 'induction_completed' => true,
+    'payment_method' => 'cash', 'monthly_subscription' => 25,
+    'hash' => md5('admin@test.com'),
+]);
+\$role = BB\Models\Role::where('name', 'admin')->first();
+if (\$role) { \$role->users()->attach(\$user->id); }
+echo 'Created admin user: admin@test.com / testpassword1';
+"
+```
 
-- Online-only accounts: Limited access to the membership system & space, but enables participation in our community
-- Members: Those with a regular subscription for access to the space & its equipment.
+## Running Tests
 
-The sign-up flows for each is slightly different:
-
-#### Online-only
-
-Sign up -> get online only welcome email -> confirm email
-
-Online only is stored in the DB as such. Dummy data is inserted so as not to break db constraints, but this is caught when updating your details. This means users can go from online only to a full member. They can't go back to online only at the moment - their membership will just go to being expired, but will still work for SSO.
-
-#### As a member
-
-Sign up -> setup payment -> get welcome email
-
-### Member Statuses
-
-There are a variety of member statuses which are used for various scenarios.
-
-- Setting Up - just signed up, no subscription setup, no access to space
-- Active - paid member with full access to the space
-- Payment Warning - payment failed but member retains access during 10-day grace period
-- Suspended - grace period expired, no space access but can still recover
-- Leaving - member voluntarily canceling but retains access until subscription expires
-- Left - former member who has completed leaving process
-- Honorary - special exempt status
-
-### Subscription & Payment Process
-
-The membership system handles subscription payments and automatic state transitions:
-
-#### Payment Success Flow
-1. Member sets up Direct Debit via GoCardless
-2. Monthly payments taken automatically on their chosen day
-3. Each successful payment extends membership by 1 month
-4. Member remains in `Active` status with full space access
-
-#### Payment Failure & Recovery
-1. **Payment fails** → Member enters `Payment Warning` status
-   - 10-day grace period begins
-   - Member retains full space access
-   - Daily reminder emails sent
-   - Can recover by making payment within grace period
-
-2. **Grace period expires** → Member becomes `Suspended`
-   - Space access removed
-   - 30-day recovery window
-   - Can still reactivate by making payment
-
-3. **30 days suspended** → Member marked as `Left`
-   - Must set up new subscription to rejoin
-   - No explicit "rejoin" process - just set up payment again
-
-#### Voluntary Leaving
-1. Member cancels subscription → enters `Leaving` status
-2. Retains access until current paid period expires
-3. Automatically transitions to `Left` when subscription expires
-
-#### Daily Automated Processes
-- `RecoverMemberships` - Checks for new payments and reactivates members
-- `CheckPaymentWarnings` - Moves expired warnings to suspended
-- `CheckSuspendedUsers` - Marks 30-day suspended members as left
-- `CheckLeavingUsers` - Transitions expired leaving members to left
-
-## Third-party services
-
-Running the membership system relies on a number of third-party services:
-
-- (Email provider?)
-- Discourse: Providing single-sign-on onto a Discourse application
-- GoCardless: For managing subscription payments via direct debit
-- Sentry: For error monitoring & tracking
-- Telegram: For notifying public & operational group chats about system events (new members, system notifications)
-
-These can be configured via environmental variables, or by setting up a `.env` file in the root of the project. See [`.env.example`](./.env.example) for reference.
-
-### Storage
-
-We don't use any third-party Cloud providers for storage of files.
-
-All user-uploaded content is stored via the public storage disk at `storage/app/public`. There is a symlink pointing to this directory at `/public/storage`. This replicates the [public storage disk](https://laravel.com/docs/5.2/filesystem#the-public-disk) introduced in Laravel 5.2 (the next version above us).
+```bash
+docker compose exec laravel php artisan test
+```
 
 ## Development
 
-The system is built on the PHP Laravel 5 framework so familiarity with that would help.
+For frontend development with hot reload:
 
-A .env file needs to be setup, please take a look at the example one for the options that are needed.
-This file can be renamed by removing the .example from the end.
-
-Composer needs to be available and the install command run to load the required assets.
-
-The storage directory needs to be writable.
-
-Some of the config options wont be needed.
-
-AWS is used for file storage although a local option can be specified.
-
-The system is built for a MySQL DB but a similar system will work
-
-GoCardless for Direct Debit payments
-
-MailGun for sending email - completely optional
-
-The encryption key is essential and cannot be changed or lost once set
-
-### Getting started
-
-We have a Docker runtime adapted from Laravel Sail ([GitHub](https://github.com/laravel/sail)), adjusted to run PHP 7.2 and Node 6 (our live environment is running 4.8.2, but it's too much faff downgrading far enough to run that).
-
-Prerequisites:
-
-- [Docker](https://www.docker.com/)
-- [Docker Compose](https://docs.docker.com/compose/install/) (comes pre-installed with Docker Desktop)
-
-For Apple Silicon Macs, [OrbStack](https://github.com/orbstack/orbstack) might be worth exploring as a more efficient alternative to Docker for Mac.
-
-1. Set up a .env file by copying `.env.example` to `.env`.
-
-2. Install dependencies with:
-
-   ```sh
-   docker-compose run laravel composer install
-   docker-compose run laravel npm install
-   ```
-
-3. Build frontend assets with:
-
-   ```sh
-   docker-compose run laravel npm run build
-   ```
-
-4. Start the local runtime with:
-
-   ```sh
-   docker-compose up -d
-   ```
-
-5. Provision the development database
-
-   ```sh
-   docker-compose run laravel php artisan migrate
-   ```
-
-6. Visit [https://localhost:8080](https://localhost:8080)
-
-### Running console commands
-
-If you need to run any console or `artisan` commands, you must do so within the Docker container.
-
-You can open a shell directly in the container with:
-
-```sh
-docker-compose exec laravel bash
+```bash
+bun run dev
 ```
 
-Or run your command from your host machine, prepended with:
+Then visit `http://localhost:8080`. Vite handles hot module replacement.
 
-```sh
-docker-compose run laravel [command]
+## Common Commands
+
+```bash
+# Clear all caches
+docker compose exec laravel php artisan optimize:clear
+
+# Run a specific artisan command
+docker compose exec laravel php artisan [command]
+
+# Open a shell in the container
+docker compose exec laravel bash
+
+# View logs
+docker compose logs laravel
+docker compose logs mysql
+
+# Stop everything
+docker compose down
+
+# Stop and wipe database
+docker compose down -v
 ```
 
-### Troubleshooting
+## Tech Stack
 
-If you have any issues, see if the docker logs have any useful information:
+- **Backend**: Laravel 12, PHP 8.3
+- **Frontend**: React 19, Inertia.js v2, MUI v6, TypeScript
+- **Database**: MySQL 8.0
+- **Build**: Vite 5, Bun
+- **Payments**: GoCardless
+- **Auth**: Session-based with CSRF, rate-limited login
+- **SSO**: Discourse integration
 
-```sh
-docker-compose logs laravel
+## Project Structure
+
+```
+app/
+├── Console/Commands/    # Artisan commands (billing, membership checks)
+├── Data/                # DTOs and value objects
+├── Events/              # Domain events
+├── Exceptions/          # Custom exceptions
+├── Http/Controllers/    # Route controllers (all return Inertia responses)
+├── Listeners/           # Event listeners (payment, subscription handlers)
+├── Models/              # Eloquent models
+├── Services/            # Business logic (GoCardless, Telegram, etc.)
+├── Repo/                # Repository pattern classes
+├── Process/             # Background process classes
+└── Providers/           # Service providers
+
+resources/js/
+├── Components/          # Shared React components
+├── Layouts/             # MainLayout (nav, sidebar, flash messages)
+├── Pages/               # Inertia page components (one per route)
+├── types/               # TypeScript type definitions
+└── react-app.tsx        # Inertia app entry point
 ```
 
-Or the Laravel log file at [storage/logs/laravel-DATE.log](./storage/logs):
+## Third-Party Services
 
-```sh
-tail -n 20 storage/logs/laravel-$(date -I).log
-```
+All optional for local development:
 
-## Deployment & hosting environments
-
-We currently host the membership system ourselves on our Bikeshed server, using Docker to encapsulate the relevant runtime.
-
-The live Docker runtime is entirely separate to the local development runtime.
-
-Production environment:
-
-|                      |                                            |
-| -------------------- | ------------------------------------------ |
-| URL                  | <https://members.hacman.org.uk>            |
-| Server               | `bikeshed.hacman.org.uk`                   |
-| Runtime              | `/var/members/` (Docker Compose)           |
-| Source code          | `/var/members/www/members`                 |
-| Server configuration | `/var/members/config/vhosts`               |
-| Crontab              | `/etc/cron.daily/membership-daily-updates` |
-
-### Deployment process
-
-We manually deploy code changes only at the moment, avoiding any post-deployment tasks until we gain confidence in the current hosting envronment's set up & resilience.
-
-```sh
-# On Bikeshed
-
-cd /var/members/www/members
-git pull origin master
-```
-
-If we need access to the PHP runtime, we can open a shell with:
-
-```sh
-# On Bikeshed
-
-cd /var/members/
-sudo docker-compose exec webserver bash
-```
-
-### Database
-
-Database access information is kept private at the moment.
-
-Ideally, database changes should be made via [Laravel Migrations](https://laravel.com/docs/5.1/migrations).
-
-If you believe any changes need making directly to the database, please contact the membership comittee.
-
-### Frontend assets
-
-The site uses Bootstrap and SCSS files which can be transpiled to CSS.
-However due to issues with transpiling that we haven't fixed, there's CSS hotfixes here and there.
-This isn't dangerous or a risk, but would be nicer if it could be integrated with the SCSS.
-
-### Routes
-
-`app/Http/routes.php` is the starting point. Note the middlewares which do things like make
-some things member only.
-
-### Running jobs
-
-Get into the docker container (above) and you can then run `php artisan bb:check-memberships` to run the `check-memberships` job, or any of the other jobs.
+- **GoCardless**: Direct debit payments (sandbox mode in dev)
+- **Discourse**: SSO integration for forum
+- **Telegram**: System notifications
+- **Sentry**: Error monitoring
+- **Mailhog**: Email testing (included in Docker, visit `http://localhost:8025`)
